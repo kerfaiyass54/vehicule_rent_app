@@ -11,7 +11,7 @@ public class Repair {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idRepair;
+    private long idRepair;
 
     private String nameRepair;
 

@@ -13,7 +13,7 @@ public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSubscrip;
+    private long idSubscrip;
 
     private String type;
 

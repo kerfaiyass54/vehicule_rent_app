@@ -10,7 +10,7 @@ public class Vehicule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idVehicule;
+    private long idVehicule;
 
     private String nameVehicule;
 

@@ -10,7 +10,7 @@ public class Adress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAdress;
+    private long idAdress;
 
     private String road;
 

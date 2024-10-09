@@ -10,7 +10,7 @@ public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAdmin;
+    private long idAdmin;
 
     private String adminName;
 

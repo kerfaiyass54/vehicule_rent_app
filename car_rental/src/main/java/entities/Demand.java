@@ -13,7 +13,7 @@ public class Demand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDemand;
+    private long idDemand;
 
     private String type;
 

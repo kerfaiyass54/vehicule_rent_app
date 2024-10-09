@@ -13,7 +13,7 @@ public class Buying {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idBuy;
+    private long idBuy;
 
     private String type;
 
