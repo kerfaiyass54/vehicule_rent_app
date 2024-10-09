@@ -1,4 +1,4 @@
-package com.projecttuto.car_rental;
+package com.projecttuto.vehicule_rental;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
