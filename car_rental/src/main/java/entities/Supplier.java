@@ -3,6 +3,8 @@ package entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Entity
 @Data
@@ -22,4 +24,14 @@ public class Supplier {
     private String pass;
 
     private long idAdmin;
+
+    private List<Vehicule> vehicules;
+
+    private List<Adress> adresses;
+
+    private List<Subscription> subscriptions;
+
+    private List<Demand> demands;
+
+
 }
