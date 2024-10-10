@@ -21,7 +21,7 @@ public class Subscription {
 
     private Date dateEnd;
 
-    private int idSupplier;
+    private long idSupplier;
 
-    private int idClient;
+    private long idClient;
 }

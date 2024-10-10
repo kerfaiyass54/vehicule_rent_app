@@ -19,7 +19,7 @@ public class Ticket {
 
     private String status;
 
-    private int idRep;
+    private long idRep;
 
-    private int idClient;
+    private long idClient;
 }

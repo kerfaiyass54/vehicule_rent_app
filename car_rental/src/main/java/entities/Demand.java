@@ -21,7 +21,7 @@ public class Demand {
 
     private String statusConfirm;
 
-    private int idTicket;
+    private long idTicket;
 
-    private int idSupp;
+    private long idSupp;
 }

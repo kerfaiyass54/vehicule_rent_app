@@ -24,8 +24,8 @@ public class Vehicule {
 
     private String transmission;
 
-    private int idSupp;
+    private long idSupp;
 
-    private int idCategory;
+    private long idCategory;
 
 }

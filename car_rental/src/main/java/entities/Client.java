@@ -19,9 +19,11 @@ public class Client {
 
     private double budget;
 
-    private int idLocation;
+    private long idLocation;
 
-    private int idAbon;
+    private long idAbon;
+
+
 
 
 }

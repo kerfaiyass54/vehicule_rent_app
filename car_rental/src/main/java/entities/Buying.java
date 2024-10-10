@@ -21,9 +21,9 @@ public class Buying {
 
     private String statusConfirm;
 
-    private int idVehicule;
+    private long idVehicule;
 
-    private int idClient;
+    private long idClient;
 
 
 }

@@ -16,9 +16,9 @@ public class Adress {
 
     private int number;
 
-    private int idSupp;
+    private long idSupp;
 
-    private int idLoc;
+    private long idLoc;
 
 
 }

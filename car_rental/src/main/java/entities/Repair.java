@@ -15,6 +15,6 @@ public class Repair {
 
     private String nameRepair;
 
-    private int idLocation;
+    private long idLocation;
 
 }
