@@ -2,23 +2,32 @@ package entities;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table(name="repair")
 public class Repair {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idrepair")
     private long idRepair;
 
+    @Column(name="name_repair")
     private String nameRepair;
 
     private long idLocation;
 
+    @Column(name="email_repair")
     private String email;
 
+    @Column(name="pass_repair")
     private String pass;
 
     private long idAdmin;
