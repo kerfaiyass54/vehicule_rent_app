@@ -20,7 +20,7 @@ public class Client {
     private double budget;
 
     private int idLocation;
-
+//le client peut posseder plusieurs abonnements
     private int idAbon;
 
 
