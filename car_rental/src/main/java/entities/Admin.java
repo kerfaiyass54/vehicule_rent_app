@@ -20,20 +20,22 @@ public class Admin {
     @Column(name="idadmin")
     private long idAdmin;
 
-    @Column(name="admin_name")
+    @Column(name="admin_name", nullable = false)
     private String adminName;
 
-    @Column(name="email_admin")
+    @Column(name="email_admin", nullable = false)
     private String email;
 
-    @Column(name="pass_admin")
+    @Column(name="pass_admin", nullable = false)
     private String pass;
 
-
+    @OneToMany(mappedBy = "admin")
     private List<Client> clients;
 
+    @OneToMany(mappedBy = "admin")
     private List<Repair> repairs;
 
+    @OneToMany(mappedBy = "admin")
     private List<Supplier> suppliers;
 
 }

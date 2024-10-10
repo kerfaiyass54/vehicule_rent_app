@@ -30,7 +30,9 @@ public class Subscription {
     @Column(name="date_end")
     private Date dateEnd;
 
-    private long idSupplier;
+    @ManyToOne
+    private Supplier supplier;
 
-    private long idClient;
+    @ManyToOne
+    private Client client;
 }

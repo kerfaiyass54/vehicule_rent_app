@@ -30,7 +30,11 @@ public class Demand {
     @Column(name="status_confirm")
     private String statusConfirm;
 
-    private long idTicket;
+    @ManyToOne
+    @JoinColumn(name = "id_ticket", referencedColumnName = "idticket")
+    private Ticket ticket;
 
-    private long idSupp;
+    @ManyToOne
+    @JoinColumn(name = "id_supp", referencedColumnName = "idsupp")
+    private Supplier supplier;
 }

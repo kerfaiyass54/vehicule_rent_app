@@ -3,6 +3,8 @@ package entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @Getter
@@ -36,9 +38,19 @@ public class Vehicule {
     @Column(name="transmission")
     private String transmission;
 
-    private long idSupp;
+    @ManyToOne
+    private Supplier supplier;
 
-    private long idCategory;
+    @ManyToOne
+    private Category category;
+
+    @OneToMany
+    private List<RepairInfo> repairInfos;
+
+    @OneToMany
+    private List<Buying> buyings;
+
+
 
 
 

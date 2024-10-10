@@ -24,9 +24,13 @@ public class Buying {
     @Column(name="date_buy")
     private Date dateBuy;
 
-    private long idVehicule;
+    @ManyToOne
+    @JoinColumn(name = "id_vehicule", referencedColumnName = "idvehicule")
+    private Vehicule vehicule;
 
-    private long idClient;
+    @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "idclient")
+    private Client client;
 
 
 }

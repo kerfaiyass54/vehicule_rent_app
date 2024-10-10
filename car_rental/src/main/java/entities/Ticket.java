@@ -28,7 +28,9 @@ public class Ticket {
     @Column(name="status")
     private String status;
 
-    private long idRep;
+    @OneToMany
+    private Repair repair;
 
-    private long idClient;
+    @ManyToOne
+    private Client client;
 }

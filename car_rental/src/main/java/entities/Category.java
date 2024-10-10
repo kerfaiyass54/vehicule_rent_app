@@ -19,10 +19,10 @@ public class Category {
     @Column(name="idcategory")
     private long idCategory;
 
-    @Column(name="name_category")
+    @Column(name="name_category",nullable = false)
     private String nameCategory;
 
-    @Column(name="type_category")
+    @Column(name="type_category",nullable = false)
     private String typeCategory;
 
 

@@ -3,6 +3,8 @@ package entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @Getter
@@ -18,16 +20,19 @@ public class Adress {
     @Column(name="idadress")
     private long idAdress;
 
-    @Column(name="road")
+    @Column(name="road",nullable = false)
     private String road;
 
-
-    @Column(name="number")
+    @Column(name="number",nullable = false)
     private int number;
 
-    private long idSupp;
+    @ManyToOne
+    @JoinColumn(name = "idsupp", referencedColumnName = "idsupp")
+    private Supplier supplier;
 
-    private long idLoc;
+    @ManyToOne
+    @JoinColumn(name = "idloc", referencedColumnName = "idloc")
+    private Location location;
 
 
 }

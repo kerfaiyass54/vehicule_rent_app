@@ -28,9 +28,13 @@ public class RepairInfo {
     @Column(name="repair_status")
     private String repairStatus;
 
-    private long idVehiculeRepair;
+    @ManyToOne
+    @JoinColumn(name = "id_vehicule_repair", referencedColumnName = "idvehicule")
+    private Vehicule vehicule;
 
-    private long idRepairRepair;
+    @ManyToOne
+    @JoinColumn(name = "id_repair_repair", referencedColumnName = "idrepair")
+    private Repair repair;
 
 
 }

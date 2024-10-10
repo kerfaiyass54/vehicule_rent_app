@@ -33,14 +33,19 @@ public class Supplier {
     @Column(name="pass_supp")
     private String pass;
 
-    private long idAdmin;
+    @ManyToOne
+    private Admin admin;
 
+    @OneToMany
     private List<Vehicule> vehicules;
 
+    @OneToMany
     private List<Adress> adresses;
 
+    @OneToMany
     private List<Subscription> subscriptions;
 
+    @OneToMany
     private List<Demand> demands;
 
 

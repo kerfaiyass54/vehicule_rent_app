@@ -4,6 +4,8 @@ package entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @Getter
@@ -19,26 +21,31 @@ public class Client {
     @Column(name="idclient")
     private long idClient;
 
-    @Column(name="name_client")
+    @Column(name="name_client",nullable = false)
     private String nameClient;
 
-    @Column(name="cin")
+    @Column(name="cin",nullable = false)
     private String cin;
 
-    @Column(name="budget")
+    @Column(name="budget",nullable = false)
     private double budget;
 
-    private long idLocation;
+    @ManyToOne
+    @JoinColumn(name = "id_location", referencedColumnName = "idloc")
+    private Location location;
 
-    private long idAbon;
+    @OneToMany
+    private List<Subscription> subscriptions;
 
-    @Column(name="email_client")
+    @Column(name="email_client",nullable = false)
     private String email;
 
-    @Column(name="pass_client")
+    @Column(name="pass_client",nullable = false)
     private String pass;
 
-    private long idAdmin;
+    @ManyToOne
+    @JoinColumn(name = "id_admin_client", referencedColumnName = "idadmin")
+    private Admin admin;
 
 
 

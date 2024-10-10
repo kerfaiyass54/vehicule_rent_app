@@ -4,6 +4,8 @@ package entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @Getter
@@ -30,6 +32,14 @@ public class Repair {
     @Column(name="pass_repair")
     private String pass;
 
-    private long idAdmin;
+    @ManyToOne
+    @JoinColumn(name = "id_admin_rep", referencedColumnName = "idadmin")
+    private Admin admin;
+
+    @OneToMany
+    private List<Ticket> tickets;
+
+    @OneToMany
+    private List<RepairInfo> repairInfos;
 
 }
