@@ -16,4 +16,10 @@ public class Supplier {
     private String suppName;
 
     private String nationality;
+
+    private String email;
+
+    private String pass;
+
+    private long idAdmin;
 }

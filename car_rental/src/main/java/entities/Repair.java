@@ -17,4 +17,10 @@ public class Repair {
 
     private long idLocation;
 
+    private String email;
+
+    private String pass;
+
+    private long idAdmin;
+
 }
