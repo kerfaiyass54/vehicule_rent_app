@@ -4,6 +4,8 @@ package entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @Getter
@@ -24,6 +26,10 @@ public class Category {
 
     @Column(name="type_category",nullable = false)
     private String typeCategory;
+
+    @OneToMany(mappedBy = "category")
+    private List<Vehicule> vehicules;
+
 
 
 

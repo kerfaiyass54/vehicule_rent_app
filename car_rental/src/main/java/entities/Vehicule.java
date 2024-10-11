@@ -39,15 +39,17 @@ public class Vehicule {
     private String transmission;
 
     @ManyToOne
+    @JoinColumn(name = "id_supp", referencedColumnName = "idsupp")
     private Supplier supplier;
 
     @ManyToOne
+    @JoinColumn(name = "id_category", referencedColumnName = "idcategory")
     private Category category;
 
-    @OneToMany
+    @OneToMany(mappedBy = "vehicule")
     private List<RepairInfo> repairInfos;
 
-    @OneToMany
+    @OneToMany(mappedBy = "vehicule")
     private List<Buying> buyings;
 
 

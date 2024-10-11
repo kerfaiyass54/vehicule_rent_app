@@ -34,18 +34,19 @@ public class Supplier {
     private String pass;
 
     @ManyToOne
+    @JoinColumn(name = "id_admin_supp", referencedColumnName = "idadmin")
     private Admin admin;
 
-    @OneToMany
+    @OneToMany(mappedBy = "supplier")
     private List<Vehicule> vehicules;
 
-    @OneToMany
+    @OneToMany(mappedBy = "supplier")
     private List<Adress> adresses;
 
-    @OneToMany
+    @OneToMany(mappedBy = "supplier")
     private List<Subscription> subscriptions;
 
-    @OneToMany
+    @OneToMany(mappedBy = "supplier")
     private List<Demand> demands;
 
 

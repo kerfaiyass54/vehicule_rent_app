@@ -36,10 +36,10 @@ public class Repair {
     @JoinColumn(name = "id_admin_rep", referencedColumnName = "idadmin")
     private Admin admin;
 
-    @OneToMany
+    @OneToMany(mappedBy = "repair")
     private List<Ticket> tickets;
 
-    @OneToMany
+    @OneToMany(mappedBy = "repair")
     private List<RepairInfo> repairInfos;
 
 }

@@ -4,6 +4,8 @@ package entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @Getter
@@ -24,4 +26,15 @@ public class Location {
 
     @Column(name="country")
     private String country;
+
+    @OneToMany(mappedBy = "location")
+    private List<Adress> adresses;
+
+    @OneToMany(mappedBy = "location")
+    private List<Client> clients;
+
+    @OneToMany(mappedBy = "location")
+    private List<Repair> repairs;
+
+
 }

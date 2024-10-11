@@ -28,9 +28,11 @@ public class Ticket {
     @Column(name="status")
     private String status;
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "id_rep", referencedColumnName = "idrepair")
     private Repair repair;
 
     @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "idclient")
     private Client client;
 }

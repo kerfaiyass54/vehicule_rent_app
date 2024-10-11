@@ -31,8 +31,10 @@ public class Subscription {
     private Date dateEnd;
 
     @ManyToOne
+    @JoinColumn(name = "id_supplier", referencedColumnName = "idsupp")
     private Supplier supplier;
 
     @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "idclient")
     private Client client;
 }
