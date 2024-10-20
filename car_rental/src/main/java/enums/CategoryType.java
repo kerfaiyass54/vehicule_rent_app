@@ -40,5 +40,7 @@ public class CategoryType {
     public static final String[] AERIAL_VEHICLES = {
             "Helicopter", "Airplane", "Drone", "Hot Air Balloon", "Glider"
     };
+
+
 }
 
