@@ -1,6 +1,7 @@
 package entities;
 
 
+import enums.ConfirmStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,7 +29,8 @@ public class Demand {
     private Date dateAsk;
 
     @Column(name="status_confirm")
-    private String statusConfirm;
+    @Enumerated(EnumType.STRING)
+    private ConfirmStatus statusConfirm;
 
     @ManyToOne
     @JoinColumn(name = "id_ticket", referencedColumnName = "idticket")

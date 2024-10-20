@@ -1,6 +1,7 @@
 package entities;
 
 
+import enums.CategoryName;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,9 +22,11 @@ public class Category {
     @Column(name="idcategory")
     private long idCategory;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="name_category",nullable = false)
     private String nameCategory;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="type_category",nullable = false)
     private String typeCategory;
 

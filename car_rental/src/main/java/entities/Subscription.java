@@ -1,6 +1,7 @@
 package entities;
 
 
+import enums.SubscriptionType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,7 +23,8 @@ public class Subscription {
     private long idSubscrip;
 
     @Column(name="type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private SubscriptionType type;
 
     @Column(name="date_start")
     private Date dateStart;

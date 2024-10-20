@@ -1,5 +1,6 @@
 package entities;
 
+import enums.Transmission;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,7 +37,8 @@ public class Vehicule {
     private int highSpeed;
 
     @Column(name="transmission")
-    private String transmission;
+    @Enumerated(EnumType.STRING)
+    private Transmission transmission;
 
     @ManyToOne
     @JoinColumn(name = "id_supp", referencedColumnName = "idsupp")

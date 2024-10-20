@@ -1,5 +1,6 @@
 package entities;
 
+import enums.TypeTicket;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,7 +21,8 @@ public class Ticket {
     private long idTicket;
 
     @Column(name="type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private TypeTicket type;
 
     @Column(name="date_insert")
     private Date dateInsert;

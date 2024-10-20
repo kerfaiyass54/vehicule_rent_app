@@ -1,6 +1,7 @@
 package entities;
 
 
+import enums.RepairStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,7 +27,8 @@ public class RepairInfo {
     private Date dateStart;
 
     @Column(name="repair_status")
-    private String repairStatus;
+    @Enumerated(EnumType.STRING)
+    private RepairStatus repairStatus;
 
     @ManyToOne
     @JoinColumn(name = "id_vehicule_repair", referencedColumnName = "idvehicule")
