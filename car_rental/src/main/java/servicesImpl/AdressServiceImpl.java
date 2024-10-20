@@ -51,7 +51,7 @@ public class AdressServiceImpl implements AdressService {
 
     @Override
     public Supplier getSupplier(String suppName){
-        return supplierRepository.findByName(suppName);
+        return supplierRepository.findSupplierBySuppName(suppName);
     }
 
     @Override
