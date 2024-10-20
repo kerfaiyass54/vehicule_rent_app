@@ -1,6 +1,9 @@
 package servicesImpl;
 
 
+import entities.Client;
+import entities.Repair;
+import entities.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.ClientRepository;
@@ -24,4 +27,23 @@ public class TicketServiceImpl implements TicketService {
     @Autowired
     private DemandRepository demandRepository;
 
+    @Override
+    public Client getClient(String name){
+        return clientRepository.findClientByNameClient(name );
+    }
+    @Override
+    public Repair getRepair(String name){
+        return repairRepository.findRepairByNameRepair(name );
+    }
+
+    @Override
+    public void changeStatus(long id){
+
+    }
+
+    @Override
+    public void addTicket(Ticket ticket){}
+
+    @Override
+    public void removeTicket(Ticket ticket){}
 }
