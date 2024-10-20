@@ -1,6 +1,11 @@
 package services;
 
+import entities.Adress;
+import entities.Subscription;
 import entities.Supplier;
+import entities.Vehicule;
+
+import java.util.List;
 
 public interface SupplierService {
     void addSupplier(Supplier supplier);
@@ -8,4 +13,9 @@ public interface SupplierService {
     void deleteSupplier(Supplier supplier);
     Supplier getSupplier(int id);
     void changeSupplierPassword(Supplier supplier, String newPassword);
+    List<Subscription> getSubscriptions(Supplier supplier);
+    List<Adress> getAdresses(Supplier supplier);
+    List<Vehicule> getVehicules(Supplier supplier);
+
+
 }
