@@ -9,6 +9,6 @@ public interface DemandService {
     void removeDemand(Demand demand);
     void updateDemand(Demand demand);
     List<Demand> getDemands();
-    Demand getDemand(int id);
+    Demand getDemand(long id);
     void updtaeDemandStatus(Demand demand);
 }

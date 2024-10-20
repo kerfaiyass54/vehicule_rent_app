@@ -5,9 +5,9 @@ import entities.Client;
 import entities.Vehicule;
 
 public interface BuyingService {
-    Buying getBuyingById(int id);
+    Buying getBuyingById(long id);
     Vehicule getVehicule(String vehicule);
     Client getClient(String clientName);
-    void deleteBuyingById(int id);
+    void deleteBuyingById(long id);
 
 }

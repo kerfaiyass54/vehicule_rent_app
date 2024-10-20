@@ -8,7 +8,7 @@ public interface RepairService {
     void addRepair(Repair repair);
     void deleteRepair(Repair repair);
     void updateRepair(Repair repair);
-    Repair getRepair(int id);
+    Repair getRepair(long id);
     void changeRepairPassword(Repair repair, String newPassword);
     List<Ticket> getTickets(String repairName);
     List<RepairInfo> getRepairInfo(String repairName);

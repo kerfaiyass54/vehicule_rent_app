@@ -11,7 +11,7 @@ public interface SupplierService {
     void addSupplier(Supplier supplier);
     void updateSupplier(Supplier supplier);
     void deleteSupplier(Supplier supplier);
-    Supplier getSupplier(int id);
+    Supplier getSupplier(long id);
     void changeSupplierPassword(Supplier supplier, String newPassword);
     List<Subscription> getSubscriptions(Supplier supplier);
     List<Adress> getAdresses(Supplier supplier);
