@@ -1,6 +1,7 @@
 package entities;
 
 import enums.Transmission;
+import enums.VehiculeStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -39,6 +40,10 @@ public class Vehicule {
     @Column(name="transmission")
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
+
+    @Column(name="vehicule_status")
+    @Enumerated(EnumType.STRING)
+    private VehiculeStatus vehiculeStatus;
 
     @ManyToOne
     @JoinColumn(name = "id_supp", referencedColumnName = "idsupp")

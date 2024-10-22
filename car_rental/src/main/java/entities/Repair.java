@@ -24,7 +24,9 @@ public class Repair {
     @Column(name="name_repair")
     private String nameRepair;
 
-    private long idLocation;
+    @ManyToOne
+    @JoinColumn(name= "id_location",referencedColumnName = "idloc")
+    private Location location;
 
     @Column(name="email_repair")
     private String email;

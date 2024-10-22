@@ -38,4 +38,7 @@ public class Admin {
     @OneToMany(mappedBy = "admin")
     private List<Supplier> suppliers;
 
+    @OneToMany(mappedBy = "admin")
+    private List<Location> locations;
+
 }

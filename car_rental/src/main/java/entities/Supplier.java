@@ -49,5 +49,8 @@ public class Supplier {
     @OneToMany(mappedBy = "supplier")
     private List<Demand> demands;
 
+    @OneToMany(mappedBy = "supplier")
+    private List<Category> categories;
+
 
 }

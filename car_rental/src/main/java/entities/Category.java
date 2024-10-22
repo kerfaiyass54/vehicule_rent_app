@@ -24,14 +24,18 @@ public class Category {
 
     @Enumerated(EnumType.STRING)
     @Column(name="name_category",nullable = false)
-    private String nameCategory;
+    private CategoryName nameCategory;
 
-    @Enumerated(EnumType.STRING)
     @Column(name="type_category",nullable = false)
     private String typeCategory;
 
     @OneToMany(mappedBy = "category")
     private List<Vehicule> vehicules;
+
+    @ManyToOne
+    @JoinColumn(name = "id_supp_cat", referencedColumnName = "idsupp")
+    private Supplier supplier;
+
 
 
 

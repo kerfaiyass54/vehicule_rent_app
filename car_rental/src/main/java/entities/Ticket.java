@@ -30,6 +30,9 @@ public class Ticket {
     @Column(name="status")
     private String status;
 
+    @Column(name="tarif")
+    private float tarif;
+
     @ManyToOne
     @JoinColumn(name = "id_rep", referencedColumnName = "idrepair")
     private Repair repair;
@@ -37,4 +40,5 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "id_client", referencedColumnName = "idclient")
     private Client client;
+
 }

@@ -36,5 +36,9 @@ public class Location {
     @OneToMany(mappedBy = "location")
     private List<Repair> repairs;
 
+    @ManyToOne
+    @JoinColumn(name="id_admin_loc",referencedColumnName = "idadmin")
+    private Admin admin;
+
 
 }
