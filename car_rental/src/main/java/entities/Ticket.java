@@ -1,5 +1,6 @@
 package entities;
 
+import enums.StatusRepair;
 import enums.TypeTicket;
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,7 +29,8 @@ public class Ticket {
     private Date dateInsert;
 
     @Column(name="status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private StatusRepair status;
 
     @Column(name="tarif")
     private float tarif;
