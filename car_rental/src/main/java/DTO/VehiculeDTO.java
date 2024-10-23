@@ -2,7 +2,13 @@ package DTO;
 
 import enums.Transmission;
 import enums.VehiculeStatus;
+import lombok.*;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class VehiculeDTO {
     private long idVehicule;
     private String nameVehicule;

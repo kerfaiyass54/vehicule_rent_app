@@ -35,4 +35,6 @@ public class Adress {
     private Location location;
 
 
+
+
 }

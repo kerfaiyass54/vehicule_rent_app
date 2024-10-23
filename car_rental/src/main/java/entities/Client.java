@@ -34,8 +34,11 @@ public class Client {
     @JoinColumn(name = "id_location", referencedColumnName = "idloc")
     private Location location;
 
-    @OneToMany
+    @OneToMany(mappedBy = "client")
     private List<Subscription> subscriptions;
+
+    @OneToMany(mappedBy = "client")
+    private List<Buying> buyings;
 
     @Column(name="email_client",nullable = false)
     private String email;
