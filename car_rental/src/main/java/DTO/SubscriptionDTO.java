@@ -3,6 +3,7 @@ package DTO;
 import enums.SubscriptionType;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -13,6 +14,6 @@ import java.util.Date;
 public class SubscriptionDTO {
     private long idSubscrip;
     private SubscriptionType type;
-    private Date dateStart;
-    private Date dateEnd;
+    private LocalDate dateStart;
+    private LocalDate dateEnd;
 }

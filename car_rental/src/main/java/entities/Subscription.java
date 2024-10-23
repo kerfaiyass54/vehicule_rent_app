@@ -5,6 +5,7 @@ import enums.SubscriptionType;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -27,10 +28,10 @@ public class Subscription {
     private SubscriptionType type;
 
     @Column(name="date_start")
-    private Date dateStart;
+    private LocalDate dateStart;
 
     @Column(name="date_end")
-    private Date dateEnd;
+    private LocalDate dateEnd;
 
     @ManyToOne
     @JoinColumn(name = "id_supplier", referencedColumnName = "idsupp")

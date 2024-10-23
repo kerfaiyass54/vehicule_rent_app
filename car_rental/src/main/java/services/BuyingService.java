@@ -9,5 +9,7 @@ public interface BuyingService {
     Vehicule getVehicule(String vehicule);
     Client getClient(String clientName);
     void deleteBuyingById(long id);
+    void buyVehicule(String vehiculeName, String clientName, int period);
+
 
 }

@@ -103,5 +103,20 @@ public class ClientServiceImpl implements ClientService {
         }
     }
 
+    @Override
+    public void addToBudget(double budgetExtra, String nameClient){
+        Client client = clientRepository.findClientByNameClient(nameClient);
+        client.setBudget(client.getBudget() + budgetExtra);
+        clientRepository.save(client);
+    }
+
+    @Override
+    public void changeLocation(String nameClient, String newLocation){
+        Client client = clientRepository.findClientByNameClient(nameClient);
+        Location location = locationRepository.findLocationByName(client.getLocation().getName());
+        client.setLocation(location);
+        locationRepository.save(location);
+    }
+
 
 }

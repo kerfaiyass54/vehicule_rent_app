@@ -5,6 +5,7 @@ import enums.RepairStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -24,7 +25,7 @@ public class RepairInfo {
     private long idInfo;
 
     @Column(name="date_start")
-    private Date dateStart;
+    private LocalDate dateStart;
 
     @Column(name="repair_status")
     @Enumerated(EnumType.STRING)

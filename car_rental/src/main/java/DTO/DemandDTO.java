@@ -3,6 +3,7 @@ package DTO;
 import enums.ConfirmStatus;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -13,7 +14,7 @@ import java.util.Date;
 public class DemandDTO {
     private long idDemand;
     private String type;
-    private Date dateAsk;
+    private LocalDate dateAsk;
     private ConfirmStatus statusConfirm;
 
 }

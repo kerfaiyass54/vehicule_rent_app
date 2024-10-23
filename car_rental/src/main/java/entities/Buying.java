@@ -4,6 +4,7 @@ package entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -22,7 +23,10 @@ public class Buying {
     private long idBuying;
 
     @Column(name="date_buy")
-    private Date dateBuy;
+    private LocalDate dateBuy;
+
+    @Column(name="period_buy")
+    private int periodBuy;
 
     @ManyToOne
     @JoinColumn(name = "id_vehicule", referencedColumnName = "idvehicule")
@@ -31,6 +35,8 @@ public class Buying {
     @ManyToOne
     @JoinColumn(name = "id_client", referencedColumnName = "idclient")
     private Client client;
+
+
 
 
 }

@@ -5,6 +5,7 @@ import enums.TypeTicket;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -26,7 +27,7 @@ public class Ticket {
     private TypeTicket type;
 
     @Column(name="date_insert")
-    private Date dateInsert;
+    private LocalDate dateInsert;
 
     @Column(name="status")
     @Enumerated(EnumType.STRING)

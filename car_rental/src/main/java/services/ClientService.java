@@ -10,4 +10,6 @@ public interface ClientService {
     void updateClient(ClientDTO clientDTO);
     void changePassword(String nameClient, String newPassword);
     boolean isClientExist(String name);
+    void addToBudget(double budgetExtra, String nameClient);
+    void changeLocation(String nameClient, String newLocation);
 }

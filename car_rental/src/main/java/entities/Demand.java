@@ -5,6 +5,7 @@ import enums.ConfirmStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -26,7 +27,7 @@ public class Demand {
     private String type;
 
     @Column(name="date_ask")
-    private Date dateAsk;
+    private LocalDate dateAsk;
 
     @Column(name="status_confirm")
     @Enumerated(EnumType.STRING)

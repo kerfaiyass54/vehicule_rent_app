@@ -2,6 +2,7 @@ package DTO;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -11,6 +12,6 @@ import java.util.Date;
 @ToString
 public class BuyingDTO {
     private long idBuying;
-    private Date dateBuy;
+    private LocalDate dateBuy;
 
 }
