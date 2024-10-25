@@ -4,6 +4,7 @@ package servicesImpl;
 import entities.Buying;
 import entities.Client;
 import entities.Vehicule;
+import enums.BuyStatus;
 import enums.VehiculeStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import repositories.VehiculeRepository;
 import services.BuyingService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class BuyingServiceImpl implements BuyingService {
@@ -46,6 +49,23 @@ public class BuyingServiceImpl implements BuyingService {
         buyingRepository.deleteById(id);
     }
 
+
+    @Override
+    public void returnVehicule(String vehiculeName, String clientName){
+        Vehicule vehicule = vehiculeRepository.findVehiculeByNameVehicule(vehiculeName);
+        Client client = clientRepository.findClientByNameClient(clientName);
+        List<Buying> buyings = buyingRepository.findAll();
+        for(Buying buying : buyings){
+            if(buying.getClient().equals(client) && buying.getVehicule().equals(vehicule) && vehicule.getVehiculeStatus().equals(VehiculeStatus.TAKEN)){
+                buying.setBuyStatus(BuyStatus.FINISHED);
+                vehicule.setVehiculeStatus(VehiculeStatus.AVAILABLE);
+                vehiculeRepository.save(vehicule);
+                buyingRepository.save(buying);
+                break;
+            }
+        }
+    }
+
     @Override
     public void buyVehicule(String vehiculeName, String clientName, int period){
         Vehicule vehicule = vehiculeRepository.findVehiculeByNameVehicule(vehiculeName);
@@ -59,6 +79,7 @@ public class BuyingServiceImpl implements BuyingService {
             buying.setVehicule(vehicule);
             buying.setPeriodBuy(period);
             buying.setDateBuy(LocalDate.now());
+            buying.setBuyStatus(BuyStatus.BEING_USED);
             buyingRepository.save(buying);
             clientRepository.save(client);
             vehiculeRepository.save(vehicule);

@@ -120,6 +120,8 @@ public class ClientServiceImpl implements ClientService {
         locationRepository.save(location);
     }
 
+
+
     @Override
     public boolean isCinExists(String cin){
         List<Client> clients = clientRepository.findAll();
@@ -132,7 +134,7 @@ public class ClientServiceImpl implements ClientService {
         return cinExists;
     }
 
-    
+
 
 
 }
