@@ -1,5 +1,6 @@
 package DTO;
 
+import enums.BuyStatus;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -13,5 +14,6 @@ import java.util.Date;
 public class BuyingDTO {
     private long idBuying;
     private LocalDate dateBuy;
+    private BuyStatus buyStatus;
 
 }
