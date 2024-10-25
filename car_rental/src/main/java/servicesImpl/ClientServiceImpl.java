@@ -32,8 +32,10 @@ public class ClientServiceImpl implements ClientService {
     private AdminRepository adminRepository;
 
     @Override
-    public void addClient(Client client) {
-        if(!getEmails().contains(client.getEmail()) && !isCinExists(client.getEmail())) {
+    public void addClient(Client client, String locationName) {
+        Location location = locationRepository.findLocationByName(locationName);
+        if(!getEmails().contains(client.getEmail()) && !isCinExists(client.getEmail()) && location != null) {
+            client.setLocation(location);
             clientRepository.save(client);
         }
     }
