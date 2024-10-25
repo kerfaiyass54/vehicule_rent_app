@@ -42,8 +42,14 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public void addTicket(Ticket ticket){
-        ticketRepository.save(ticket);
+    public void addTicket(Ticket ticket, String repairName, String clientName){
+        Client client = clientRepository.findClientByNameClient(clientName);
+        Repair repair = repairRepository.findRepairByNameRepair(repairName);
+        if(client != null && repair != null){
+            ticket.setClient(client);
+            ticket.setRepair(repair);
+            ticket.setClient(client);
+        }
     }
 
     @Override
