@@ -4,7 +4,7 @@ import DTO.ClientDTO;
 import entities.Client;
 
 public interface ClientService {
-    void addClient(Client client);
+    void addClient(Client client, String locationName);
     void deleteClient(long id);
     ClientDTO getClient(long id);
     void updateClient(ClientDTO clientDTO);
