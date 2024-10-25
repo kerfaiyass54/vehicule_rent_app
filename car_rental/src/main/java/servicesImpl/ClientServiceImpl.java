@@ -33,7 +33,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void addClient(Client client) {
-        if(!getEmails().contains(client.getEmail())) {
+        if(!getEmails().contains(client.getEmail()) && !isCinExists(client.getEmail())) {
             clientRepository.save(client);
         }
     }
@@ -116,6 +116,18 @@ public class ClientServiceImpl implements ClientService {
         Location location = locationRepository.findLocationByName(client.getLocation().getName());
         client.setLocation(location);
         locationRepository.save(location);
+    }
+
+    @Override
+    public boolean isCinExists(String cin){
+        List<Client> clients = clientRepository.findAll();
+        boolean cinExists = false;
+        for(Client client : clients){
+            if(client.getCin().equals(cin)){
+                cinExists = true;
+            }
+        }
+        return cinExists;
     }
 
 
