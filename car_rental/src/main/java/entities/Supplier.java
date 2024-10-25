@@ -37,6 +37,9 @@ public class Supplier {
     @JoinColumn(name = "id_admin_supp", referencedColumnName = "idadmin")
     private Admin admin;
 
+    @Column(name="role_user", nullable = false)
+    private String role;
+
     @OneToMany(mappedBy = "supplier")
     private List<Vehicule> vehicules;
 

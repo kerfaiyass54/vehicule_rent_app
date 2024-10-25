@@ -34,6 +34,9 @@ public class Repair {
     @Column(name="pass_repair")
     private String pass;
 
+    @Column(name="role_user", nullable = false)
+    private String role;
+
     @ManyToOne
     @JoinColumn(name = "id_admin_rep", referencedColumnName = "idadmin")
     private Admin admin;
