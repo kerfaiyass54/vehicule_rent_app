@@ -1,8 +1,8 @@
 package servicesImpl;
 
 
-import entities.Category;
-import entities.Vehicule;
+import entities.*;
+import enums.CategoryName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.*;
@@ -26,9 +26,19 @@ public class VehiculeServiceImpl implements VehiculeService {
     @Autowired
     private SupplierRepository supplierRepository;
 
+    @Autowired
+    private ClientRepository clientRepository;
+
     @Override
-    public void addVehicule(Vehicule vehicule){
-        vehiculeRepository.save(vehicule);
+    public void addVehicule(Vehicule vehicule, String nameSupplier, CategoryName nameCategory){
+        Category category = categoryRepository.findCategoriesByNameCategory(nameCategory);
+        Supplier supplier = supplierRepository.findSupplierBySuppName(nameSupplier);
+        if(category != null && supplier != null){
+            vehicule.setCategory(category);
+            vehicule.setSupplier(supplier);
+            vehiculeRepository.save(vehicule);
+        }
+
     }
     @Override
     public void deleteVehicule(Vehicule vehicule){
@@ -53,4 +63,7 @@ public class VehiculeServiceImpl implements VehiculeService {
         return vehiculeRepository.findVehiculeByIdVehicule(id).getCategory();
 
     }
+
+
+
 }
