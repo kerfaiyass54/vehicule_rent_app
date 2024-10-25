@@ -1,6 +1,7 @@
 package entities;
 
 
+import enums.BuyStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +28,10 @@ public class Buying {
 
     @Column(name="period_buy")
     private int periodBuy;
+
+    @Column(name="buy_status")
+    @Enumerated(EnumType.STRING)
+    private BuyStatus buyStatus;
 
     @ManyToOne
     @JoinColumn(name = "id_vehicule", referencedColumnName = "idvehicule")
