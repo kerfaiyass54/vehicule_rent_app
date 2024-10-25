@@ -13,4 +13,5 @@ public interface ClientService {
     void addToBudget(double budgetExtra, String nameClient);
     void changeLocation(String nameClient, String newLocation);
     boolean isCinExists(String cin);
+
 }
