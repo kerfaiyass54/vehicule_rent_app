@@ -11,9 +11,7 @@ public interface VehiculeService {
     void updateVehicule(Vehicule vehicule);
     Vehicule getVehicule(long id);
     Category getCategory(long id);
-    void buyVehicule(String vehiculeName, String nameClient, int period);
-    boolean canHeBuyTheVehicule(Vehicule vehicule);
-    void returnVehicule(String vehiculeName, String nameClient);
+
 
 
 
