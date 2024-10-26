@@ -30,23 +30,31 @@ public class AdressServiceImpl implements AdressService {
     }
 
     @Override
+    public void freeAdress(String adressName){
+        Adress adress = adressRepository.findAdressByRoad(adressName);
+        adress.setSupplier(null);
+        adressRepository.save(adress);
+    }
+
+    @Override
     public void addAdress(Adress adress){
         adressRepository.save(adress);
     }
 
     @Override
-    public void deleteAdress(Adress adress){
+    public void deleteAdress(String adressName){
+        Adress adress = adressRepository.findAdressByRoad(adressName);
         adressRepository.delete(adress);
     }
 
     @Override
-    public void updateAdress(Adress adress){
-        Adress adr = adressRepository.getById(adress.getIdAdress());
-        adr.setRoad(adress.getRoad());
-        adr.setLocation(adress.getLocation());
-        adr.setNumber(adress.getNumber());
-        adr.setSupplier(adress.getSupplier());
-        adressRepository.save(adr);
+    public void updateAdress(String adressName){
+        Adress adress = adressRepository.findAdressByRoad(adressName);
+        adress.setRoad(adress.getRoad());
+        adress.setLocation(adress.getLocation());
+        adress.setNumber(adress.getNumber());
+        adress.setSupplier(adress.getSupplier());
+        adressRepository.save(adress);
     }
 
     @Override
@@ -56,6 +64,6 @@ public class AdressServiceImpl implements AdressService {
 
     @Override
     public Location getLocation(String locationName){
-        return locationRepository.findByName(locationName);
+        return locationRepository.findLocationByName(locationName);
     }
 }
