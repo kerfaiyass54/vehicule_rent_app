@@ -10,6 +10,5 @@ public interface BuyingService {
     Client getClient(String clientName);
     void deleteBuyingById(long id);
     void buyVehicule(String vehiculeName, String clientName, int period);
-
-
+    void returnVehicule(String vehiculeName, String clientName);
 }
