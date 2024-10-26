@@ -1,6 +1,7 @@
 package servicesImpl;
 
 
+import entities.Demand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.DemandRepository;
@@ -19,6 +20,13 @@ public class DemandServiceImpl implements DemandService {
 
     @Autowired
     private SupplierRepository supplierRepository;
+
+    @Override
+    public void addDemand(Demand demand, String supplierName , String ticketName){
+
+    }
+
+
 
 
 }

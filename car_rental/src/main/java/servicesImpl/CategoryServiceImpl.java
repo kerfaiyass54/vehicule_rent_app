@@ -1,12 +1,15 @@
 package servicesImpl;
 
 
+import entities.Category;
+import entities.Supplier;
 import entities.Vehicule;
 import enums.CategoryName;
 import enums.CategoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.CategoryRepository;
+import repositories.SupplierRepository;
 import repositories.VehiculeRepository;
 import services.CategoryService;
 
@@ -22,11 +25,31 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private VehiculeRepository vehiculeRepository;
 
+    @Autowired
+    private SupplierRepository supplierRepository;
+
 
 
     @Override
     public List<Vehicule> getVehiculesByName(CategoryName name){
         return categoryRepository.findCategoriesByNameCategory(name).getVehicules();
+    }
+
+    @Override
+    public void addCategory(Category category, String nameSupplier){
+        Supplier supplier = supplierRepository.findSupplierBySuppName(nameSupplier);
+        category.setSupplier(supplier);
+        categoryRepository.save(category);
+    }
+
+    @Override
+    public void deleteCategory(Category category){
+        Category c = categoryRepository.getById(category.getIdCategory());
+        if(c.getVehicules().isEmpty()){
+
+            categoryRepository.delete(category);
+
+        }
     }
 
     @Override

@@ -1,4 +1,8 @@
 package enums;
 
-public enum RoleUSer {
+public enum RoleUser {
+ADMIN,
+    SUPPLIER,
+    CLIENT,
+    REPAIR,
 }
