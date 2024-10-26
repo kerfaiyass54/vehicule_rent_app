@@ -33,6 +33,12 @@ public class Subscription {
     @Column(name="date_end")
     private LocalDate dateEnd;
 
+    @Column(name="reduce")
+    private int reduce;
+
+    @Column(name="price")
+    private double price;
+
     @ManyToOne
     @JoinColumn(name = "id_supplier", referencedColumnName = "idsupp")
     private Supplier supplier;

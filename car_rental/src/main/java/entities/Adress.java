@@ -1,5 +1,6 @@
 package entities;
 
+import enums.AdressStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,6 +34,9 @@ public class Adress {
     @ManyToOne
     @JoinColumn(name = "idloc", referencedColumnName = "idloc")
     private Location location;
+
+    @Column(name="adress_status",nullable = false)
+    private AdressStatus adressStatus;
 
 
 

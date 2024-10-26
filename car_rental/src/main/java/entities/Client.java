@@ -40,6 +40,9 @@ public class Client {
     @OneToMany(mappedBy = "client")
     private List<Buying> buyings;
 
+    @OneToMany(mappedBy = "client")
+    private List<Ticket> tickets;
+
     @Column(name="email_client",nullable = false)
     private String email;
 

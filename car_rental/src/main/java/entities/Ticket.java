@@ -44,4 +44,10 @@ public class Ticket {
     @JoinColumn(name = "id_client", referencedColumnName = "idclient")
     private Client client;
 
+    @ManyToOne
+    @JoinColumn(name = "id_vehicule_ticket", referencedColumnName = "idvehicule")
+    private Vehicule vehicule;
+
+
+
 }

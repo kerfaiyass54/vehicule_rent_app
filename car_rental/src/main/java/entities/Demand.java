@@ -42,6 +42,6 @@ public class Demand {
     private Supplier supplier;
 
     @ManyToOne
-    @JoinColumn(name = "id_vehicule_demand", referencedColumnName = "idvehdemand")
+    @JoinColumn(name = "id_vehicule_demand", referencedColumnName = "idvehicule")
     private Vehicule vehicule;
 }
