@@ -1,6 +1,7 @@
 package servicesImpl;
 
 
+import entities.Admin;
 import entities.Client;
 import entities.Repair;
 import entities.Supplier;
@@ -43,6 +44,15 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<Supplier> getSuppliers(){
         return supplierRepository.findAll();
+    }
+
+    @Override
+    public void updateDetails(Admin admin){
+        Admin a = adminRepository.findAdminByAdminName(admin.getAdminName());
+        a.setAdminName(admin.getAdminName());
+        a.setEmail(admin.getEmail());
+        a.setPass(admin.getPass());
+        adminRepository.save(a);
     }
 
 
