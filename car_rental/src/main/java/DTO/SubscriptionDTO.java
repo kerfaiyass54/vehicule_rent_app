@@ -16,4 +16,6 @@ public class SubscriptionDTO {
     private SubscriptionType type;
     private LocalDate dateStart;
     private LocalDate dateEnd;
+    private double price;
+    private int reduce;
 }
