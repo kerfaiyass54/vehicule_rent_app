@@ -11,4 +11,5 @@ import java.util.List;
 public interface LocationRepository extends JpaRepository<Location, Long> {
     public Location findLocationByName(String name);
     public List<Location> findLocationsByCountry(String country);
+
 }

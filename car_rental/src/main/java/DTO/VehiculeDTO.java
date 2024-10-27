@@ -14,7 +14,7 @@ public class VehiculeDTO {
     private String nameVehicule;
     private String color;
     private String brand;
-    private float price;
+    private double price;
     private int highSpeed;
     private Transmission transmission;
     private VehiculeStatus vehiculeStatus;

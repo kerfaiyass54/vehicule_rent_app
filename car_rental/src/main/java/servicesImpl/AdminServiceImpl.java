@@ -1,16 +1,10 @@
 package servicesImpl;
 
 
-import entities.Admin;
-import entities.Client;
-import entities.Repair;
-import entities.Supplier;
+import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.AdminRepository;
-import repositories.ClientRepository;
-import repositories.RepairRepository;
-import repositories.SupplierRepository;
+import repositories.*;
 import services.AdminService;
 
 import java.util.ArrayList;
@@ -30,6 +24,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private SupplierRepository supplierRepository;
+
+    @Autowired
+    private LocationRepository locationRepository;
 
     @Override
     public List<Client> getClients(){
@@ -53,6 +50,16 @@ public class AdminServiceImpl implements AdminService {
         a.setEmail(admin.getEmail());
         a.setPass(admin.getPass());
         adminRepository.save(a);
+    }
+
+    @Override
+    public Admin getDetails(String adminName){
+        return adminRepository.findAdminByAdminName(adminName);
+    }
+
+    @Override
+    public List<Location> getLocations(){
+        return locationRepository.findAll();
     }
 
 

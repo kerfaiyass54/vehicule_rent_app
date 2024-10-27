@@ -11,5 +11,6 @@ public interface AdminService {
     List<Repair> getRepairs();
     List<Location> getLocations();
     void updateDetails(Admin admin);
+    Admin getDetails(String adminName);
 
 }

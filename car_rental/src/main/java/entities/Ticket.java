@@ -7,6 +7,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -47,6 +48,9 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "id_vehicule_ticket", referencedColumnName = "idvehicule")
     private Vehicule vehicule;
+
+    @OneToMany(mappedBy = "ticket")
+    private List<Demand> demands;
 
 
 

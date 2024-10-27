@@ -21,13 +21,13 @@ public class Client {
     @Column(name="idclient")
     private long idClient;
 
-    @Column(name="name_client",nullable = false)
+    @Column(name="name_client")
     private String nameClient;
 
-    @Column(name="cin",nullable = false)
+    @Column(name="cin")
     private String cin;
 
-    @Column(name="budget",nullable = false)
+    @Column(name="budget")
     private double budget;
 
     @ManyToOne
