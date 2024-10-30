@@ -32,19 +32,19 @@ public class AdminController {
     }
 
     @GetMapping("/repairs")
-    List<Location> getLocations(){
+    public List<Location> getLocations(){
         return adminService.getLocations();
     }
 
 
     @PutMapping("/update-admin")
-    void updateDetails(@RequestBody Admin admin){
+    public void updateDetails(@RequestBody Admin admin){
         adminService.updateDetails(admin);
     }
 
 
     @GetMapping("/admin-details/{adminName}")
-    Admin getDetails(@PathVariable String adminName){
+    public Admin getDetails(@PathVariable String adminName){
         return adminService.getDetails(adminName);
     }
 
