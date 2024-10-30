@@ -92,5 +92,15 @@ public class LocationServiceImpl implements LocationService {
         return locationNames;
     }
 
+    @Override
+    public List<String> getLocationsNames(){
+        List<String> locationNames = new ArrayList<>();
+        List<Location> locations = locationRepository.findAll();
+        for(Location location : locations){
+            locationNames.add(location.getName());
+        }
+        return locationNames;
+    }
+
 
 }
