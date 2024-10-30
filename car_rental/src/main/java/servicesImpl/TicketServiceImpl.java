@@ -48,7 +48,7 @@ public class TicketServiceImpl implements TicketService {
         if(client != null && repair != null){
             ticket.setClient(client);
             ticket.setRepair(repair);
-            ticket.setClient(client);
+            ticketRepository.save(ticket);
         }
     }
 
