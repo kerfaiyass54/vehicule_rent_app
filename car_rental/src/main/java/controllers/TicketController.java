@@ -37,5 +37,7 @@ public class TicketController {
     }
 
     @GetMapping("/remove")
-    public void removeTicket(@RequestBody Ticket ticket){}
+    public void removeTicket(@RequestBody Ticket ticket){
+        ticketService.removeTicket(ticket);
+    }
 }
