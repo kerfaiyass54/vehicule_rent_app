@@ -3,6 +3,8 @@ package servicesImpl;
 import entities.Adress;
 import entities.Location;
 import entities.Supplier;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.AdressRepository;
@@ -13,6 +15,8 @@ import services.AdressService;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class AdressServiceImpl implements AdressService {
 
     @Autowired

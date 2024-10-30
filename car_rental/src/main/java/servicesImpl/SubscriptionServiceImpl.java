@@ -4,6 +4,8 @@ package servicesImpl;
 import entities.Client;
 import entities.Subscription;
 import entities.Supplier;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.ClientRepository;
@@ -12,6 +14,8 @@ import repositories.SupplierRepository;
 import services.SubscriptionService;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Autowired

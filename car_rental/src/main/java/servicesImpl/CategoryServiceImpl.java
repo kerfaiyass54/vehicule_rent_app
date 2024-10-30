@@ -6,6 +6,8 @@ import entities.Supplier;
 import entities.Vehicule;
 import enums.CategoryName;
 import enums.CategoryType;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.CategoryRepository;
@@ -17,6 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired

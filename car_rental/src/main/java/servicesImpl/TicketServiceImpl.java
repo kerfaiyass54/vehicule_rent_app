@@ -4,6 +4,8 @@ package servicesImpl;
 import entities.Client;
 import entities.Repair;
 import entities.Ticket;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.ClientRepository;
@@ -13,6 +15,8 @@ import repositories.TicketRepository;
 import services.TicketService;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class TicketServiceImpl implements TicketService {
 
     @Autowired

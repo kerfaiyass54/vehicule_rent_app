@@ -8,6 +8,8 @@ import entities.Repair;
 import entities.RepairInfo;
 import entities.Vehicule;
 import enums.RepairStatus;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.RepairInfoRepository;
@@ -18,6 +20,8 @@ import services.RepairInfoService;
 import java.time.LocalDate;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class RepairInfoServiceImpl implements RepairInfoService {
 
     @Autowired

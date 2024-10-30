@@ -6,6 +6,8 @@ import entities.Client;
 import entities.Vehicule;
 import enums.BuyStatus;
 import enums.VehiculeStatus;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.BuyingRepository;
@@ -18,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class BuyingServiceImpl implements BuyingService {
 
     @Autowired

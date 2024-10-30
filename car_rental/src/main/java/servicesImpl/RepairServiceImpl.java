@@ -3,6 +3,8 @@ package servicesImpl;
 
 import DTO.RepairDTO;
 import entities.*;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.RepairInfoRepository;
@@ -13,6 +15,8 @@ import services.RepairService;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class RepairServiceImpl implements RepairService {
 
     @Autowired

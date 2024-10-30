@@ -4,6 +4,8 @@ import DTO.UserDTO;
 import entities.Client;
 import entities.Repair;
 import entities.Supplier;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.ClientRepository;
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Autowired

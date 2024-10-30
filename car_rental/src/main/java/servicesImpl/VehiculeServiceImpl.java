@@ -3,12 +3,16 @@ package servicesImpl;
 
 import entities.*;
 import enums.CategoryName;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.*;
 import services.VehiculeService;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class VehiculeServiceImpl implements VehiculeService {
 
     @Autowired

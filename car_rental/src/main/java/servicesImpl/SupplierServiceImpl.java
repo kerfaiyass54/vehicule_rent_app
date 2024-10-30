@@ -5,6 +5,8 @@ import entities.Adress;
 import entities.Subscription;
 import entities.Supplier;
 import entities.Vehicule;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.*;
@@ -13,6 +15,8 @@ import services.SupplierService;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
+@Slf4j
 public class SupplierServiceImpl implements SupplierService {
     @Autowired
     private SupplierRepository supplierRepository;
