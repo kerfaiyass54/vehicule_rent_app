@@ -42,9 +42,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientDTO getClient(long id){
+    public ClientDTO getClient(String clientName){
         ClientDTO clientDTO = new ClientDTO();
-        Client client = clientRepository.getById(id);
+        Client client = clientRepository.findClientByNameClient(clientName);
         clientDTO.setIdClient(client.getIdClient());
         clientDTO.setNameClient(client.getNameClient());
         clientDTO.setCin(client.getCin());
