@@ -1,6 +1,7 @@
 package servicesImpl;
 
 
+import DTO.RepairDTO;
 import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public void updateRepair(Repair repair){}
     @Override
-    public Repair getRepair(long id){
+    public RepairDTO getRepair(String nameRepair){
         return repairRepository.getById(id);
     }
     @Override

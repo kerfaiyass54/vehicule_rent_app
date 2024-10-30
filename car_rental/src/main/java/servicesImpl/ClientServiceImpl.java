@@ -12,6 +12,7 @@ import services.ClientService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -116,8 +117,11 @@ public class ClientServiceImpl implements ClientService {
     public void changeLocation(String nameClient, String newLocation){
         Client client = clientRepository.findClientByNameClient(nameClient);
         Location location = locationRepository.findLocationByName(client.getLocation().getName());
-        client.setLocation(location);
-        locationRepository.save(location);
+        if(!Objects.equals(client.getLocation().getName(), location.getName())){
+            client.setLocation(location);
+            locationRepository.save(location);
+        }
+
     }
 
 
