@@ -6,7 +6,7 @@ import entities.Client;
 public interface ClientService {
     void addClient(Client client, String locationName);
     void deleteClient(long id);
-    ClientDTO getClient(long id);
+    ClientDTO getClient(String clientName);
     void updateClient(ClientDTO clientDTO);
     void changePassword(String nameClient, String newPassword);
     boolean isClientExist(String name);
