@@ -16,5 +16,6 @@ public interface LocationService {
     void deleteLocation(String locationName);
     LocationDTO getLocation(String locationName);
     List<String> getLocationNamesByCountry(String country);
+    List<String> getLocationsNames();
 
 }
