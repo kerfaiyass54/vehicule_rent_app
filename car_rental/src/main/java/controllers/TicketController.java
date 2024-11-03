@@ -4,6 +4,8 @@ package controllers;
 import entities.Client;
 import entities.Repair;
 import entities.Ticket;
+import enums.RepairStatus;
+import enums.StatusRepair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import services.TicketService;
@@ -27,8 +29,8 @@ public class TicketController {
     }
 
     @GetMapping("/status/{id}")
-    public void changeStatus(@PathVariable long id){
-        ticketService.changeStatus(id);
+    public void changeStatus(@PathVariable long id, @RequestParam StatusRepair status){
+        ticketService.changeStatus(id, status);
     }
 
     @GetMapping("/ticket/{repairName}")
