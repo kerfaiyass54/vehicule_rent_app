@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class CategoryDTO {
-    private int idCategory;
+    private long idCategory;
     private CategoryName nameCategory;
     private String typeCategory;
 }

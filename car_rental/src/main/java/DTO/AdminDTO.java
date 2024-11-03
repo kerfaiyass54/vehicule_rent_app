@@ -9,6 +9,6 @@ import lombok.*;
 @ToString
 public class AdminDTO {
 
-    private int idAdmin;
+    private long idAdmin;
     private String adminName;
 }
