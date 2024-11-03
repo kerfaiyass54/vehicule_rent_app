@@ -4,6 +4,7 @@ package servicesImpl;
 import entities.Client;
 import entities.Repair;
 import entities.Ticket;
+import enums.StatusRepair;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,10 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public void changeStatus(long id){
-
+    public void changeStatus(long id, StatusRepair status){
+        Ticket ticket = ticketRepository.getById(id);
+        ticket.setStatus(status);
+        ticketRepository.save(ticket);
     }
 
     @Override

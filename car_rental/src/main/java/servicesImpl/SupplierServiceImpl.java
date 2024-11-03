@@ -1,10 +1,8 @@
 package servicesImpl;
 
 
-import entities.Adress;
-import entities.Subscription;
-import entities.Supplier;
-import entities.Vehicule;
+import DTO.SupplierDTO;
+import entities.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,19 +33,40 @@ public class SupplierServiceImpl implements SupplierService {
 
 
     @Override
-    public void addSupplier(Supplier supplier){}
-    @Override
-    public void updateSupplier(Supplier supplier){}
-    @Override
-    public void deleteSupplier(Supplier supplier){}
-    @Override
-    public Supplier getSupplier(long id){
-        return supplierRepository.getById(id);
+    public void addSupplier(Supplier supplier){
+        supplierRepository.save(supplier);
     }
+
+    @Override
+    public void updateSupplier(Supplier supplier){
+        Supplier supplier1 = supplierRepository.getById(supplier.getIdSupp());
+        supplier1.setNationality(supplier.getNationality());
+        supplier1.setPass(supplier.getPass());
+        supplier1.setSuppName(supplier.getSuppName());
+        supplier1.setEmail(supplier.getEmail());
+        supplierRepository.save(supplier1);
+    }
+
+    @Override
+    public void deleteSupplier(Supplier supplier){
+        supplierRepository.delete(supplier);
+    }
+
+    @Override
+    public SupplierDTO getSupplier(String supplierName){
+        SupplierDTO supplierDTO = new SupplierDTO();
+        Supplier supplier = supplierRepository.findSupplierBySuppName(supplierName);
+        supplierDTO.setIdSupp(supplier.getIdSupp());
+        supplierDTO.setNationality(supplier.getNationality());
+        supplierDTO.setSuppName(supplier.getSuppName());
+        return supplierDTO;
+    }
+
     @Override
     public void changeSupplierPassword(Supplier supplier, String newPassword){
 
     }
+
     @Override
     public List<Subscription> getSubscriptions(Supplier supplier){
         return supplierRepository.getById(supplier.getIdSupp()).getSubscriptions();
