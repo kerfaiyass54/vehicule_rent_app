@@ -1,5 +1,6 @@
 package services;
 
+import DTO.SupplierDTO;
 import entities.Adress;
 import entities.Subscription;
 import entities.Supplier;
@@ -11,7 +12,7 @@ public interface SupplierService {
     void addSupplier(Supplier supplier);
     void updateSupplier(Supplier supplier);
     void deleteSupplier(Supplier supplier);
-    Supplier getSupplier(long id);
+    SupplierDTO getSupplier(String supplierName);
     void changeSupplierPassword(Supplier supplier, String newPassword);
     List<Subscription> getSubscriptions(Supplier supplier);
     List<Adress> getAdresses(Supplier supplier);
