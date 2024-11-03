@@ -1,0 +1,54 @@
+package com.projecttuto.vehicule_rental.controllers;
+
+
+import com.projecttuto.vehicule_rental.DTO.RepairDTO;
+import com.projecttuto.vehicule_rental.DTO.RepairInfoDTO;
+import com.projecttuto.vehicule_rental.DTO.VehiculeDTO;
+import com.projecttuto.vehicule_rental.entities.RepairInfo;
+import com.projecttuto.vehicule_rental.enums.RepairStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import com.projecttuto.vehicule_rental.services.RepairInfoService;
+
+import java.time.LocalDate;
+
+@RestController
+@RequestMapping("/repairinfo")
+
+public class RepairInfoController {
+
+    @Autowired
+    private RepairInfoService repairInfoService;
+
+    @PostMapping("/date")
+    void updateDateStart(@RequestParam LocalDate date,@RequestBody RepairInfo repairInfo){
+        repairInfoService.updateDateStart(date, repairInfo);
+    }
+
+    @PostMapping("/status")
+    void updateStatus(@RequestBody RepairInfo repairInfo,@RequestParam RepairStatus repairStatus){
+        repairInfoService.updateStatus(repairInfo, repairStatus);
+    }
+
+    @GetMapping("/get/{id}")
+    RepairInfoDTO getRepairInfoById(@PathVariable long id){
+        return repairInfoService.getRepairInfoById(id);
+    }
+
+    @GetMapping("/vehicule/{name}")
+    VehiculeDTO getVehiculeById(@PathVariable String name){
+        return repairInfoService.getVehiculeById(name);
+    }
+
+    @GetMapping("/repair/{name}")
+    RepairDTO getRepair(@PathVariable String name){
+        return repairInfoService.getRepair(name);
+    }
+
+    @PostMapping("/add/{vehiculeName}")
+    void addReparation(@PathVariable String vehiculeName,@RequestParam String repairName,@RequestParam LocalDate date){
+        repairInfoService.addReparation(vehiculeName, repairName, date);
+    }
+
+
+}
