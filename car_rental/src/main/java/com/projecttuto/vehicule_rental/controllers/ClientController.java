@@ -21,8 +21,8 @@ public class ClientController {
         clientService.addClient(client,locationName);
     }
 
-    @DeleteMapping
-    public void deleteClient(long id){
+    @DeleteMapping("/delete/{id}")
+    public void deleteClient(@PathVariable long id){
         clientService.deleteClient(id);
     }
 
@@ -51,13 +51,13 @@ public class ClientController {
         clientService.addToBudget(budgetExtra,nameClient);
     }
 
-    @PostMapping("/location/{nameClient}")
+    @GetMapping("/location/{nameClient}")
     public void changeLocation(@PathVariable String nameClient,@RequestParam String newLocation){
         clientService.changeLocation(nameClient,newLocation);
     }
 
     @GetMapping("/cin/exist/{cin}")
-    public boolean isCinExists(@RequestParam String cin){
+    public boolean isCinExists(@PathVariable String cin){
         return clientService.isCinExists(cin);
     }
 }
