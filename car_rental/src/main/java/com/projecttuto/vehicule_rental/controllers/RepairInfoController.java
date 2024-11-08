@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/repairinfo")
-
+@CrossOrigin("*")
 public class RepairInfoController {
 
     @Autowired

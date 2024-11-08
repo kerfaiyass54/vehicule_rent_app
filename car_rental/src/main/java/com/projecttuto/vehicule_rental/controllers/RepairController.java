@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/repair")
-
+@CrossOrigin("*")
 public class RepairController {
 
     @Autowired

@@ -9,7 +9,7 @@ import com.projecttuto.vehicule_rental.services.VehiculeService;
 
 @RestController
 @RequestMapping("/vehicule")
-
+@CrossOrigin("*")
 public class VehiculeController {
 
     @Autowired

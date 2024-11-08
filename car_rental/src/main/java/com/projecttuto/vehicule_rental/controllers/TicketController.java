@@ -11,7 +11,7 @@ import com.projecttuto.vehicule_rental.services.TicketService;
 
 @RestController
 @RequestMapping("/ticket")
-
+@CrossOrigin("*")
 public class TicketController {
 
     @Autowired

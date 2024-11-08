@@ -12,7 +12,7 @@ public interface LocationService {
     List<Repair> getRepairs(String locationName);
     List<Supplier> getSuppliers(String locationName);
     List<Client> getClients(String locationName);
-    void addLocation(Location location, String adminName);
+    void addLocation(Location location);
     void deleteLocation(String locationName);
     LocationDTO getLocation(String locationName);
     List<String> getLocationNamesByCountry(String country);

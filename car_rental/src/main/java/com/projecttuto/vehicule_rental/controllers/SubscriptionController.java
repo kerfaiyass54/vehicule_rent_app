@@ -7,7 +7,7 @@ import com.projecttuto.vehicule_rental.services.SubscriptionService;
 
 @RestController
 @RequestMapping("/subs")
-
+@CrossOrigin("*")
 public class SubscriptionController {
 
     @Autowired

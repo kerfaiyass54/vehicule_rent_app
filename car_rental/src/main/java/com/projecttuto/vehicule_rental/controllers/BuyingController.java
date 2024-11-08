@@ -10,7 +10,7 @@ import com.projecttuto.vehicule_rental.services.BuyingService;
 
 @RestController
 @RequestMapping("/buying")
-
+@CrossOrigin("*")
 public class BuyingController {
 
     @Autowired

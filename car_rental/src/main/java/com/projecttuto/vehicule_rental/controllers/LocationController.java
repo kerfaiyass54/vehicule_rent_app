@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/location")
-
+@CrossOrigin("*")
 public class LocationController {
 
     @Autowired
@@ -35,8 +35,8 @@ public class LocationController {
     }
 
     @PostMapping("/add")
-    void addLocation(@RequestBody Location location,@RequestParam String adminName){
-        locationService.addLocation(location,adminName);
+    void addLocation(@RequestBody Location location){
+        locationService.addLocation(location);
     }
 
     @PostMapping("/delete/{locationName}")

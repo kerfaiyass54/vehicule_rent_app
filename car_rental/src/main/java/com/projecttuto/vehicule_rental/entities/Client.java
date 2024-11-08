@@ -49,7 +49,7 @@ public class Client {
     @Column(name="pass_client",nullable = false)
     private String pass;
 
-    @Column(name="role_user", nullable = false)
+    @Column(name="role_user")
     private String role;
 
     @ManyToOne

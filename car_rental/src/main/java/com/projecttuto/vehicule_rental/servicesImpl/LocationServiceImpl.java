@@ -59,9 +59,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public void addLocation(Location location, String adminName){
-        Admin admin = adminRepository.findAdminByAdminName(adminName);
-        location.setAdmin(admin);
+    public void addLocation(Location location){
         locationRepository.save(location);
     }
 
