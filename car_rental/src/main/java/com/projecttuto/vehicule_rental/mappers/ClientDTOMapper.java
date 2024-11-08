@@ -2,7 +2,9 @@ package com.projecttuto.vehicule_rental.mappers;
 
 import com.projecttuto.vehicule_rental.DTO.ClientDTO;
 import com.projecttuto.vehicule_rental.entities.Client;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ClientDTOMapper {
 
     public ClientDTO mapToDTO(Client client) {
@@ -11,7 +13,9 @@ public class ClientDTOMapper {
         clientDTO.setIdClient(client.getIdClient());
         clientDTO.setCin(client.getCin());
         clientDTO.setBudget(client.getBudget());
-        clientDTO.setLocationName(client.getLocation().getName());
+        if(client.getLocation() != null){
+            clientDTO.setLocationName(client.getLocation().getName());
+        }
         return clientDTO;
     }
 }

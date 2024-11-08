@@ -1,6 +1,7 @@
 package com.projecttuto.vehicule_rental.controllers;
 
 
+import com.projecttuto.vehicule_rental.DTO.ClientDTO;
 import com.projecttuto.vehicule_rental.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class AdminController {
     private AdminService adminService;
 
     @GetMapping("/clients")
-    public List<Client> getClients(){
+    public List<ClientDTO> getClients(){
         return adminService.getClients();
     }
 

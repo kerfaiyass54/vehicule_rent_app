@@ -1,7 +1,9 @@
 package com.projecttuto.vehicule_rental.servicesImpl;
 
 
+import com.projecttuto.vehicule_rental.DTO.ClientDTO;
 import com.projecttuto.vehicule_rental.entities.*;
+import com.projecttuto.vehicule_rental.mappers.ClientDTOMapper;
 import com.projecttuto.vehicule_rental.repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.projecttuto.vehicule_rental.services.AdminService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -31,9 +34,15 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private LocationRepository locationRepository;
 
+    @Autowired
+    private ClientDTOMapper clientDTOMapper;
+
     @Override
-    public List<Client> getClients(){
-        return clientRepository.findAll();
+    public List<ClientDTO> getClients(){
+        List<Client> clients = clientRepository.findAll();
+        return clients.stream()
+                .map(clientDTOMapper::mapToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
