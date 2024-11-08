@@ -26,8 +26,9 @@ public class RepairController {
         repairService.addRepair(repair,location);
     }
 
-    @PostMapping("/delete")
+    @GetMapping("/delete")
     void deleteRepair(@RequestBody Repair repair){
+
         repairService.deleteRepair(repair);
     }
 
