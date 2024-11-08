@@ -2,10 +2,7 @@ package com.projecttuto.vehicule_rental.servicesImpl;
 
 
 import com.projecttuto.vehicule_rental.DTO.SupplierDTO;
-import com.projecttuto.vehicule_rental.entities.Adress;
-import com.projecttuto.vehicule_rental.entities.Subscription;
-import com.projecttuto.vehicule_rental.entities.Supplier;
-import com.projecttuto.vehicule_rental.entities.Vehicule;
+import com.projecttuto.vehicule_rental.entities.*;
 import com.projecttuto.vehicule_rental.repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.projecttuto.vehicule_rental.services.SupplierService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -34,9 +32,14 @@ public class SupplierServiceImpl implements SupplierService {
     @Autowired
     private DemandRepository demandRepository;
 
+    @Autowired
+    private AdminRepository adminRepository;
+
 
     @Override
     public void addSupplier(Supplier supplier){
+        Admin admin = adminRepository.findAll().get(0);
+        supplier.setAdmin(admin);
         supplierRepository.save(supplier);
     }
 
@@ -58,10 +61,12 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public SupplierDTO getSupplier(String supplierName){
         SupplierDTO supplierDTO = new SupplierDTO();
-        Supplier supplier = supplierRepository.findSupplierBySuppName(supplierName);
-        supplierDTO.setIdSupp(supplier.getIdSupp());
-        supplierDTO.setNationality(supplier.getNationality());
-        supplierDTO.setSuppName(supplier.getSuppName());
+        Optional<Supplier> supplier = supplierRepository.findBySuppName(supplierName);
+        Supplier supplier1 = supplier.get();
+        supplierDTO.setIdSupp(supplier1.getIdSupp());
+        supplierDTO.setNationality(supplier1.getNationality());
+        supplierDTO.setSuppName(supplier1.getSuppName());
+        supplierDTO.setEmail(supplier1.getEmail());
         return supplierDTO;
     }
 

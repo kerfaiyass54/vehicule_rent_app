@@ -15,6 +15,7 @@ import com.projecttuto.vehicule_rental.services.ClientService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -38,8 +39,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void addClient(Client client, String locationName) {
-        Location location = locationRepository.findLocationByName(locationName);
-            client.setLocation(location);
+        Optional<Location> location = locationRepository.findByName(locationName);
+            client.setLocation(location.get());
             clientRepository.save(client);
 
     }
