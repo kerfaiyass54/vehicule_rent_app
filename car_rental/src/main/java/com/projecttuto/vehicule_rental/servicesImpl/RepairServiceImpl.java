@@ -4,14 +4,11 @@ package com.projecttuto.vehicule_rental.servicesImpl;
 import com.projecttuto.vehicule_rental.DTO.LocationDTO;
 import com.projecttuto.vehicule_rental.DTO.RepairDTO;
 import com.projecttuto.vehicule_rental.entities.*;
+import com.projecttuto.vehicule_rental.repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.projecttuto.vehicule_rental.repositories.LocationRepository;
-import com.projecttuto.vehicule_rental.repositories.RepairInfoRepository;
-import com.projecttuto.vehicule_rental.repositories.RepairRepository;
-import com.projecttuto.vehicule_rental.repositories.TicketRepository;
 import com.projecttuto.vehicule_rental.services.RepairService;
 
 import java.util.ArrayList;
@@ -34,9 +31,13 @@ public class RepairServiceImpl implements RepairService {
     @Autowired
     private LocationRepository locationRepository;
 
+    @Autowired
+    private AdminRepository adminRepository;
+
 
     @Override
     public void addRepair(Repair repair){
+        repair.setAdmin(adminRepository.findAll().get(0));
         repairRepository.save(repair);
     }
     @Override
@@ -54,8 +55,11 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public RepairDTO getRepair(String nameRepair){
         RepairDTO repairDTO = new RepairDTO();
+        Repair repair = repairRepository.findByNameRepair(nameRepair).get();
         repairDTO.setNameRepair(nameRepair);
-        repairDTO.setIdRepair(repairRepository.findRepairByNameRepair(nameRepair).getIdRepair());
+        repairDTO.setIdRepair(repair.getIdRepair());
+        repairDTO.setEmail(repair.getEmail());
+        repairDTO.setLocationRepair(repair.getLocation().getName());
         return repairDTO;
     }
     @Override
