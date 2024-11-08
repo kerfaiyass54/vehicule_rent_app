@@ -42,7 +42,7 @@ public class RepairServiceImpl implements RepairService {
     }
     @Override
     public void deleteRepair(Repair repair){
-        repairRepository.delete(repair);
+        repairRepository.delete(repairRepository.getById(repair.getIdRepair()));
     }
     @Override
     public void updateRepair(Repair repair){

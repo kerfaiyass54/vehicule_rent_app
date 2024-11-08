@@ -98,16 +98,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void deleteClient(long id){
-        Client client = clientRepository.getById(id);
-        if(client.getSubscriptions().isEmpty() && client.getBuyings().isEmpty()){
-            Location location = locationRepository.findLocationByName(client.getLocation().getName());
-            location.getClients().remove(client);
-            Admin admin = adminRepository.findAdminByAdminName(client.getAdmin().getAdminName());
-            admin.getClients().remove(client);
-            locationRepository.save(location);
-            adminRepository.save(admin);
-            clientRepository.delete(client);
-        }
+        clientRepository.delete(clientRepository.getById(id));
     }
 
     @Override
@@ -120,11 +111,8 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void changeLocation(String nameClient, String newLocation){
         Client client = clientRepository.findClientByNameClient(nameClient);
-        Location location = locationRepository.findLocationByName(client.getLocation().getName());
-        if(!Objects.equals(client.getLocation().getName(), location.getName())){
-            client.setLocation(location);
-            locationRepository.save(location);
-        }
+        client.setLocation(locationRepository.findByName(newLocation).get());
+        clientRepository.save(client);
 
     }
 
