@@ -10,6 +10,8 @@ public class SupplierDTOMapper {
         supplierDTO.setSuppName(supplier.getSuppName());
         supplierDTO.setNationality(supplier.getNationality());
         supplierDTO.setSuppName(supplier.getSuppName());
+        supplierDTO.setEmail(supplier.getEmail());
+        supplierDTO.setRole(supplier.getRole());
         return supplierDTO;
     }
 }

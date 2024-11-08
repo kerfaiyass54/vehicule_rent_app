@@ -11,6 +11,7 @@ public class ClientDTOMapper {
         clientDTO.setIdClient(client.getIdClient());
         clientDTO.setCin(client.getCin());
         clientDTO.setBudget(client.getBudget());
+        clientDTO.setLocationName(client.getLocation().getName());
         return clientDTO;
     }
 }
