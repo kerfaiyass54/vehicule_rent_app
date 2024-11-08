@@ -36,8 +36,9 @@ public class RepairServiceImpl implements RepairService {
 
 
     @Override
-    public void addRepair(Repair repair){
+    public void addRepair(Repair repair, String location){
         repair.setAdmin(adminRepository.findAll().get(0));
+        repair.setLocation(locationRepository.findByName(location).get());
         repairRepository.save(repair);
     }
     @Override

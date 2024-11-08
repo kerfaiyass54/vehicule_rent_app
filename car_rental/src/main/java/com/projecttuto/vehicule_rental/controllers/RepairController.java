@@ -22,8 +22,8 @@ public class RepairController {
     private RepairService repairService;
 
     @PostMapping("/add")
-    void addRepair(@RequestBody Repair repair){
-        repairService.addRepair(repair);
+    void addRepair(@RequestBody Repair repair, @RequestParam String location) {
+        repairService.addRepair(repair,location);
     }
 
     @PostMapping("/delete")

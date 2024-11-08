@@ -2,7 +2,9 @@ package com.projecttuto.vehicule_rental.mappers;
 
 import com.projecttuto.vehicule_rental.DTO.SupplierDTO;
 import com.projecttuto.vehicule_rental.entities.Supplier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SupplierDTOMapper {
 
     public SupplierDTO supplierDTOMapper(Supplier supplier) {

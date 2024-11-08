@@ -10,7 +10,7 @@ import com.projecttuto.vehicule_rental.entities.Vehicule;
 import java.util.List;
 
 public interface RepairService {
-    void addRepair(Repair repair);
+    void addRepair(Repair repair, String location);
     void deleteRepair(Repair repair);
     void updateRepair(Repair repair);
     RepairDTO getRepair(String nameRepair);
