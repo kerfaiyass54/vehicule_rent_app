@@ -27,17 +27,17 @@ public class Supplier {
     @Column(name="nationality")
     private String nationality;
 
-    @Column(name="email_supp")
+    @Column(name="email_supp", nullable = false)
     private String email;
 
-    @Column(name="pass_supp")
+    @Column(name="pass_supp", nullable = false)
     private String pass;
 
     @ManyToOne
     @JoinColumn(name = "id_admin_supp", referencedColumnName = "idadmin")
     private Admin admin;
 
-    @Column(name="role_user", nullable = false)
+    @Column(name="role_user")
     private String role;
 
     @OneToMany(mappedBy = "supplier")
