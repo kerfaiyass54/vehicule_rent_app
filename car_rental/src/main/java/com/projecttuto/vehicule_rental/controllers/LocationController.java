@@ -39,7 +39,7 @@ public class LocationController {
         locationService.addLocation(location);
     }
 
-    @PostMapping("/delete/{locationName}")
+    @GetMapping("/delete/{locationName}")
     void deleteLocation(@PathVariable String locationName){
         locationService.deleteLocation(locationName);
     }
