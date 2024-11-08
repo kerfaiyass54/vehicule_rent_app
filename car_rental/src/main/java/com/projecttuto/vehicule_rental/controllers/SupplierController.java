@@ -29,7 +29,7 @@ public class SupplierController {
         supplierService.updateSupplier(supplier);
     }
 
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     public void deleteSupplier(@RequestBody Supplier supplier){
         supplierService.deleteSupplier(supplier);
     }
