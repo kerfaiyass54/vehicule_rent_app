@@ -2,6 +2,9 @@ package com.projecttuto.vehicule_rental.controllers;
 
 
 import com.projecttuto.vehicule_rental.DTO.ClientDTO;
+import com.projecttuto.vehicule_rental.DTO.LocationDTO;
+import com.projecttuto.vehicule_rental.DTO.RepairDTO;
+import com.projecttuto.vehicule_rental.DTO.SupplierDTO;
 import com.projecttuto.vehicule_rental.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,17 +26,17 @@ public class AdminController {
     }
 
     @GetMapping("/suppliers")
-    public List<Supplier> getSuppliers(){
+    public List<SupplierDTO> getSuppliers(){
         return adminService.getSuppliers();
     }
 
     @GetMapping("/repairs")
-    public List<Repair> getRepairs(){
+    public List<RepairDTO> getRepairs(){
         return adminService.getRepairs();
     }
 
     @GetMapping("/locations")
-    public List<Location> getLocations(){
+    public List<LocationDTO> getLocations(){
         return adminService.getLocations();
     }
 

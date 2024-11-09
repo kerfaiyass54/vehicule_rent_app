@@ -2,8 +2,14 @@ package com.projecttuto.vehicule_rental.servicesImpl;
 
 
 import com.projecttuto.vehicule_rental.DTO.ClientDTO;
+import com.projecttuto.vehicule_rental.DTO.LocationDTO;
+import com.projecttuto.vehicule_rental.DTO.RepairDTO;
+import com.projecttuto.vehicule_rental.DTO.SupplierDTO;
 import com.projecttuto.vehicule_rental.entities.*;
 import com.projecttuto.vehicule_rental.mappers.ClientDTOMapper;
+import com.projecttuto.vehicule_rental.mappers.LocationDTOMapper;
+import com.projecttuto.vehicule_rental.mappers.RepairDTOMapper;
+import com.projecttuto.vehicule_rental.mappers.SupplierDTOMapper;
 import com.projecttuto.vehicule_rental.repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +43,15 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private ClientDTOMapper clientDTOMapper;
 
+    @Autowired
+    private RepairDTOMapper repairDTOMapper;
+
+    @Autowired
+    private LocationDTOMapper locationDTOMapper;
+
+    @Autowired
+    private SupplierDTOMapper supplierDTOMapper;
+
     @Override
     public List<ClientDTO> getClients(){
         List<Client> clients = clientRepository.findAll();
@@ -46,13 +61,18 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Repair> getRepairs(){
-        return RepairRepository.findAll();
+    public List<RepairDTO> getRepairs(){
+        return RepairRepository.findAll().stream()
+                .map(repairDTOMapper::mapToDTORepair)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<Supplier> getSuppliers(){
-        return supplierRepository.findAll();
+    public List<SupplierDTO> getSuppliers(){
+        return supplierRepository.findAll().stream()
+                .map(supplierDTOMapper::supplierDTOMapper)
+                .collect(Collectors.toList());
+
     }
 
     @Override
@@ -70,8 +90,10 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Location> getLocations(){
-        return locationRepository.findAll();
+    public List<LocationDTO> getLocations(){
+        return locationRepository.findAll().stream()
+                .map(locationDTOMapper::mapToDTO)
+                .collect(Collectors.toList());
     }
 
 
