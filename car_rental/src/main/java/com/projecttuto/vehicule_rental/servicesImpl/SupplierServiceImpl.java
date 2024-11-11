@@ -38,8 +38,6 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public void addSupplier(Supplier supplier){
-        Admin admin = adminRepository.findAll().get(0);
-        supplier.setAdmin(admin);
         supplierRepository.save(supplier);
     }
 
