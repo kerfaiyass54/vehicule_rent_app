@@ -71,12 +71,19 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void updateClient(ClientDTO clientDTO){
-        Client client = clientRepository.getById(clientDTO.getIdClient());
-        client.setNameClient(clientDTO.getNameClient());
-        client.setCin(clientDTO.getCin());
-        client.setBudget(clientDTO.getBudget());
-        client.setEmail(clientDTO.getEmail());
-        clientRepository.save(client);
+        List<Client> clients = clientRepository.findAll();
+        for(Client client : clients){
+            if(clientDTO.getIdClient() == client.getIdClient()){
+                client.setNameClient(clientDTO.getNameClient());
+                client.setCin(clientDTO.getCin());
+                client.setBudget(clientDTO.getBudget());
+                client.setEmail(clientDTO.getEmail());
+                clientRepository.save(client);
+                break;
+            }
+        }
+
+
     }
 
     @Override
