@@ -71,18 +71,11 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void updateClient(ClientDTO clientDTO){
-        List<Client> clients = clientRepository.findAll();
-        for(Client client : clients){
-            if(clientDTO.getIdClient() == client.getIdClient()){
-                client.setNameClient(clientDTO.getNameClient());
-                client.setCin(clientDTO.getCin());
-                client.setBudget(clientDTO.getBudget());
-                client.setEmail(clientDTO.getEmail());
-                clientRepository.save(client);
-                break;
-            }
-        }
-
+        Client client = clientRepository.findById(clientDTO.getIdClient()).get();
+        client.setNameClient(clientDTO.getNameClient());
+        client.setCin(clientDTO.getCin());
+        client.setBudget(clientDTO.getBudget());
+        clientRepository.save(client);
 
     }
 
@@ -117,10 +110,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void changeLocation(String nameClient, String newLocation){
-        Client client = clientRepository.findClientByNameClient(nameClient);
+        Client client = clientRepository.findByNameClient(nameClient).get();
         client.setLocation(locationRepository.findByName(newLocation).get());
         clientRepository.save(client);
-
     }
 
 
