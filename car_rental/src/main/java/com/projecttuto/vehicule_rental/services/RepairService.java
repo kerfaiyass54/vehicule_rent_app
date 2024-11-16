@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface RepairService {
     void addRepair(Repair repair, String location);
-    void deleteRepair(Repair repair);
+    void deleteRepair(long id);
     void updateRepair(Repair repair);
     RepairDTO getRepair(String nameRepair);
     void changeRepairPassword(Repair repair, String newPassword);
