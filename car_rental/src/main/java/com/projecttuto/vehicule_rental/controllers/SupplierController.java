@@ -25,8 +25,8 @@ public class SupplierController {
     }
 
     @PutMapping("/update")
-    public void updateSupplier(@RequestBody Supplier supplier){
-        supplierService.updateSupplier(supplier);
+    public void updateSupplier(@RequestBody SupplierDTO supplierDTO){
+        supplierService.updateSupplier(supplierDTO);
     }
 
     @PostMapping("/delete/{name}")

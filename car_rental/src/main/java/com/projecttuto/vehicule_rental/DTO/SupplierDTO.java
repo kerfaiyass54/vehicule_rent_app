@@ -12,6 +12,7 @@ public class SupplierDTO {
     private String suppName;
     private String nationality;
     private String email;
+    private String pass;
     private String role;
 
 

@@ -42,12 +42,12 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public void updateSupplier(Supplier supplier){
-        Supplier supplier1 = supplierRepository.getById(supplier.getIdSupp());
-        supplier1.setNationality(supplier.getNationality());
-        supplier1.setPass(supplier.getPass());
-        supplier1.setSuppName(supplier.getSuppName());
-        supplier1.setEmail(supplier.getEmail());
+    public void updateSupplier(SupplierDTO supplierDTO){
+        Supplier supplier1 = supplierRepository.findBySuppName(supplierDTO.getSuppName()).get();
+        supplier1.setNationality(supplierDTO.getNationality());
+        supplier1.setPass(supplierDTO.getPass());
+        supplier1.setSuppName(supplierDTO.getSuppName());
+        supplier1.setEmail(supplierDTO.getEmail());
         supplierRepository.save(supplier1);
     }
 
