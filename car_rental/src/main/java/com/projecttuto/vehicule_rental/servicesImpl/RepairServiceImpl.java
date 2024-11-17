@@ -45,11 +45,11 @@ public class RepairServiceImpl implements RepairService {
         repairRepository.delete(repairRepository.findById(id).get());
     }
     @Override
-    public void updateRepair(Repair repair){
-        Repair r = repairRepository.findById(repair.getIdRepair()).get();
-        r.setNameRepair(repair.getNameRepair());
-        r.setPass(repair.getPass());
-        r.setEmail(repair.getEmail());
+    public void updateRepair(RepairDTO repairDTO){
+        Repair r = repairRepository.findByNameRepair(repairDTO.getNameRepair()).get();
+        r.setNameRepair(repairDTO.getNameRepair());
+        r.setPass(repairDTO.getPass());
+        r.setEmail(repairDTO.getEmail());
         repairRepository.save(r);
     }
     @Override

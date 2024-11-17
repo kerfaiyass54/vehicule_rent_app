@@ -12,6 +12,7 @@ public class RepairDTO {
     private String nameRepair;
     private String locationRepair;
     private String email;
+    private String pass;
     private String role;
 
 }

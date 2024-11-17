@@ -28,13 +28,12 @@ public class RepairController {
 
     @GetMapping("/delete/{id}")
     void deleteRepair(@PathVariable long id){
-
         repairService.deleteRepair(id);
     }
 
     @PutMapping("/update")
-    void updateRepair(@RequestBody Repair repair){
-        repairService.updateRepair(repair);
+    void updateRepair(@RequestBody RepairDTO repairDTO){
+        repairService.updateRepair(repairDTO);
     }
 
     @GetMapping("/{nameRepair}/get")
