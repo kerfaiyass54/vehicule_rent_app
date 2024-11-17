@@ -11,7 +11,7 @@ import java.util.List;
 public interface SupplierService {
     void addSupplier(Supplier supplier);
     void updateSupplier(Supplier supplier);
-    void deleteSupplier(Supplier supplier);
+    void deleteSupplier(String name);
     SupplierDTO getSupplier(String supplierName);
     void changeSupplierPassword(Supplier supplier, String newPassword);
     List<Subscription> getSubscriptions(Supplier supplier);

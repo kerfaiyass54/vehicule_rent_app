@@ -46,7 +46,7 @@ public class RepairServiceImpl implements RepairService {
     }
     @Override
     public void updateRepair(Repair repair){
-        Repair r = repairRepository.getById(repair.getIdRepair());
+        Repair r = repairRepository.findById(repair.getIdRepair()).get();
         r.setNameRepair(repair.getNameRepair());
         r.setPass(repair.getPass());
         r.setEmail(repair.getEmail());

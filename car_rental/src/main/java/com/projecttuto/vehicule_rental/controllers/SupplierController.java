@@ -29,9 +29,9 @@ public class SupplierController {
         supplierService.updateSupplier(supplier);
     }
 
-    @PostMapping("/delete")
-    public void deleteSupplier(@RequestBody Supplier supplier){
-        supplierService.deleteSupplier(supplier);
+    @PostMapping("/delete/{name}")
+    public void deleteSupplier(@PathVariable String name){
+        supplierService.deleteSupplier(name);
     }
 
     @GetMapping("/supplier/{supplierName}")

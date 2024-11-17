@@ -52,8 +52,8 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public void deleteSupplier(Supplier supplier){
-        supplierRepository.delete(supplierRepository.getById(supplier.getIdSupp()));
+    public void deleteSupplier(String name){
+        supplierRepository.delete(supplierRepository.findBySuppName(name).get());
     }
 
     @Override
