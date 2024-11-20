@@ -40,5 +40,7 @@ This application supports the following user roles:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/project-name.git
-   cd project-name
+   [git clone (https://github.com/kerfaiyass54/vehicule_rent_app.git)]
+2. **Run the application**
+   '''bach
+   mvn spring-boot:run
