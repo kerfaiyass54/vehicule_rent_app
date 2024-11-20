@@ -40,7 +40,13 @@ This application supports the following user roles:
 
 1. **Clone the Repository**
    ```bash
-   [git clone (https://github.com/kerfaiyass54/vehicule_rent_app.git)]
-2. **Run the application**
-   '''bach
-   mvn spring-boot:run
+   git clone https://github.com/kerfaiyass54/vehicule_rent_app.git
+   
+2. **Configure Database**
+   Open the src/main/resources/application.properties file and configure the database credentials.
+   
+3. **Run the application**
+
+```bash
+mvn spring-boot:run
+
