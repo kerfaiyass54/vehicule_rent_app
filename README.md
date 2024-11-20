@@ -43,9 +43,9 @@ This application supports the following user roles:
    git clone https://github.com/kerfaiyass54/vehicule_rent_app.git
    
 2. **Configure Database**
-   Open the src/main/resources/application.properties file and configure the database credentials.
+- Open the src/main/resources/application.properties file and configure the database credentials.
    
-3. **Run the application**
+4. **Run the application**
 
 ```bash
 mvn spring-boot:run
