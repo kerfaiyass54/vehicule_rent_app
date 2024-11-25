@@ -13,6 +13,7 @@ import com.projecttuto.vehicule_rental.services.RepairService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -37,7 +38,8 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public void addRepair(Repair repair, String location){
-        repair.setLocation(locationRepository.findByName(location).get());
+        Optional<Location> loc = locationRepository.findByName(location);
+        repair.setLocation(loc.get());
         repairRepository.save(repair);
     }
     @Override
@@ -52,16 +54,18 @@ public class RepairServiceImpl implements RepairService {
         r.setEmail(repairDTO.getEmail());
         repairRepository.save(r);
     }
+
     @Override
     public RepairDTO getRepair(String nameRepair){
         RepairDTO repairDTO = new RepairDTO();
-        Repair repair = repairRepository.findByNameRepair(nameRepair).get();
+        Repair repair = repairRepository.findRepairByNameRepair(nameRepair);
         repairDTO.setNameRepair(nameRepair);
         repairDTO.setIdRepair(repair.getIdRepair());
         repairDTO.setEmail(repair.getEmail());
         repairDTO.setLocationRepair(repair.getLocation().getName());
         return repairDTO;
     }
+
     @Override
     public void changeRepairPassword(Repair repair, String newPassword){
         repairRepository.findByNameRepair(repair.getNameRepair()).get().setPass(newPassword);
