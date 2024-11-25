@@ -37,7 +37,7 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public void addRepair(Repair repair, String location){
-        repair.setLocation(locationRepository.findLocationByName(location));
+        repair.setLocation(locationRepository.findByName(location).get());
         repairRepository.save(repair);
     }
     @Override
@@ -64,15 +64,15 @@ public class RepairServiceImpl implements RepairService {
     }
     @Override
     public void changeRepairPassword(Repair repair, String newPassword){
-        repairRepository.findRepairByNameRepair(repair.getNameRepair()).setPass(newPassword);
+        repairRepository.findByNameRepair(repair.getNameRepair()).get().setPass(newPassword);
     }
     @Override
     public List<Ticket> getTickets(String repairName){
-        return repairRepository.findRepairByNameRepair(repairName).getTickets();
+        return repairRepository.findByNameRepair(repairName).get().getTickets();
     }
     @Override
     public List<RepairInfo> getRepairInfo(String repairName){
-        return repairRepository.findRepairByNameRepair(repairName).getRepairInfos();
+        return repairRepository.findByNameRepair(repairName).get().getRepairInfos();
     }
     @Override
     public List<Vehicule> getVehicules(String repairName){
@@ -85,12 +85,12 @@ public class RepairServiceImpl implements RepairService {
     }
     @Override
     public void updateLocation(String repairName, String locationName){
-        repairRepository.findRepairByNameRepair(repairName);
+        repairRepository.findByNameRepair(repairName).get().setLocation(locationRepository.findByName(locationName).get());
     }
     @Override
     public LocationDTO getLocation(String locationName){
         LocationDTO locationDTO = new LocationDTO();
-        Location location = locationRepository.findLocationByName(locationName);
+        Location location = locationRepository.findByName(locationName).get();
         locationDTO.setIdLoc(location.getIdLoc());
         locationDTO.setCountry(location.getCountry());
         locationDTO.setName(location.getName());
