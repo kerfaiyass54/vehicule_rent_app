@@ -61,7 +61,7 @@ public class RepairController {
         return repairService.getVehicules(repairName);
     }
 
-    @PostMapping("/changeloc/{repairName}")
+    @GetMapping("/changeloc/{repairName}")
     void updateLocation(@PathVariable String repairName,@RequestParam String locationName){
         repairService.updateLocation(repairName, locationName);
     }
