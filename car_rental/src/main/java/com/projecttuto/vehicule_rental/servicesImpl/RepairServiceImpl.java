@@ -59,10 +59,10 @@ public class RepairServiceImpl implements RepairService {
     public RepairDTO getRepair(String nameRepair){
         RepairDTO repairDTO = new RepairDTO();
         Repair repair = repairRepository.findRepairByNameRepair(nameRepair);
-        repairDTO.setNameRepair(nameRepair);
         repairDTO.setIdRepair(repair.getIdRepair());
+        repairDTO.setNameRepair(nameRepair);
+        repairDTO.setLocationName(repair.getLocation().getName());
         repairDTO.setEmail(repair.getEmail());
-        repairDTO.setLocationRepair(repair.getLocation().getName());
         return repairDTO;
     }
 

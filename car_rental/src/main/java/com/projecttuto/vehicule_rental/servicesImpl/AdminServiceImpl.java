@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.projecttuto.vehicule_rental.services.AdminService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -94,6 +95,16 @@ public class AdminServiceImpl implements AdminService {
         return locationRepository.findAll().stream()
                 .map(locationDTOMapper::mapToDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List <String> getNames(){
+        List<String> names = new ArrayList<>();
+        names.addAll(supplierRepository.findAll().stream().map(Supplier::getSuppName).toList());
+        names.addAll(clientRepository.findAll().stream().map(Client::getNameClient).toList());
+        names.addAll(RepairRepository.findAll().stream().map(Repair::getNameRepair).toList());
+        return names;
+
     }
 
 

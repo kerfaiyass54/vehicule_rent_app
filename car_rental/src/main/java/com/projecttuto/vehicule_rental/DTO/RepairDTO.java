@@ -10,7 +10,7 @@ import lombok.*;
 public class RepairDTO {
     private long idRepair;
     private String nameRepair;
-    private String locationRepair;
+    private String locationName;
     private String email;
     private String pass;
     private String role;

@@ -25,6 +25,7 @@ public class AdminController {
         return adminService.getClients();
     }
 
+
     @GetMapping("/suppliers")
     public List<SupplierDTO> getSuppliers(){
         return adminService.getSuppliers();
@@ -50,6 +51,11 @@ public class AdminController {
     @GetMapping("/admin-details/{adminName}")
     public Admin getDetails(@PathVariable String adminName){
         return adminService.getDetails(adminName);
+    }
+
+    @GetMapping("/names")
+    public List<String> getNames(){
+        return adminService.getNames();
     }
 
 
