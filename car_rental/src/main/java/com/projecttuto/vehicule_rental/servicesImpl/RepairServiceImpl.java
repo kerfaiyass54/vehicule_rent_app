@@ -42,6 +42,7 @@ public class RepairServiceImpl implements RepairService {
         repair.setLocation(loc.get());
         repairRepository.save(repair);
     }
+
     @Override
     public void deleteRepair(long id){
         repairRepository.delete(repairRepository.findById(id).get());
