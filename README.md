@@ -45,8 +45,11 @@ This application supports the following user roles:
 2. **Configure Database**
 - Open the src/main/resources/application.properties file and configure the database credentials.
    
-4. **Run the application**
+3. **Initialize the database**
+- Use the pgAdmin to create a new database and restore the tables and data of the app using restore operation and the backup file that is in the database folder.
 
-```bash
-mvn spring-boot:run
+4. **Run the app**
+   ```bash
+   mvn spring-boot:run
+   
 
