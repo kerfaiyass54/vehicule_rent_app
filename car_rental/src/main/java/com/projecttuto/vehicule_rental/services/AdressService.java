@@ -1,5 +1,6 @@
 package com.projecttuto.vehicule_rental.services;
 
+import com.projecttuto.vehicule_rental.DTO.AdressDTO;
 import com.projecttuto.vehicule_rental.entities.Adress;
 import com.projecttuto.vehicule_rental.entities.Location;
 import com.projecttuto.vehicule_rental.entities.Supplier;
@@ -7,7 +8,7 @@ import com.projecttuto.vehicule_rental.entities.Supplier;
 import java.util.List;
 
 public interface AdressService {
-    List<Adress> getAdresses();
+    List<AdressDTO> getAdresses();
     void addAdress(Adress adress);
     void deleteAdress(String adressName);
     void updateAdress(String adressName);

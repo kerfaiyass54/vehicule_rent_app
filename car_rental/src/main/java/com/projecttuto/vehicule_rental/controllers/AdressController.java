@@ -1,6 +1,7 @@
 package com.projecttuto.vehicule_rental.controllers;
 
 
+import com.projecttuto.vehicule_rental.DTO.AdressDTO;
 import com.projecttuto.vehicule_rental.entities.Adress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class AdressController {
     }
 
     @GetMapping("/adresses")
-    List<Adress> getAdresses(){
+    List<AdressDTO> getAdresses(){
         return adressService.getAdresses();
     }
 
