@@ -1,10 +1,7 @@
 package com.projecttuto.vehicule_rental.servicesImpl;
 
 
-import com.projecttuto.vehicule_rental.DTO.ClientDTO;
-import com.projecttuto.vehicule_rental.DTO.LocationDTO;
-import com.projecttuto.vehicule_rental.DTO.RepairDTO;
-import com.projecttuto.vehicule_rental.DTO.SupplierDTO;
+import com.projecttuto.vehicule_rental.DTO.*;
 import com.projecttuto.vehicule_rental.entities.*;
 import com.projecttuto.vehicule_rental.mappers.ClientDTOMapper;
 import com.projecttuto.vehicule_rental.mappers.LocationDTOMapper;
@@ -77,17 +74,22 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void updateDetails(Admin admin){
+    public void updateDetails(AdminDTO admin){
         Admin a = adminRepository.findAdminByAdminName(admin.getAdminName());
         a.setAdminName(admin.getAdminName());
         a.setEmail(admin.getEmail());
-        a.setPass(admin.getPass());
+        a.setPass(admin.getPassword());
         adminRepository.save(a);
     }
 
     @Override
-    public Admin getDetails(String adminName){
-        return adminRepository.findAdminByAdminName(adminName);
+    public AdminDTO getDetails(String adminName){
+        Admin admin = adminRepository.findAdminByAdminName(adminName);
+        AdminDTO adminDTO = new AdminDTO();
+        adminDTO.setAdminName(admin.getAdminName());
+        adminDTO.setEmail(admin.getEmail());
+        adminDTO.setPassword(admin.getPass());
+        return adminDTO;
     }
 
     @Override

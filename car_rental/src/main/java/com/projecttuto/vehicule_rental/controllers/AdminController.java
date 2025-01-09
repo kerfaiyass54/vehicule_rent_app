@@ -1,10 +1,7 @@
 package com.projecttuto.vehicule_rental.controllers;
 
 
-import com.projecttuto.vehicule_rental.DTO.ClientDTO;
-import com.projecttuto.vehicule_rental.DTO.LocationDTO;
-import com.projecttuto.vehicule_rental.DTO.RepairDTO;
-import com.projecttuto.vehicule_rental.DTO.SupplierDTO;
+import com.projecttuto.vehicule_rental.DTO.*;
 import com.projecttuto.vehicule_rental.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,13 +40,13 @@ public class AdminController {
 
 
     @PutMapping("/update-admin")
-    public void updateDetails(@RequestBody Admin admin){
-        adminService.updateDetails(admin);
+    public void updateDetails(@RequestBody AdminDTO adminDTO){
+        adminService.updateDetails(adminDTO);
     }
 
 
     @GetMapping("/admin-details/{adminName}")
-    public Admin getDetails(@PathVariable String adminName){
+    public AdminDTO getDetails(@PathVariable String adminName){
         return adminService.getDetails(adminName);
     }
 
