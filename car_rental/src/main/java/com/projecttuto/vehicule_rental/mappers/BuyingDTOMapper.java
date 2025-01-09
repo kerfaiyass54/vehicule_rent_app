@@ -2,7 +2,10 @@ package com.projecttuto.vehicule_rental.mappers;
 
 import com.projecttuto.vehicule_rental.DTO.BuyingDTO;
 import com.projecttuto.vehicule_rental.entities.Buying;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class BuyingDTOMapper {
 
     public BuyingDTO mapToDTO(Buying buying) {

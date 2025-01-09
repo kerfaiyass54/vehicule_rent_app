@@ -2,7 +2,10 @@ package com.projecttuto.vehicule_rental.mappers;
 
 import com.projecttuto.vehicule_rental.DTO.SubscriptionDTO;
 import com.projecttuto.vehicule_rental.entities.Subscription;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class SubscriptionDTOMapper {
 
     public SubscriptionDTO mapToDTO(Subscription subscription) {

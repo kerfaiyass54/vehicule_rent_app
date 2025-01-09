@@ -2,7 +2,10 @@ package com.projecttuto.vehicule_rental.mappers;
 
 import com.projecttuto.vehicule_rental.DTO.DemandDTO;
 import com.projecttuto.vehicule_rental.entities.Demand;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class DemandDTOMapper {
 
     public DemandDTO mapToDTO(Demand demand) {
