@@ -10,13 +10,13 @@ import java.util.List;
 public interface AdminService {
 
     List<ClientDTO> getClients();
-    public Page<ClientDTO> getPaginatedClients(Pageable pageable);
+   // public Page<ClientDTO> getPaginatedClients(Pageable pageable);
     List<SupplierDTO> getSuppliers();
-    public Page<SupplierDTO> getPaginatedSuppliers(Pageable pageable);
+  //  public Page<SupplierDTO> getPaginatedSuppliers(Pageable pageable);
     List<RepairDTO> getRepairs();
-    public Page<RepairDTO> getPaginatedRepairs(Pageable pageable);
+  //  public Page<RepairDTO> getPaginatedRepairs(Pageable pageable);
     List<LocationDTO> getLocations();
-    public Page<LocationDTO> getPaginatedLocations(Pageable pageable);
+   // public Page<LocationDTO> getPaginatedLocations(Pageable pageable);
     void updateDetails(AdminDTO adminDTO);
     AdminDTO getDetails(String adminName);
     List <String> getNames();

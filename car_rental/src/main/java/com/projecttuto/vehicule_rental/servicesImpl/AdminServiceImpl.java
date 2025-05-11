@@ -11,9 +11,11 @@ import com.projecttuto.vehicule_rental.repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import com.projecttuto.vehicule_rental.services.AdminService;
 
+import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -108,8 +110,11 @@ public class AdminServiceImpl implements AdminService {
         return names;
 
     }
-
-
-
+/*
+    @Override
+    public Page<ClientDTO> getPaginatedClients(Pageable pageable){
+        return clientRepository.findAll(pageable).stream().map();
+    }
+*/
 
 }
