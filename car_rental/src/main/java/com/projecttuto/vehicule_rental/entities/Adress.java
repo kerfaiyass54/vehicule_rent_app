@@ -25,7 +25,7 @@ public class Adress {
     @Column(name="number",nullable = false)
     private int number;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "idsupp", referencedColumnName = "idsupp")
     private Supplier supplier;
 

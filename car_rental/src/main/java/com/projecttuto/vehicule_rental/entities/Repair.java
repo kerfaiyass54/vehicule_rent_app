@@ -41,10 +41,10 @@ public class Repair {
     @JoinColumn(name = "id_admin_rep", referencedColumnName = "idadmin")
     private Admin admin;
 
-    @OneToMany(mappedBy = "repair")
+    @OneToMany(mappedBy = "repair", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 
-    @OneToMany(mappedBy = "repair")
+    @OneToMany(mappedBy = "repair", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<RepairInfo> repairInfos;
 
 }

@@ -48,7 +48,7 @@ public class Ticket {
     @JoinColumn(name = "id_vehicule_ticket", referencedColumnName = "idvehicule")
     private Vehicule vehicule;
 
-    @OneToMany(mappedBy = "ticket")
+    @OneToMany(mappedBy = "ticket", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Demand> demands;
 
 

@@ -29,7 +29,7 @@ public class Category {
     @Column(name="type_category",nullable = false)
     private String typeCategory;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category" , fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Vehicule> vehicules;
 
     @ManyToOne

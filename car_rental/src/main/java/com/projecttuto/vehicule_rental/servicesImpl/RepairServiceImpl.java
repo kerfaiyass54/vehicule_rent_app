@@ -38,8 +38,8 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public void addRepair(Repair repair, String location){
-        Optional<Location> loc = locationRepository.findByName(location);
-        repair.setLocation(loc.get());
+        Location loc = locationRepository.findLocationByName(location);
+        repair.setLocation(loc);
         repairRepository.save(repair);
     }
 
