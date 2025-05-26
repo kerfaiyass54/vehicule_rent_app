@@ -30,6 +30,13 @@ public class Client {
     @Column(name="budget")
     private double budget;
 
+    @Column(name="age")
+    private int age;
+
+    @Column(name="client_status")
+    private String clientStatus;
+
+
     @ManyToOne
     @JoinColumn(name = "id_location", referencedColumnName = "idloc")
     private Location location;
