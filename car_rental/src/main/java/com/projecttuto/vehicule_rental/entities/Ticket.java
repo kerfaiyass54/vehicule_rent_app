@@ -26,6 +26,9 @@ public class Ticket {
     @Enumerated(EnumType.STRING)
     private TypeTicket type;
 
+    @Column(name="decription")
+    private String decription;
+
     @Column(name="date_insert")
     private LocalDate dateInsert;
 

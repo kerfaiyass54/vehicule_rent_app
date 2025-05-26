@@ -33,6 +33,9 @@ public class Supplier {
     @Column(name="pass_supp", nullable = false)
     private String pass;
 
+    @Column(name="experience")
+    private int experience;
+
     @ManyToOne
     @JoinColumn(name = "id_admin_supp", referencedColumnName = "idadmin")
     private Admin admin;

@@ -27,6 +27,9 @@ public class Location {
     @Column(name="country")
     private String country;
 
+    @Column(name="position")
+    private String position;
+
     @OneToMany(mappedBy = "location", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Adress> adresses;
 

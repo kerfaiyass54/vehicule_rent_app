@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -31,6 +32,10 @@ public class Demand {
     @Column(name="status_confirm")
     @Enumerated(EnumType.STRING)
     private ConfirmStatus statusConfirm;
+
+    @Column(name="estimated_time")
+    private int estimatedTime;
+
 
     @ManyToOne
     @JoinColumn(name = "id_ticket", referencedColumnName = "idticket")
