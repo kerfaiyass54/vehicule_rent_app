@@ -22,7 +22,7 @@ public class Subscription {
     @Column(name="idsubscrip")
     private long idSubscrip;
 
-    @Column(name="type")
+    @Column(name="type", nullable = false)
     @Enumerated(EnumType.STRING)
     private SubscriptionType type;
 
@@ -32,10 +32,10 @@ public class Subscription {
     @Column(name="date_end")
     private LocalDate dateEnd;
 
-    @Column(name="reduce")
+    @Column(name="reduce", nullable = false)
     private int reduce;
 
-    @Column(name="price")
+    @Column(name="price", nullable = false)
     private double price;
 
     @ManyToOne

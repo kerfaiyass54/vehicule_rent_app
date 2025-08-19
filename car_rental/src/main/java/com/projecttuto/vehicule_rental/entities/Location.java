@@ -21,13 +21,13 @@ public class Location {
     @Column(name="idloc")
     private long idLoc;
 
-    @Column(name="name")
+    @Column(name="name",nullable=false)
     private String name;
 
-    @Column(name="country")
+    @Column(name="country",nullable=false)
     private String country;
 
-    @Column(name="position")
+    @Column(name="position",nullable=false)
     private String position;
 
     @OneToMany(mappedBy = "location", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

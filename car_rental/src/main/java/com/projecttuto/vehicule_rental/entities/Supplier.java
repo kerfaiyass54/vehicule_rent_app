@@ -21,13 +21,13 @@ public class Supplier {
     @Column(name="idsupp")
     private long idSupp;
 
-    @Column(name="supp_name")
+    @Column(name="supp_name", nullable=false, unique=true)
     private String suppName;
 
-    @Column(name="nationality")
+    @Column(name="nationality", nullable=false)
     private String nationality;
 
-    @Column(name="email_supp", nullable = false)
+    @Column(name="email_supp", nullable = false, unique=true)
     private String email;
 
     @Column(name="pass_supp", nullable = false)

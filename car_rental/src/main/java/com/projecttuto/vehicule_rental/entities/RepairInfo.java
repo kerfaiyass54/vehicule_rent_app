@@ -26,7 +26,7 @@ public class RepairInfo {
     @Column(name="date_start")
     private LocalDate dateStart;
 
-    @Column(name="repair_status")
+    @Column(name="repair_status", nullable = false)
     @Enumerated(EnumType.STRING)
     private RepairStatus repairStatus;
 

@@ -23,17 +23,17 @@ public class Demand {
     @Column(name="iddemand")
     private long idDemand;
 
-    @Column(name="type")
+    @Column(name="type",nullable = false)
     private String type;
 
     @Column(name="date_ask")
     private LocalDate dateAsk;
 
-    @Column(name="status_confirm")
+    @Column(name="status_confirm",nullable = false)
     @Enumerated(EnumType.STRING)
     private ConfirmStatus statusConfirm;
 
-    @Column(name="estimated_time")
+    @Column(name="estimated_time",nullable = false)
     private int estimatedTime;
 
 

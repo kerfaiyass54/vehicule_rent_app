@@ -22,11 +22,11 @@ public class Ticket {
     @Column(name="idticket")
     private long idTicket;
 
-    @Column(name="type")
+    @Column(name="type", nullable=false)
     @Enumerated(EnumType.STRING)
     private TypeTicket type;
 
-    @Column(name="decription")
+    @Column(name="decription", nullable=false)
     private String decription;
 
     @Column(name="date_insert")

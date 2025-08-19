@@ -22,22 +22,22 @@ public class Vehicule {
     @Column(name="idvehicule")
     private long idVehicule;
 
-    @Column(name="name_vehicule")
+    @Column(name="name_vehicule", nullable=false, unique=true)
     private String nameVehicule;
 
-    @Column(name="color")
+    @Column(name="color", nullable=false)
     private String color;
 
-    @Column(name="brand")
+    @Column(name="brand", nullable = false)
     private String brand;
 
-    @Column(name="price")
+    @Column(name="price", nullable = false)
     private double price;
 
-    @Column(name="high_speed")
+    @Column(name="high_speed", nullable = false)
     private int highSpeed;
 
-    @Column(name="transmission")
+    @Column(name="transmission", nullable = false)
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
 

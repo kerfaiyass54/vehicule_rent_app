@@ -21,14 +21,14 @@ public class Repair {
     @Column(name="idrepair")
     private long idRepair;
 
-    @Column(name="name_repair")
+    @Column(name="name_repair", nullable = false)
     private String nameRepair;
 
     @ManyToOne
     @JoinColumn(name= "id_location",referencedColumnName = "idloc")
     private Location location;
 
-    @Column(name="email_repair")
+    @Column(name="email_repair", nullable = false, unique = true)
     private String email;
 
     @Column(name="pass_repair")

@@ -25,10 +25,10 @@ public class Buying {
     @Column(name="date_buy")
     private LocalDate dateBuy;
 
-    @Column(name="period_buy")
+    @Column(name="period_buy", nullable = false)
     private int periodBuy;
 
-    @Column(name="buy_status")
+    @Column(name="buy_status", nullable = false)
     @Enumerated(EnumType.STRING)
     private BuyStatus buyStatus;
 

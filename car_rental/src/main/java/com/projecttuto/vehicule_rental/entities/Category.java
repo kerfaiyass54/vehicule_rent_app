@@ -26,7 +26,7 @@ public class Category {
     @Column(name="name_category",nullable = false)
     private CategoryName nameCategory;
 
-    @Column(name="type_category",nullable = false)
+    @Column(name="type_category",nullable = false,unique = true)
     private String typeCategory;
 
     @OneToMany(mappedBy = "category" , fetch = FetchType.LAZY, cascade = CascadeType.ALL)

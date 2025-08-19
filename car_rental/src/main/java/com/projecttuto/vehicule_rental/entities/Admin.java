@@ -20,10 +20,10 @@ public class Admin {
     @Column(name="idadmin")
     private long idAdmin;
 
-    @Column(name="admin_name", nullable = false)
+    @Column(name="admin_name", nullable = false, unique = true)
     private String adminName;
 
-    @Column(name="email_admin", nullable = false)
+    @Column(name="email_admin", nullable = false, unique = true)
     private String email;
 
     @Column(name="pass_admin", nullable = false)

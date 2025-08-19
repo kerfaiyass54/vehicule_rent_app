@@ -21,19 +21,19 @@ public class Client {
     @Column(name="idclient")
     private long idClient;
 
-    @Column(name="name_client")
+    @Column(name="name_client", nullable = false)
     private String nameClient;
 
-    @Column(name="cin")
+    @Column(name="cin", nullable = false, unique = true)
     private String cin;
 
     @Column(name="budget")
     private double budget;
 
-    @Column(name="age")
+    @Column(name="age", nullable = false)
     private int age;
 
-    @Column(name="client_status")
+    @Column(name="client_status", nullable = false)
     private String clientStatus;
 
 
@@ -50,7 +50,7 @@ public class Client {
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 
-    @Column(name="email_client",nullable = false)
+    @Column(name="email_client",nullable = false, unique = true)
     private String email;
 
     @Column(name="pass_client",nullable = false)
