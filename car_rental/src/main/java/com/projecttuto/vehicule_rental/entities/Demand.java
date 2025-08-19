@@ -4,7 +4,10 @@ package com.projecttuto.vehicule_rental.entities;
 import com.projecttuto.vehicule_rental.enums.ConfirmStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -15,6 +18,7 @@ import java.time.LocalTime;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="demand")
 public class Demand {
 
@@ -27,7 +31,8 @@ public class Demand {
     private String type;
 
     @Column(name="date_ask")
-    private LocalDate dateAsk;
+    @CreatedDate
+    private Instant dateAsk;
 
     @Column(name="status_confirm",nullable = false)
     @Enumerated(EnumType.STRING)

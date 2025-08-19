@@ -4,7 +4,10 @@ package com.projecttuto.vehicule_rental.entities;
 import com.projecttuto.vehicule_rental.enums.RepairStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Entity
@@ -14,6 +17,7 @@ import java.time.LocalDate;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="repair_info")
 public class RepairInfo {
 
@@ -24,7 +28,8 @@ public class RepairInfo {
     private long idInfo;
 
     @Column(name="date_start")
-    private LocalDate dateStart;
+    @CreatedDate
+    private Instant dateStart;
 
     @Column(name="repair_status", nullable = false)
     @Enumerated(EnumType.STRING)

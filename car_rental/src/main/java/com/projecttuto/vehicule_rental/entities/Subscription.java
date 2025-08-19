@@ -4,7 +4,10 @@ package com.projecttuto.vehicule_rental.entities;
 import com.projecttuto.vehicule_rental.enums.SubscriptionType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Entity
@@ -14,6 +17,7 @@ import java.time.LocalDate;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="subscription")
 public class Subscription {
 
@@ -27,10 +31,8 @@ public class Subscription {
     private SubscriptionType type;
 
     @Column(name="date_start")
-    private LocalDate dateStart;
-
-    @Column(name="date_end")
-    private LocalDate dateEnd;
+    @CreatedDate
+    private Instant dateStart;
 
     @Column(name="reduce", nullable = false)
     private int reduce;
