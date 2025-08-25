@@ -4,7 +4,7 @@ import com.projecttuto.vehicule_rental.enums.StatusRepair;
 import com.projecttuto.vehicule_rental.enums.TypeTicket;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class TicketDTO {
     private long idTicket;
     private TypeTicket type;
-    private LocalDate dateInsert;
+    private Instant dateInsert;
     private StatusRepair status;
     private float tarif;
 }

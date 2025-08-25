@@ -3,7 +3,8 @@ package com.projecttuto.vehicule_rental.DTO;
 import com.projecttuto.vehicule_rental.enums.RepairStatus;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -13,5 +14,5 @@ import java.time.LocalDate;
 public class RepairInfoDTO {
     private long idInfo;
     private RepairStatus repairStatus;
-    private LocalDate dateStart;
+    private Instant dateStart;
 }

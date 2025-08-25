@@ -3,7 +3,7 @@ package com.projecttuto.vehicule_rental.DTO;
 import com.projecttuto.vehicule_rental.enums.BuyStatus;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @ToString
 public class BuyingDTO {
     private long idBuying;
-    private LocalDate dateBuy;
+    private Instant dateBuy;
     private BuyStatus buyStatus;
 
 }

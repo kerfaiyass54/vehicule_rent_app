@@ -8,6 +8,7 @@ import com.projecttuto.vehicule_rental.entities.Repair;
 import com.projecttuto.vehicule_rental.entities.RepairInfo;
 import com.projecttuto.vehicule_rental.entities.Vehicule;
 import com.projecttuto.vehicule_rental.enums.RepairStatus;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ import com.projecttuto.vehicule_rental.repositories.RepairRepository;
 import com.projecttuto.vehicule_rental.repositories.VehiculeRepository;
 import com.projecttuto.vehicule_rental.services.RepairInfoService;
 
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.Instant;
 
 @Service
 @AllArgsConstructor
@@ -34,7 +36,7 @@ public class RepairInfoServiceImpl implements RepairInfoService {
     private RepairRepository repairRepository;
 
     @Override
-    public void updateDateStart(LocalDate date, RepairInfo repairInfo){
+    public void updateDateStart(Instant date, RepairInfo repairInfo){
         RepairInfo repairInfo1 = repairInfoRepository.getById(repairInfo.getIdInfo());
         repairInfo1.setDateStart(date);
         repairInfoRepository.save(repairInfo1);
@@ -82,14 +84,14 @@ public class RepairInfoServiceImpl implements RepairInfoService {
     }
 
     @Override
-    public void addReparation(String vehiculeName, String repairName, LocalDate date){
+    public void addReparation(String vehiculeName, String repairName, Instant date){
         RepairInfo repairInfo = new RepairInfo();
         Vehicule vehicule = vehiculeRepository.findVehiculeByNameVehicule(vehiculeName);
         Repair repair = repairRepository.findRepairByNameRepair(repairName);
         repairInfo.setDateStart(date);
         repairInfo.setVehicule(vehicule);
         repairInfo.setRepair(repair);
-        if(LocalDate.now().equals(repairInfo.getDateStart())){
+        if(Instant.now().equals(repairInfo.getDateStart())){
             repairInfo.setRepairStatus(RepairStatus.PENDING_FINISH);
         }
         else{

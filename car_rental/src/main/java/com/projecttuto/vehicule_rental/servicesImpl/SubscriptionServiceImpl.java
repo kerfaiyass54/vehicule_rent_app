@@ -63,11 +63,11 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     public SubscriptionDTO getSubscription(String emailClient, String nameSupplier){
         SubscriptionDTO subscriptionDTO = new SubscriptionDTO();
         Subscription subscription = subscriptionRepository.findSubscriptionByClientAndSupplier(clientRepository.findClientByEmail(emailClient),supplierRepository.findSupplierBySuppName(nameSupplier));
-        subscriptionDTO.setDateEnd(subscription.getDateEnd());
+        
         subscriptionDTO.setDateStart(subscription.getDateStart());
         subscriptionDTO.setType(subscription.getType());
         subscriptionDTO.setPrice(subscription.getPrice());
-        subscriptionDTO.setDateEnd(subscription.getDateEnd());
+        
         subscriptionDTO.setReduce(subscription.getReduce());
         return subscriptionDTO;
     }

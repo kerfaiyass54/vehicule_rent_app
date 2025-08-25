@@ -5,7 +5,7 @@ import com.projecttuto.vehicule_rental.enums.TypeTicket;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.List;
 
 @Entity
@@ -30,7 +30,7 @@ public class Ticket {
     private String decription;
 
     @Column(name="date_insert")
-    private LocalDate dateInsert;
+    private Instant dateInsert;
 
     @Column(name="status")
     @Enumerated(EnumType.STRING)

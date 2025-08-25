@@ -5,7 +5,7 @@ import com.projecttuto.vehicule_rental.enums.BuyStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 @Entity
 @Data
@@ -23,7 +23,7 @@ public class Buying {
     private long idBuying;
 
     @Column(name="date_buy")
-    private LocalDate dateBuy;
+    private Instant dateBuy;
 
     @Column(name="period_buy", nullable = false)
     private int periodBuy;

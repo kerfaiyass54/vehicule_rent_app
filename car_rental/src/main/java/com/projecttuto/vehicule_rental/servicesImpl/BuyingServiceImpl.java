@@ -15,7 +15,7 @@ import com.projecttuto.vehicule_rental.repositories.ClientRepository;
 import com.projecttuto.vehicule_rental.repositories.VehiculeRepository;
 import com.projecttuto.vehicule_rental.services.BuyingService;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -81,7 +81,7 @@ public class BuyingServiceImpl implements BuyingService {
             buying.setClient(client);
             buying.setVehicule(vehicule);
             buying.setPeriodBuy(period);
-            buying.setDateBuy(LocalDate.now());
+            buying.setDateBuy(Instant.now());
             buying.setBuyStatus(BuyStatus.BEING_USED);
             buyingRepository.save(buying);
             clientRepository.save(client);

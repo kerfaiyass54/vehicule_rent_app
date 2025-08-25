@@ -17,12 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;;
 import com.projecttuto.vehicule_rental.services.RepairInfoService;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 @RestController
 @RequestMapping("/repairinfo")
@@ -33,7 +30,7 @@ public class RepairInfoController {
     private RepairInfoService repairInfoService;
 
     @PostMapping("/date")
-    void updateDateStart(@RequestParam LocalDate date,@RequestBody RepairInfo repairInfo){
+    void updateDateStart(@RequestParam Instant date,@RequestBody RepairInfo repairInfo){
         repairInfoService.updateDateStart(date, repairInfo);
     }
 
@@ -58,7 +55,7 @@ public class RepairInfoController {
     }
 
     @PostMapping("/add/{vehiculeName}")
-    void addReparation(@PathVariable String vehiculeName,@RequestParam String repairName,@RequestParam LocalDate date){
+    void addReparation(@PathVariable String vehiculeName,@RequestParam String repairName,@RequestParam Instant date){
         repairInfoService.addReparation(vehiculeName, repairName, date);
     }
 

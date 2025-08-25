@@ -12,7 +12,6 @@ public class SubscriptionDTOMapper {
         SubscriptionDTO subscriptionDTO = new SubscriptionDTO();
         subscriptionDTO.setReduce(subscription.getReduce());
         subscriptionDTO.setType(subscription.getType());
-        subscriptionDTO.setDateEnd(subscription.getDateEnd());
         subscriptionDTO.setDateStart(subscription.getDateStart());
         subscriptionDTO.setPrice(subscription.getPrice());
         subscriptionDTO.setIdSubscrip(subscription.getIdSubscrip());
