@@ -16,7 +16,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasRole("admin")
                         .requestMatchers("/client/**").hasRole("client")
                         .requestMatchers("/supplier/**").hasRole("supplier")
-                        .requestMatchers("/repairer/**").hasRole("repairer")
+                        .requestMatchers("/repair/**").hasRole("repair")
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt());
