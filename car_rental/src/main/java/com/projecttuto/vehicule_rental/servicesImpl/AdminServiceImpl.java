@@ -53,23 +53,23 @@ public class AdminServiceImpl implements AdminService {
     private SupplierDTOMapper supplierDTOMapper;
 
     @Override
-    public List<ClientDTO> getClients(){
-        List<Client> clients = clientRepository.findAll();
+    public List<ClientDTO> getClients(long adminId){
+        List<Client> clients = adminRepository.findAdminByIdAdmin(adminId).getClients();
         return clients.stream()
                 .map(clientDTOMapper::mapToDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<RepairDTO> getRepairs(){
-        return RepairRepository.findAll().stream()
+    public List<RepairDTO> getRepairs(long adminId){
+        return adminRepository.findAdminByIdAdmin(adminId).getRepairs().stream()
                 .map(repairDTOMapper::mapToDTORepair)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<SupplierDTO> getSuppliers(){
-        return supplierRepository.findAll().stream()
+    public List<SupplierDTO> getSuppliers(long adminId){
+        return adminRepository.findAdminByIdAdmin(adminId).getSuppliers().stream()
                 .map(supplierDTOMapper::supplierDTOMapper)
                 .collect(Collectors.toList());
 
@@ -95,14 +95,14 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<LocationDTO> getLocations(){
-        return locationRepository.findAll().stream()
+    public List<LocationDTO> getLocations(long adminId){
+        return adminRepository.findAdminByIdAdmin(adminId).getLocations().stream()
                 .map(locationDTOMapper::mapToDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List <String> getNames(){
+    public List <String> getNames(long adminId){
         List<String> names = new ArrayList<>();
         names.addAll(supplierRepository.findAll().stream().map(Supplier::getSuppName).toList());
         names.addAll(clientRepository.findAll().stream().map(Client::getNameClient).toList());
@@ -110,11 +110,6 @@ public class AdminServiceImpl implements AdminService {
         return names;
 
     }
-/*
-    @Override
-    public Page<ClientDTO> getPaginatedClients(Pageable pageable){
-        return clientRepository.findAll(pageable).stream().map();
-    }
-*/
+
 
 }

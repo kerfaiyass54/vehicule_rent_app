@@ -29,9 +29,6 @@ public class Admin {
     @Column(name="pass_admin", nullable = false)
     private String pass;
 
-    @Column(name="role_user", nullable = false)
-    private String role;
-
     @OneToMany(mappedBy = "admin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Client> clients;
 

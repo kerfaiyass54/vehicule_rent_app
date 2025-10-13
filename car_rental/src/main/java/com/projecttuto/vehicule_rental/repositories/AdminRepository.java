@@ -12,4 +12,6 @@ import java.awt.print.Pageable;
 public interface AdminRepository extends JpaRepository<Admin, Long> {
     public Admin findAdminByAdminName(String adminName);
 
+    public Admin findAdminByIdAdmin(long idAdmin);
+
 }
