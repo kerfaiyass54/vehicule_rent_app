@@ -70,7 +70,7 @@ public class AdminController {
     }
 
 
-    @PutMapping("/{id}}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> updateDetails(@RequestBody AdminDTO adminDTO,@PathVariable long id){
         adminService.updateDetails(adminDTO,id);
         return ResponseEntity.noContent().build();
