@@ -2,7 +2,6 @@ package com.projecttuto.vehicule_rental.controllers;
 
 
 import com.projecttuto.vehicule_rental.DTO.*;
-import com.projecttuto.vehicule_rental.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.projecttuto.vehicule_rental.services.AdminService;
 import org.springframework.http.ResponseEntity;
@@ -71,15 +70,16 @@ public class AdminController {
     }
 
 
-    @PutMapping("/update-admin")
-    public void updateDetails(@RequestBody AdminDTO adminDTO){
-        adminService.updateDetails(adminDTO);
+    @PutMapping("/{id}}")
+    public ResponseEntity<Void> updateDetails(@RequestBody AdminDTO adminDTO,@PathVariable long id){
+        adminService.updateDetails(adminDTO,id);
+        return ResponseEntity.noContent().build();
     }
 
 
     @GetMapping("/{adminName}")
-    public ResponseEntity<AdminDTO> getDetails(@PathVariable String adminName){
-        AdminDTO admin =  adminService.getDetails(adminName);
+    public ResponseEntity<AdminDTO> getDetails(@PathVariable long id){
+        AdminDTO admin =  adminService.getDetails(id);
         if (admin != null) {
             return ResponseEntity.ok(admin);
         } else {

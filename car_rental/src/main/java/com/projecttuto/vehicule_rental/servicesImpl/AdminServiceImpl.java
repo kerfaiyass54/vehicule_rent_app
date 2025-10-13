@@ -76,8 +76,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void updateDetails(AdminDTO admin){
-        Admin a = adminRepository.findAdminByAdminName(admin.getAdminName());
+    public void updateDetails(AdminDTO admin, long id){
+        Admin a = adminRepository.findAdminByIdAdmin(id);
         a.setAdminName(admin.getAdminName());
         a.setEmail(admin.getEmail());
         a.setPass(admin.getPassword());
@@ -85,8 +85,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public AdminDTO getDetails(String adminName){
-        Admin admin = adminRepository.findAdminByAdminName(adminName);
+    public AdminDTO getDetails(long id){
+        Admin admin = adminRepository.findAdminByIdAdmin(id);
         AdminDTO adminDTO = new AdminDTO();
         adminDTO.setAdminName(admin.getAdminName());
         adminDTO.setEmail(admin.getEmail());

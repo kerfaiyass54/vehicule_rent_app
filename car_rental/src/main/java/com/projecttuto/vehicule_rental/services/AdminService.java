@@ -9,8 +9,8 @@ public interface AdminService {
     List<SupplierDTO> getSuppliers(long adminId);
     List<RepairDTO> getRepairs(long adminId);
     List<LocationDTO> getLocations(long adminId);
-    void updateDetails(AdminDTO adminDTO);
-    AdminDTO getDetails(String adminName);
+    void updateDetails(AdminDTO adminDTO, long id);
+    AdminDTO getDetails(long id);
     List <String> getNames();
 
 }
