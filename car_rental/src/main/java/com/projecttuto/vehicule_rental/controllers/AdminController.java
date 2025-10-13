@@ -2,8 +2,10 @@ package com.projecttuto.vehicule_rental.controllers;
 
 
 import com.projecttuto.vehicule_rental.DTO.*;
+import com.projecttuto.vehicule_rental.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.projecttuto.vehicule_rental.services.AdminService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 
 
 
@@ -33,9 +29,14 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @GetMapping("/clients")
-    public List<ClientDTO> getClients(){
-        return adminService.getClients();
+    @GetMapping("/clients/{id}")
+    public ResponseEntity<List<ClientDTO>> getClients(@PathVariable long id){
+        List<ClientDTO> clients =  adminService.getClients(id);
+        if (clients != null) {
+            return ResponseEntity.ok(clients);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
