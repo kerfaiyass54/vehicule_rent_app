@@ -102,7 +102,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List <String> getNames(long adminId){
+    public List <String> getNames(){
         List<String> names = new ArrayList<>();
         names.addAll(supplierRepository.findAll().stream().map(Supplier::getSuppName).toList());
         names.addAll(clientRepository.findAll().stream().map(Client::getNameClient).toList());

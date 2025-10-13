@@ -40,19 +40,34 @@ public class AdminController {
     }
 
 
-    @GetMapping("/suppliers")
-    public List<SupplierDTO> getSuppliers(){
-        return adminService.getSuppliers();
+    @GetMapping("/suppliers/{id}")
+    public ResponseEntity<List<SupplierDTO>> getSuppliers(@PathVariable long id){
+        List<SupplierDTO> suppliers =  adminService.getSuppliers(id);
+        if (suppliers != null) {
+            return ResponseEntity.ok(suppliers);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @GetMapping("/repairs")
-    public List<RepairDTO> getRepairs(){
-        return adminService.getRepairs();
+    @GetMapping("/repairs/{id}")
+    public ResponseEntity<List<RepairDTO>> getRepairs(@PathVariable long id){
+        List<RepairDTO> repairs =  adminService.getRepairs(id);
+        if (repairs != null) {
+            return ResponseEntity.ok(repairs);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @GetMapping("/locations")
-    public List<LocationDTO> getLocations(){
-        return adminService.getLocations();
+    @GetMapping("/locations/{id}")
+    public ResponseEntity<List<LocationDTO>> getLocations(@PathVariable long id){
+        List<LocationDTO> locations =  adminService.getLocations(id);
+        if (locations != null) {
+            return ResponseEntity.ok(locations);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
@@ -62,14 +77,24 @@ public class AdminController {
     }
 
 
-    @GetMapping("/admin-details/{adminName}")
-    public AdminDTO getDetails(@PathVariable String adminName){
-        return adminService.getDetails(adminName);
+    @GetMapping("/{adminName}")
+    public ResponseEntity<AdminDTO> getDetails(@PathVariable String adminName){
+        AdminDTO admin =  adminService.getDetails(adminName);
+        if (admin != null) {
+            return ResponseEntity.ok(admin);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/names")
-    public List<String> getNames(){
-        return adminService.getNames();
+    public ResponseEntity<List<String>> getNames(){
+        List<String> names =  adminService.getNames();
+        if (names != null) {
+            return ResponseEntity.ok(names);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 

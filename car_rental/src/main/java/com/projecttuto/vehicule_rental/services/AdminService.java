@@ -11,6 +11,6 @@ public interface AdminService {
     List<LocationDTO> getLocations(long adminId);
     void updateDetails(AdminDTO adminDTO);
     AdminDTO getDetails(String adminName);
-    List <String> getNames(long adminId);
+    List <String> getNames();
 
 }
