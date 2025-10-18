@@ -47,9 +47,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientDTO getClient(String clientName){
+    public ClientDTO getClient(long id){
         ClientDTO clientDTO = new ClientDTO();
-        Client client = clientRepository.findClientByNameClient(clientName);
+        Client client = clientRepository.findById(id).get();
         clientDTO.setIdClient(client.getIdClient());
         clientDTO.setNameClient(client.getNameClient());
         clientDTO.setBudget(client.getBudget());
@@ -59,15 +59,6 @@ public class ClientServiceImpl implements ClientService {
         return clientDTO;
     }
 
-
-    public List<String> getEmails(){
-        List<Client> clients = clientRepository.findAll();
-        List<String> emails = new ArrayList<String>();
-        for(Client client : clients){
-            emails.add(client.getEmail());
-        }
-        return emails;
-    }
 
     @Override
     public void updateClient(ClientDTO clientDTO){
@@ -79,8 +70,8 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void changePassword(String nameClient, String newPassword){
-        Client client = clientRepository.findClientByNameClient(nameClient);
+    public void changePassword(long id, String newPassword){
+        Client client = clientRepository.findById(id).get();
         client.setPass(newPassword);
         clientRepository.save(client);
     }
@@ -93,15 +84,15 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void addToBudget(double budgetExtra, String nameClient){
-        Client client = clientRepository.findClientByNameClient(nameClient);
+    public void addToBudget(double budgetExtra, long id){
+        Client client = clientRepository.findById(id).get();
         client.setBudget(client.getBudget() + budgetExtra);
         clientRepository.save(client);
     }
 
     @Override
-    public void changeLocation(String nameClient, String newLocation){
-        Client client = clientRepository.findByNameClient(nameClient).get();
+    public void changeLocation(long id, String newLocation){
+        Client client = clientRepository.findById(id).get();
         client.setLocation(locationRepository.findByName(newLocation).get());
         clientRepository.save(client);
     }
@@ -117,6 +108,11 @@ public class ClientServiceImpl implements ClientService {
             return clientRepository.findClientByNameClient(search, pageable);
         }
         return clientRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<String> getCLientEmails(){
+        return clientRepository.findAll().stream().map(Client::getEmail).toList();
     }
 
 

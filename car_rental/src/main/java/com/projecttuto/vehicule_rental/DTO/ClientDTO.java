@@ -14,6 +14,7 @@ public class ClientDTO {
     private double budget;
     private String locationName;
     private String email;
+    private String role;
 
 
 }

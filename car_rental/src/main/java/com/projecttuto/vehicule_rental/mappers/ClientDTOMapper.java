@@ -15,6 +15,9 @@ public class ClientDTOMapper {
         if(client.getLocation() != null){
             clientDTO.setLocationName(client.getLocation().getName());
         }
+        clientDTO.setEmail(client.getEmail());
+        clientDTO.setRole(client.getRole());
+        clientDTO.setNationality(client.getNationality());
         return clientDTO;
     }
 }

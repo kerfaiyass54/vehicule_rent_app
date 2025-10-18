@@ -4,6 +4,7 @@ package com.projecttuto.vehicule_rental.controllers;
 import com.projecttuto.vehicule_rental.DTO.ClientDTO;
 import com.projecttuto.vehicule_rental.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.projecttuto.vehicule_rental.services.ClientService;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/client")
@@ -28,49 +31,75 @@ public class ClientController {
 
 
     @PostMapping("/adding")
-    public void addClient(@RequestBody Client client,@RequestParam String locationName){
+    public ResponseEntity<Void> addClient(@RequestBody Client client, @RequestParam String locationName){
         clientService.addClient(client,locationName);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteClient(@PathVariable long id){
+    public ResponseEntity<Void> deleteClient(@PathVariable long id){
         clientService.deleteClient(id);
+        return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/details/{clientName}")
-    public ClientDTO getClient(@PathVariable String clientName){
-        return clientService.getClient(clientName);
+    @GetMapping("/details/{id}")
+    public ResponseEntity<ClientDTO> getClient(@PathVariable long id){
+        ClientDTO client = clientService.getClient(id);
+        if (client != null) {
+            return ResponseEntity.ok(client);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("/update")
-    public void updateClient(@RequestBody ClientDTO clientDTO){
+    public ResponseEntity<Void> updateClient(@RequestBody ClientDTO clientDTO){
         clientService.updateClient(clientDTO);
+        return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/password/{nameClient}")
-    public void changePassword(@PathVariable String nameClient,@RequestParam String newPassword){
-        clientService.changePassword(nameClient,newPassword);
+    @PostMapping("/password/{id}")
+    public ResponseEntity<Void> changePassword(@PathVariable long id,@RequestParam String newPassword){
+        clientService.changePassword(id,newPassword);
+        return ResponseEntity.noContent().build();
     }
 
 
-    @PostMapping("/budget/{nameClient}")
-    public void addToBudget(@RequestParam double budgetExtra,@PathVariable String nameClient){
-        clientService.addToBudget(budgetExtra,nameClient);
+    @PostMapping("/budget/{id}")
+    public ResponseEntity<Void> addToBudget(@RequestParam double budgetExtra,@PathVariable long id){
+        clientService.addToBudget(budgetExtra,id);
+        return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/location/{nameClient}")
-    public void changeLocation(@PathVariable String nameClient,@RequestParam String newLocation){
-        clientService.changeLocation(nameClient,newLocation);
+    @GetMapping("/location/{id}")
+    public ResponseEntity<Void> changeLocation(@PathVariable long id,@RequestParam String newLocation){
+        clientService.changeLocation(id,newLocation);
+        return ResponseEntity.noContent().build();
     }
 
 
 
     @GetMapping("/list/clients")
-    public Page<Client> getUsers(
+    public ResponseEntity<Page<Client>> getUsers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(required = false) String search
     ){
-        return clientService.listOfClients(page, size, search);
+        Page<Client> clientsList= clientService.listOfClients(page, size, search);
+        if (clientsList != null) {
+            return ResponseEntity.ok(clientsList);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @GetMapping("/emails")
+    public ResponseEntity<List<String>> getClientEmails(){
+        List<String> emails = clientService.getCLientEmails();
+        if (emails != null) {
+            return ResponseEntity.ok(emails);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
