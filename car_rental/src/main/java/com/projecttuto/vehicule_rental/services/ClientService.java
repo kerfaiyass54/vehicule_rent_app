@@ -15,7 +15,7 @@ public interface ClientService {
     void changePassword(long id, String newPassword);
     void addToBudget(double budgetExtra, long id);
     void changeLocation(long id, String newLocation);
-    Page<Client> listOfClients( int page, int size, String search);
+    Page<ClientDTO> listOfClients( int page, int size, String search);
     List<String> getCLientEmails();
 
 }

@@ -80,12 +80,12 @@ public class ClientController {
 
 
     @GetMapping("/list/clients")
-    public ResponseEntity<Page<Client>> getUsers(
+    public ResponseEntity<Page<ClientDTO>> getUsers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(required = false) String search
     ){
-        Page<Client> clientsList= clientService.listOfClients(page, size, search);
+        Page<ClientDTO> clientsList= clientService.listOfClients(page, size, search);
         if (clientsList != null) {
             return ResponseEntity.ok(clientsList);
         } else {

@@ -4,6 +4,7 @@ package com.projecttuto.vehicule_rental.servicesImpl;
 import com.projecttuto.vehicule_rental.DTO.ClientDTO;
 import com.projecttuto.vehicule_rental.entities.Client;
 import com.projecttuto.vehicule_rental.entities.Location;
+import com.projecttuto.vehicule_rental.mappers.ClientDTOMapper;
 import com.projecttuto.vehicule_rental.repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     private AdminRepository adminRepository;
+
+    @Autowired
+    private ClientDTOMapper  clientDTOMapper;
 
     @Override
     public void addClient(Client client, String locationName) {
@@ -102,12 +106,12 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
-    public Page<Client> listOfClients(int page, int size, String search){
+    public Page<ClientDTO> listOfClients(int page, int size, String search){
         Pageable pageable = PageRequest.of(page, size);
         if (search != null && !search.isEmpty()) {
-            return clientRepository.findClientByNameClient(search, pageable);
+            return clientRepository.findClientByNameClient(search, pageable).map(clientDTOMapper::mapToDTO);
         }
-        return clientRepository.findAll(pageable);
+        return clientRepository.findAll(pageable).map(clientDTOMapper::mapToDTO);
     }
 
     @Override
