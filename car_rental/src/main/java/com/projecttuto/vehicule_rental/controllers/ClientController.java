@@ -30,7 +30,7 @@ public class ClientController {
     private ClientService clientService;
 
 
-    @PostMapping("/")
+    @PostMapping("/new")
     public ResponseEntity<Void> addClient(@RequestBody Client client, @RequestParam String locationName){
         clientService.addClient(client,locationName);
         return ResponseEntity.noContent().build();
