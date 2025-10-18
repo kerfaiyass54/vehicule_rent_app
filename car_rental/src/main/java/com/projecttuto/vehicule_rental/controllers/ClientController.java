@@ -30,19 +30,19 @@ public class ClientController {
     private ClientService clientService;
 
 
-    @PostMapping("/adding")
+    @PostMapping("/")
     public ResponseEntity<Void> addClient(@RequestBody Client client, @RequestParam String locationName){
         clientService.addClient(client,locationName);
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteClient(@PathVariable long id){
         clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/details/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ClientDTO> getClient(@PathVariable long id){
         ClientDTO client = clientService.getClient(id);
         if (client != null) {
@@ -52,9 +52,9 @@ public class ClientController {
         }
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Void> updateClient(@RequestBody ClientDTO clientDTO){
-        clientService.updateClient(clientDTO);
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateClient(@RequestBody ClientDTO clientDTO, @PathVariable long id){
+        clientService.updateClient(clientDTO , id);
         return ResponseEntity.noContent().build();
     }
 

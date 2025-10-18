@@ -65,8 +65,8 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
-    public void updateClient(ClientDTO clientDTO){
-        Client client = clientRepository.findById(clientDTO.getIdClient()).get();
+    public void updateClient(ClientDTO clientDTO, long id){
+        Client client = clientRepository.findById(id).get();
         client.setNameClient(clientDTO.getNameClient());
         client.setBudget(clientDTO.getBudget());
         clientRepository.save(client);

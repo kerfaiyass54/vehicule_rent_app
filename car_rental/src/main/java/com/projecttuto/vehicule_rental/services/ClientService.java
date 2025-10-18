@@ -11,7 +11,7 @@ public interface ClientService {
     void addClient(Client client, String locationName);
     void deleteClient(long id);
     ClientDTO getClient(long id);
-    void updateClient(ClientDTO clientDTO);
+    void updateClient(ClientDTO clientDTO, long id);
     void changePassword(long id, String newPassword);
     void addToBudget(double budgetExtra, long id);
     void changeLocation(long id, String newLocation);
