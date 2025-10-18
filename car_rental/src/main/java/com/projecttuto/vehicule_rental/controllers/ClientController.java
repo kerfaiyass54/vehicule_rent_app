@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.projecttuto.vehicule_rental.services.ClientService;
+import org.springframework.data.domain.Page;
+
 
 @RestController
 @RequestMapping("/client")
@@ -50,10 +52,6 @@ public class ClientController {
         clientService.changePassword(nameClient,newPassword);
     }
 
-    @GetMapping("/exist/{name}")
-    public boolean isClientExist(@PathVariable String name){
-        return clientService.isClientExist(name);
-    }
 
     @PostMapping("/budget/{nameClient}")
     public void addToBudget(@RequestParam double budgetExtra,@PathVariable String nameClient){
@@ -65,8 +63,14 @@ public class ClientController {
         clientService.changeLocation(nameClient,newLocation);
     }
 
-    @GetMapping("/cin/exist/{cin}")
-    public boolean isCinExists(@PathVariable String cin){
-        return clientService.isCinExists(cin);
+
+
+    @GetMapping("/list/clients")
+    public Page<Client> getUsers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(required = false) String search
+    ){
+        return clientService.listOfClients(page, size, search);
     }
 }

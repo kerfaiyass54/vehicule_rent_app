@@ -2,19 +2,20 @@ package com.projecttuto.vehicule_rental.servicesImpl;
 
 
 import com.projecttuto.vehicule_rental.DTO.ClientDTO;
-import com.projecttuto.vehicule_rental.entities.Admin;
 import com.projecttuto.vehicule_rental.entities.Client;
 import com.projecttuto.vehicule_rental.entities.Location;
 import com.projecttuto.vehicule_rental.repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.projecttuto.vehicule_rental.services.ClientService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -51,7 +52,6 @@ public class ClientServiceImpl implements ClientService {
         Client client = clientRepository.findClientByNameClient(clientName);
         clientDTO.setIdClient(client.getIdClient());
         clientDTO.setNameClient(client.getNameClient());
-        clientDTO.setCin(client.getCin());
         clientDTO.setBudget(client.getBudget());
         if(client.getLocation() != null){
             clientDTO.setLocationName(client.getLocation().getName());
@@ -73,7 +73,6 @@ public class ClientServiceImpl implements ClientService {
     public void updateClient(ClientDTO clientDTO){
         Client client = clientRepository.findById(clientDTO.getIdClient()).get();
         client.setNameClient(clientDTO.getNameClient());
-        client.setCin(clientDTO.getCin());
         client.setBudget(clientDTO.getBudget());
         clientRepository.save(client);
 
@@ -86,15 +85,7 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.save(client);
     }
 
-    @Override
-    public boolean isClientExist(String name){
-        List<Client> clients = clientRepository.findAll();
-        List<String> names = new ArrayList<>();
-        for(Client client : clients){
-            names.add(client.getNameClient());
-        }
-        return names.contains(name);
-    }
+
 
     @Override
     public void deleteClient(long id){
@@ -117,18 +108,16 @@ public class ClientServiceImpl implements ClientService {
 
 
 
-    @Override
-    public boolean isCinExists(String cin){
-        List<Client> clients = clientRepository.findAll();
-        boolean cinExists = false;
-        for(Client client : clients){
-            if(client.getCin().equals(cin)){
-                cinExists = true;
-            }
-        }
-        return cinExists;
-    }
 
+
+    @Override
+    public Page<Client> listOfClients(int page, int size, String search){
+        Pageable pageable = PageRequest.of(page, size);
+        if (search != null && !search.isEmpty()) {
+            return clientRepository.findClientByNameClient(search, pageable);
+        }
+        return clientRepository.findAll(pageable);
+    }
 
 
 

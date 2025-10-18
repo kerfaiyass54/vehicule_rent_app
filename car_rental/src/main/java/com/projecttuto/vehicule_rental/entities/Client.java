@@ -24,17 +24,16 @@ public class Client {
     @Column(name="name_client", nullable = false)
     private String nameClient;
 
-    @Column(name="cin", nullable = false, unique = true)
-    private String cin;
 
     @Column(name="budget")
     private double budget;
 
+    @Column(name="nationality")
+    private String nationality;
+
     @Column(name="age", nullable = false)
     private int age;
 
-    @Column(name="client_status", nullable = false)
-    private String clientStatus;
 
 
     @ManyToOne
