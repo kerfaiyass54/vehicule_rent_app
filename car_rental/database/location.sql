@@ -1,0 +1,21 @@
+INSERT INTO public.location (country, name, id_admin_loc, "position")
+VALUES
+    ('France', 'Paris Headquarters', 2, '48.8566° N, 2.3522° E'),
+    ('Germany', 'Berlin Branch', 3, '52.5200° N, 13.4050° E'),
+    ('UK', 'London Office', 4, '51.5074° N, 0.1278° W'),
+    ('Canada', 'Toronto Branch', 5, '43.6532° N, 79.3832° W'),
+    ('Australia', 'Sydney Office', 6, '33.8688° S, 151.2093° E'),
+    ('Italy', 'Rome Headquarters', 7, '41.9028° N, 12.4964° E'),
+    ('Spain', 'Madrid Branch', 8, '40.4168° N, 3.7038° W'),
+    ('Brazil', 'São Paulo Office', 9, '23.5505° S, 46.6333° W'),
+    ('Japan', 'Tokyo Branch', 10, '35.6895° N, 139.6917° E'),
+    ('India', 'Mumbai Office', 11, '19.0760° N, 72.8777° E'),
+    ('China', 'Beijing Headquarters', 12, '39.9042° N, 116.4074° E'),
+    ('Russia', 'Moscow Branch', 13, '55.7558° N, 37.6173° E'),
+    ('Mexico', 'Mexico City Office', 14, '19.4326° N, 99.1332° W'),
+    ('South Africa', 'Cape Town Branch', 15, '33.9249° S, 18.4241° E'),
+    ('Egypt', 'Cairo Office', 16, '30.0444° N, 31.2357° E'),
+    ('Turkey', 'Istanbul Branch', 17, '41.0082° N, 28.9784° E'),
+    ('Argentina', 'Buenos Aires Office', 18, '34.6037° S, 58.3816° W'),
+    ('Netherlands', 'Amsterdam Branch', 19, '52.3676° N, 4.9041° E'),
+    ('Switzerland', 'Zurich Office', 20, '47.3769° N, 8.5417° E');
