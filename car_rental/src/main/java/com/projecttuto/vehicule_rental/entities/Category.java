@@ -14,7 +14,7 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="category")
+@Table(name="category.sql")
 public class Category {
 
     @Id
