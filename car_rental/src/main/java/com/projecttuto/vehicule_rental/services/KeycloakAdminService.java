@@ -1,8 +1,7 @@
 package com.projecttuto.vehicule_rental.services;
 
-import org.keycloak.representations.account.UserRepresentation;
-import org.keycloak.representations.idm.RoleRepresentation;
 
+import org.keycloak.representations.idm.*;
 import java.util.List;
 
 public interface KeycloakAdminService {
@@ -15,7 +14,6 @@ public interface KeycloakAdminService {
 
     public void updatePassword(String userId, String newPassword);
 
-    public void createRole(String roleName);
 
     public List<RoleRepresentation> getAllRoles();
 
