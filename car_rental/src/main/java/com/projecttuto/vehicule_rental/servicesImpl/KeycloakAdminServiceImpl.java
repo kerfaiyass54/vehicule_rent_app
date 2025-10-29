@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.*;
 import org.keycloak.representations.idm.*;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -18,12 +17,11 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
 
     private final Keycloak keycloak;
 
-    @Value("${keycloak.realm}")
-    private String realm;
+    
 
     @Override
     public void createUser(String username, String email, String password, String roleName) {
-        UsersResource users = keycloak.realm(realm).users();
+        UsersResource users = keycloak.realm("vehicule-app").users();
 
 
         UserRepresentation user = new UserRepresentation();
@@ -46,20 +44,20 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
         users.get(userId).resetPassword(cred);
 
 
-        RoleRepresentation role = keycloak.realm(realm).roles().get(roleName).toRepresentation();
+        RoleRepresentation role = keycloak.realm("master").roles().get(roleName).toRepresentation();
         users.get(userId).roles().realmLevel().add(List.of(role));
     }
 
 
     @Override
     public List<UserRepresentation> getAllUsers() {
-        return keycloak.realm(realm).users().list();
+        return keycloak.realm("master").users().list();
     }
 
 
     @Override
     public void deleteUser(String userId) {
-        keycloak.realm(realm).users().delete(userId);
+        keycloak.realm("master").users().delete(userId);
     }
 
     @Override
@@ -68,12 +66,12 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
         cred.setTemporary(false);
         cred.setType(CredentialRepresentation.PASSWORD);
         cred.setValue(newPassword);
-        keycloak.realm(realm).users().get(userId).resetPassword(cred);
+        keycloak.realm("master").users().get(userId).resetPassword(cred);
     }
 
     @Override
     public List<RoleRepresentation> getAllRoles() {
-        return keycloak.realm(realm).roles().list();
+        return keycloak.realm("master").roles().list();
     }
 
 

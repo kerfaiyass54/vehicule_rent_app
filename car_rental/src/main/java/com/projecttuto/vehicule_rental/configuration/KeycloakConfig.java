@@ -16,17 +16,18 @@ public class KeycloakConfig {
     @Value("${keycloak.realm}")
     private String realm;
 
-    @Value("${keycloak.client-id}")
+    @Value("${keycloak.admin.client-id}")
     private String clientId;
 
-    @Value("${keycloak.client-secret}")
+    @Value("${keycloak.admin.client-secret}")
     private String clientSecret;
+
 
     @Bean
     public Keycloak keycloak() {
         return KeycloakBuilder.builder()
                 .serverUrl(serverUrl)
-                .realm(realm)
+                .realm("master")
                 .clientId(clientId)
                 .clientSecret(clientSecret)
                 .grantType("client_credentials") // ← service account mode
