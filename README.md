@@ -24,7 +24,7 @@ This application supports the following user roles:
 
 
 ### Database
-- schema_dump.sql: The database named `vehiculerents` stores application data such as clients, rentals, and vehicles.
+- databse: it contains the tables and different data for the database initialization.
 
 ### Additional Files
 - `README.md`: Project documentation.
