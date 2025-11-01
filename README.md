@@ -5,10 +5,18 @@ This project is designed to manage vehicules renting system. Built using **Sprin
 
 ## Actors
 This application supports the following user roles:
-- **Admin**: Manages the system, including user accounts and existed locations.
+- **Admin**: Manages the system users, including their accounts and also existed locations.
 - **Repairer**: Handles vehicle maintenance and repairs. In fact, he can use tickets and send demands to the supplier to approve the reparation of the car for which has the full repairInfos.
-- **Supplier**: Provides vehicle inventory and details. In addition, he can different categories for his vehicules. Finally, he can manage subcriptions, adresses etc..
-- **Client**: Books and manages car rentals. He can also follow the reparation of his vehicule.
+- **Supplier**: Provides vehicules inventory with their different details. In addition, he can manage different categories for his vehicules. Finally, he can manage their different own subcriptions, adresses etc..
+- **Client**: Books and manages car rentals. He can also follow the reparation of his vehicules. At the end, he can manage his subscriptions.
+
+## Methodology:
+The used methodology will be Scrum. In fact, I've divided this project to the following sprints:
+- Authentication
+- User management
+- Vehicules management
+- Rentals management
+- Vehicules reparation
 
 ## File Descriptions
 
@@ -70,10 +78,11 @@ Here is a representation of different entities that will be present in the proje
 - Update the different attributes you find with your information
 
 5. **Create the database**
-- Use the file .sql to fill the database you will use
+- Use the files with type .sql inside the database folder to fill the database you will use.
 
 6. **Run the app**
    ```bash
+   mvn clean install
    mvn spring-boot:run
    
 
