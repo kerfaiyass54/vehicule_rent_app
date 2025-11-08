@@ -5,8 +5,8 @@ This project is designed to manage vehicules renting system. Built using **Sprin
 
 ## Actors
 This application supports the following user roles:
-- **Admin**: Manages the system users, including their accounts and also existed locations.
-- **Repairer**: Handles vehicle maintenance and repairs. In fact, he can use tickets and send demands to the supplier to approve the reparation of the car for which has the full repairInfos.
+- **Admin**: Manages the system users, including their accounts. Furthermore, he can manage existed locations.
+- **Repairer**: Handles vehicule maintenance and repairs. In fact, he can use tickets and send demands to the supplier to approve the reparation of the car for which has the full repairInfos.
 - **Supplier**: Provides vehicules inventory with their different details. In addition, he can manage different categories for his vehicules. Finally, he can manage their different own subcriptions, adresses etc..
 - **Client**: Books and manages car rentals. He can also follow the reparation of his vehicules. At the end, he can manage his subscriptions.
 
