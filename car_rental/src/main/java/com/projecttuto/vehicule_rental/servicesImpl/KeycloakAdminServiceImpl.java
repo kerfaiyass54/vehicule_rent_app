@@ -38,7 +38,7 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
     private ClientRepository clientRepository;
 
     @Autowired
-    private RepairRepository RepairRepository;
+    private RepairRepository repairRepository;
 
     @Autowired
     private SupplierRepository supplierRepository;
@@ -85,12 +85,26 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
     }
 
     @Override
-    public void updatePassword(String userId, String newPassword) {
+    public void updatePassword(String userId,String password, String newPassword, String role) {
         CredentialRepresentation cred = new CredentialRepresentation();
         cred.setTemporary(false);
         cred.setType(CredentialRepresentation.PASSWORD);
         cred.setValue(newPassword);
         keycloak.realm(realm).users().get(userId).resetPassword(cred);
+        switch(role){
+            case "admin":
+                adminRepository.updatePassword(password,newPassword);
+                break;
+            case "client":
+                clientRepository.updatePassword(password,newPassword);
+                break;
+            case "supplier":
+                supplierRepository.updatePassword(password,newPassword);
+                break;
+            case "repair":
+                repairRepository.updatePassword(password,newPassword);
+                break;
+        }
     }
 
     @Override
@@ -99,13 +113,27 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
     }
 
     @Override
-    public void updateUserWithoutPassword(String userId, String newEmail, String newFirstName, String newLastName, String role){
+    public void updateUserWithoutPassword(String userId,String email, String newEmail, String newFirstName, String newLastName, String role){
         UsersResource usersResource = keycloak.realm(realm).users();
         UserRepresentation user = usersResource.get(userId).toRepresentation();
         user.setEmail(newEmail);
         user.setFirstName(newFirstName);
         user.setLastName(newLastName);
         usersResource.get(userId).update(user);
+        switch(role){
+            case "admin":
+                adminRepository.updateEmail(email, newEmail);
+                break;
+            case "client":
+                clientRepository.updateEmail(email, newEmail);
+                break;
+            case "supplier":
+                supplierRepository.updateEmail(email, newEmail);
+                break;
+            case "repair":
+                repairRepository.updateEmail(email, newEmail);
+                break;
+        }
     }
 
 

@@ -12,12 +12,11 @@ public interface KeycloakAdminService {
 
     public void deleteUser(String userId);
 
-    public void updatePassword(String userId, String newPassword);
-
+    public void updatePassword(String userId,String password, String newPassword, String role);
 
     public List<RoleRepresentation> getAllRoles();
 
-    public void updateUserWithoutPassword(String userId, String newEmail, String newFirstName, String newLastName, String role);
+    public void updateUserWithoutPassword(String userId,String email, String newEmail, String newFirstName, String newLastName, String role);
 
 
 

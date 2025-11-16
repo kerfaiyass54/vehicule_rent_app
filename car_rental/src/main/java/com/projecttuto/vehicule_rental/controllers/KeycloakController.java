@@ -53,8 +53,8 @@ public class KeycloakController {
     }
 
     @PutMapping("/user/{id}/password")
-    public ResponseEntity<Void> updatePassword(@PathVariable String id, @RequestParam String newPassword) {
-        keycloakService.updatePassword(id, newPassword);
+    public ResponseEntity<Void> updatePassword(@PathVariable String id,@RequestParam String password, @RequestParam String newPassword, @RequestParam String role) {
+        keycloakService.updatePassword(id, password,newPassword,role);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
@@ -67,6 +67,14 @@ public class KeycloakController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(roles);
+    }
+
+
+    @PutMapping("/user/{userID}/update")
+    public ResponseEntity<Void> updateUser(@PathVariable String userID, @RequestParam String role,@RequestParam String email,@RequestParam String newEmail,@RequestParam String newFirstName,@RequestParam String newLastName)
+    {
+        keycloakService.updateUserWithoutPassword(userID, email, newEmail, newFirstName, newLastName, role);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
 
