@@ -6,8 +6,14 @@ import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import java.util.List;
 
 
@@ -22,7 +28,7 @@ public class KeycloakController {
         this.keycloakService = keycloakService;
     }
 
-    @PostMapping("/users")
+    @PostMapping("/")
     public ResponseEntity<Void> createUser(@RequestParam String username,
                                      @RequestParam String email,
                                      @RequestParam String password,
@@ -40,13 +46,13 @@ public class KeycloakController {
         return ResponseEntity.ok(users);
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/user/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         keycloakService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/users/{id}/password")
+    @PutMapping("/user/{id}/password")
     public ResponseEntity<Void> updatePassword(@PathVariable String id, @RequestParam String newPassword) {
         keycloakService.updatePassword(id, newPassword);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
@@ -62,6 +68,8 @@ public class KeycloakController {
         }
         return ResponseEntity.ok(roles);
     }
+
+
 
 
 
