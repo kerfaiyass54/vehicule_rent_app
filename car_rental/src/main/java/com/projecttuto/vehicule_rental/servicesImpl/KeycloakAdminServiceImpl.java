@@ -16,6 +16,8 @@ import org.keycloak.representations.idm.RoleRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 import java.util.List;
 
 
@@ -25,10 +27,10 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
 
     private final Keycloak keycloak;
 
-    @Value("${keycloak.users.realm.name}")
+    @Value("${keycloak.realm}")
     private String userRealm;
 
-    @Value("${keycloak.realm}")
+    @Value("${keycloak.admin.realm}")
     private String realm;
 
     @Autowired
@@ -44,23 +46,27 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
     private SupplierRepository supplierRepository;
 
     @Override
-    public void createUser(String username, String email, String password, String roleName) {
+    public void createUser(String username,String firstName, String lastName, String email, String password, String roleName) {
         UsersResource users = keycloak.realm(userRealm).users();
 
 
         UserRepresentation user = new UserRepresentation();
         user.setUsername(username);
         user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmailVerified(true);
 
 
+        user.setEnabled(true);
         Response response = users.create(user);
         if (response.getStatus() != 201) {
-            throw new RuntimeException("User creation failed, status: " + response.getStatus());
+            String errorBody = response.readEntity(String.class);
+            System.out.println("Keycloak error body: " + errorBody);
+            throw new RuntimeException("User creation failed, status: " + response.getStatus() + ", body: " + errorBody);
         }
 
         String userId = response.getLocation().getPath().replaceAll(".*/([^/]+)$", "$1");
-
-
         CredentialRepresentation cred = new CredentialRepresentation();
         cred.setTemporary(false);
         cred.setType(CredentialRepresentation.PASSWORD);
@@ -68,7 +74,7 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
         users.get(userId).resetPassword(cred);
 
 
-        RoleRepresentation role = keycloak.realm(realm).roles().get(roleName).toRepresentation();
+        RoleRepresentation role = keycloak.realm(userRealm).roles().get(roleName).toRepresentation();
         users.get(userId).roles().realmLevel().add(List.of(role));
     }
 
@@ -134,6 +140,17 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
                 repairRepository.updateEmail(email, newEmail);
                 break;
         }
+    }
+
+    public void syncUserToKeycloak(String userName,String firstName,String lastName, String email, String password, String role) {
+        UsersResource usersResource = keycloak.realm(userRealm).users();
+        List<UserRepresentation> existing = usersResource.search(email, 0, 1);
+        if (!existing.isEmpty()) {
+            System.out.println(email + " already exists in Keycloak.");
+            return;
+        }
+        createUser(userName,firstName,lastName, email, password, role);
+        System.out.println("User synced: " + email);
     }
 
 

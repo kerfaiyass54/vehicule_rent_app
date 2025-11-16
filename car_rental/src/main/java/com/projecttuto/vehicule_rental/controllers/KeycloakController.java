@@ -30,10 +30,12 @@ public class KeycloakController {
 
     @PostMapping("/")
     public ResponseEntity<Void> createUser(@RequestParam String username,
+                                     @RequestParam String firstName,
+                                     @RequestParam String lastName,
                                      @RequestParam String email,
                                      @RequestParam String password,
                                      @RequestParam String role) {
-        keycloakService.createUser(username, email, password, role);
+        keycloakService.createUser(username,firstName, lastName, email, password, role);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

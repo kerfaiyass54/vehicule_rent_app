@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface KeycloakAdminService {
 
-    public void createUser(String username, String email, String password, String roleName);
+    public void createUser(String username,String firstName, String lastName, String email, String password, String roleName);
 
     public List<UserRepresentation> getAllUsers();
 
