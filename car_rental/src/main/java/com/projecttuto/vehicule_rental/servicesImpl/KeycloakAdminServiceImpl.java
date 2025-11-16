@@ -108,9 +108,5 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
         usersResource.get(userId).update(user);
     }
 
-    public void updateEmail(String email, String role){
-        
-    }
-
 
 }
