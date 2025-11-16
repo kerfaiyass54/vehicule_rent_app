@@ -17,6 +17,8 @@ public interface KeycloakAdminService {
 
     public List<RoleRepresentation> getAllRoles();
 
+    public void updateUserWithoutPassword(String userId, String newEmail, String newFirstName, String newLastName, String role);
+
 
 
 }
