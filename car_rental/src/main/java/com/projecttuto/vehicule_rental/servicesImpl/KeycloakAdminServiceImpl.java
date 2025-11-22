@@ -1,6 +1,7 @@
 package com.projecttuto.vehicule_rental.servicesImpl;
 
 
+import com.projecttuto.vehicule_rental.DTO.UserDTO;
 import com.projecttuto.vehicule_rental.repositories.AdminRepository;
 import com.projecttuto.vehicule_rental.repositories.ClientRepository;
 import com.projecttuto.vehicule_rental.repositories.RepairRepository;
@@ -44,15 +45,15 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
     private SupplierRepository supplierRepository;
 
     @Override
-    public void createUser(String username,String firstName, String lastName, String email, String password, String roleName) {
+    public void createUser(UserDTO userDTO) {
         UsersResource users = keycloak.realm(userRealm).users();
 
 
         UserRepresentation user = new UserRepresentation();
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
+        user.setUsername(userDTO.getUserName());
+        user.setEmail(userDTO.getEmail());
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
         user.setEmailVerified(true);
 
 
@@ -68,11 +69,11 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
         CredentialRepresentation cred = new CredentialRepresentation();
         cred.setTemporary(false);
         cred.setType(CredentialRepresentation.PASSWORD);
-        cred.setValue(password);
+        cred.setValue(userDTO.getPassword());
         users.get(userId).resetPassword(cred);
 
 
-        RoleRepresentation role = keycloak.realm(userRealm).roles().get(roleName).toRepresentation();
+        RoleRepresentation role = keycloak.realm(userRealm).roles().get(userDTO.getRole()).toRepresentation();
         users.get(userId).roles().realmLevel().add(List.of(role));
     }
 
@@ -147,7 +148,13 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
             System.out.println(email + " already exists in Keycloak.");
             return;
         }
-        createUser(userName,firstName,lastName, email, password, role);
+        UserDTO userDTO = new UserDTO();
+        userDTO.setFirstName(firstName);
+        userDTO.setLastName(lastName);
+        userDTO.setEmail(email);
+        userDTO.setPassword(password);
+        userDTO.setRole(role);
+        createUser(userDTO);
         System.out.println("User synced: " + email);
     }
 

@@ -1,6 +1,7 @@
 package com.projecttuto.vehicule_rental.controllers;
 
 
+import com.projecttuto.vehicule_rental.DTO.UserDTO;
 import com.projecttuto.vehicule_rental.services.KeycloakAdminService;
 import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 
@@ -31,13 +33,8 @@ public class KeycloakController {
 
     //use a dto instead
     @PostMapping("/")
-    public ResponseEntity<Void> createUser(@RequestParam String username,
-                                     @RequestParam String firstName,
-                                     @RequestParam String lastName,
-                                     @RequestParam String email,
-                                     @RequestParam String password,
-                                     @RequestParam String role) {
-        keycloakService.createUser(username,firstName, lastName, email, password, role);
+    public ResponseEntity<Void> createUser(@RequestBody UserDTO userDTO) {
+        keycloakService.createUser(userDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

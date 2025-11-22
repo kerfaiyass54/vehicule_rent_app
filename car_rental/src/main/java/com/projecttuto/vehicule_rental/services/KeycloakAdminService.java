@@ -1,12 +1,13 @@
 package com.projecttuto.vehicule_rental.services;
 
 
+import com.projecttuto.vehicule_rental.DTO.UserDTO;
 import org.keycloak.representations.idm.*;
 import java.util.List;
 
 public interface KeycloakAdminService {
 
-    public void createUser(String username,String firstName, String lastName, String email, String password, String roleName);
+    public void createUser(UserDTO userDTO);
 
     public List<UserRepresentation> getAllUsers();
 
