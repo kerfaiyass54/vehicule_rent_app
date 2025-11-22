@@ -1,6 +1,7 @@
 package com.projecttuto.vehicule_rental.controllers;
 
 
+import com.projecttuto.vehicule_rental.DTO.PasswordDTO;
 import com.projecttuto.vehicule_rental.DTO.UserDTO;
 import com.projecttuto.vehicule_rental.services.KeycloakAdminService;
 import org.keycloak.representations.idm.RoleRepresentation;
@@ -54,8 +55,8 @@ public class KeycloakController {
     }
 
     @PutMapping("/user/{id}/password")
-    public ResponseEntity<Void> updatePassword(@PathVariable String id,@RequestParam String password, @RequestParam String newPassword, @RequestParam String role) {
-        keycloakService.updatePassword(id, password,newPassword,role);
+    public ResponseEntity<Void> updatePassword(@PathVariable String id,@RequestBody PasswordDTO passwordDTO) {
+        keycloakService.updatePassword(id, passwordDTO);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 

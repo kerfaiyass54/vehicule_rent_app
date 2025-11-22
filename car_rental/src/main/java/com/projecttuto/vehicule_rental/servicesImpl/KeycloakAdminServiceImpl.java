@@ -1,6 +1,7 @@
 package com.projecttuto.vehicule_rental.servicesImpl;
 
 
+import com.projecttuto.vehicule_rental.DTO.PasswordDTO;
 import com.projecttuto.vehicule_rental.DTO.UserDTO;
 import com.projecttuto.vehicule_rental.repositories.AdminRepository;
 import com.projecttuto.vehicule_rental.repositories.ClientRepository;
@@ -90,24 +91,24 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
     }
 
     @Override
-    public void updatePassword(String userId,String password, String newPassword, String role) {
+    public void updatePassword(String userId, PasswordDTO passwordDTO) {
         CredentialRepresentation cred = new CredentialRepresentation();
         cred.setTemporary(false);
         cred.setType(CredentialRepresentation.PASSWORD);
-        cred.setValue(newPassword);
+        cred.setValue(passwordDTO.getNewPassword());
         keycloak.realm(realm).users().get(userId).resetPassword(cred);
-        switch(role){
+        switch(passwordDTO.getRole()){
             case "admin":
-                adminRepository.updatePassword(password,newPassword);
+                adminRepository.updatePassword(passwordDTO.getPassword(),passwordDTO.getNewPassword());
                 break;
             case "client":
-                clientRepository.updatePassword(password,newPassword);
+                clientRepository.updatePassword(passwordDTO.getPassword(),passwordDTO.getNewPassword());
                 break;
             case "supplier":
-                supplierRepository.updatePassword(password,newPassword);
+                supplierRepository.updatePassword(passwordDTO.getPassword(),passwordDTO.getNewPassword());
                 break;
             case "repair":
-                repairRepository.updatePassword(password,newPassword);
+                repairRepository.updatePassword(passwordDTO.getPassword(),passwordDTO.getNewPassword());
                 break;
         }
     }
