@@ -28,6 +28,8 @@ public class KeycloakController {
         this.keycloakService = keycloakService;
     }
 
+
+    //use a dto instead
     @PostMapping("/")
     public ResponseEntity<Void> createUser(@RequestParam String username,
                                      @RequestParam String firstName,
@@ -72,6 +74,7 @@ public class KeycloakController {
     }
 
 
+    //use a dto instead
     @PutMapping("/user/{userID}/update")
     public ResponseEntity<Void> updateUser(@PathVariable String userID, @RequestParam String role,@RequestParam String email,@RequestParam String newEmail,@RequestParam String newFirstName,@RequestParam String newLastName)
     {

@@ -2,7 +2,10 @@ package com.projecttuto.vehicule_rental.DTO;
 
 import com.projecttuto.vehicule_rental.enums.Transmission;
 import com.projecttuto.vehicule_rental.enums.VehiculeStatus;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
