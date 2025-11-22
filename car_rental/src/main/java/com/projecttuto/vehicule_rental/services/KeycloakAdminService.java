@@ -2,6 +2,7 @@ package com.projecttuto.vehicule_rental.services;
 
 
 import com.projecttuto.vehicule_rental.DTO.PasswordDTO;
+import com.projecttuto.vehicule_rental.DTO.UpdateUserDTO;
 import com.projecttuto.vehicule_rental.DTO.UserDTO;
 import org.keycloak.representations.idm.*;
 import java.util.List;
@@ -18,7 +19,7 @@ public interface KeycloakAdminService {
 
     public List<RoleRepresentation> getAllRoles();
 
-    public void updateUserWithoutPassword(String userId,String email, String newEmail, String newFirstName, String newLastName, String role);
+    public void updateUserWithoutPassword(String userId, UpdateUserDTO  updateUserDTO);
 
 
 

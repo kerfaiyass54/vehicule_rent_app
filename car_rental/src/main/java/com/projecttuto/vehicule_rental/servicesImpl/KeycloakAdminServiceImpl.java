@@ -2,6 +2,7 @@ package com.projecttuto.vehicule_rental.servicesImpl;
 
 
 import com.projecttuto.vehicule_rental.DTO.PasswordDTO;
+import com.projecttuto.vehicule_rental.DTO.UpdateUserDTO;
 import com.projecttuto.vehicule_rental.DTO.UserDTO;
 import com.projecttuto.vehicule_rental.repositories.AdminRepository;
 import com.projecttuto.vehicule_rental.repositories.ClientRepository;
@@ -119,25 +120,25 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
     }
 
     @Override
-    public void updateUserWithoutPassword(String userId,String email, String newEmail, String newFirstName, String newLastName, String role){
+    public void updateUserWithoutPassword(String userId, UpdateUserDTO updateUserDTO){
         UsersResource usersResource = keycloak.realm(realm).users();
         UserRepresentation user = usersResource.get(userId).toRepresentation();
-        user.setEmail(newEmail);
-        user.setFirstName(newFirstName);
-        user.setLastName(newLastName);
+        user.setEmail(updateUserDTO.getNewEmail());
+        user.setFirstName(updateUserDTO.getFirstName());
+        user.setLastName(updateUserDTO.getLastName());
         usersResource.get(userId).update(user);
-        switch(role){
+        switch(updateUserDTO.getRole()){
             case "admin":
-                adminRepository.updateEmail(email, newEmail);
+                adminRepository.updateEmail(updateUserDTO.getEmail(), updateUserDTO.getNewEmail());
                 break;
             case "client":
-                clientRepository.updateEmail(email, newEmail);
+                clientRepository.updateEmail(updateUserDTO.getEmail(), updateUserDTO.getNewEmail());
                 break;
             case "supplier":
-                supplierRepository.updateEmail(email, newEmail);
+                supplierRepository.updateEmail(updateUserDTO.getEmail(), updateUserDTO.getNewEmail());
                 break;
             case "repair":
-                repairRepository.updateEmail(email, newEmail);
+                repairRepository.updateEmail(updateUserDTO.getEmail(), updateUserDTO.getNewEmail());
                 break;
         }
     }
