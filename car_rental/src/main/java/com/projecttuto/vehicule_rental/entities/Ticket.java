@@ -3,10 +3,7 @@ package com.projecttuto.vehicule_rental.entities;
 import com.projecttuto.vehicule_rental.enums.StatusRepair;
 import com.projecttuto.vehicule_rental.enums.TypeTicket;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.Instant;
 import java.util.List;
