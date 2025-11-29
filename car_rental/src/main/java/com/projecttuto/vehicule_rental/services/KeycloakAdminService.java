@@ -21,6 +21,8 @@ public interface KeycloakAdminService {
 
     public void updateUserWithoutPassword(String userId, UpdateUserDTO  updateUserDTO);
 
+//    public List<String> getAllEmails();
+
 
 
 }

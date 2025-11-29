@@ -143,6 +143,12 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
         }
     }
 
+//    @Override
+//    public List<String> getAllEmails(){
+//        return getAllUsers();
+//    }
+
+
     public void syncUserToKeycloak(String userName,String firstName,String lastName, String email, String password, String role) {
         UsersResource usersResource = keycloak.realm(userRealm).users();
         List<UserRepresentation> existing = usersResource.search(email, 0, 1);
