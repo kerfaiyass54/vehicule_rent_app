@@ -32,7 +32,7 @@ The used methodology will be Scrum. In fact, I've divided this project to the fo
 
 
 ### Database
-- databse: it contains the tables and different data for the database initialization.
+- database: it contains the tables and different data for the database initialization.
 
 ### Additional Files
 - `README.md`: Project documentation.
