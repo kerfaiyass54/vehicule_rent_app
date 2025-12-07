@@ -97,7 +97,7 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
         cred.setTemporary(false);
         cred.setType(CredentialRepresentation.PASSWORD);
         cred.setValue(passwordDTO.getNewPassword());
-        keycloak.realm(realm).users().get(userId).resetPassword(cred);
+        keycloak.realm(userRealm).users().get(userId).resetPassword(cred);
         switch(passwordDTO.getRole()){
             case "admin":
                 adminRepository.updatePassword(passwordDTO.getEmail(),passwordDTO.getNewPassword());
