@@ -82,13 +82,13 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
 
     @Override
     public List<UserRepresentation> getAllUsers() {
-        return keycloak.realm(realm).users().list();
+        return keycloak.realm(userRealm).users().list();
     }
 
 
     @Override
     public void deleteUser(String userId) {
-        keycloak.realm(realm).users().delete(userId);
+        keycloak.realm(userRealm).users().delete(userId);
     }
 
     @Override
@@ -116,12 +116,12 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
 
     @Override
     public List<RoleRepresentation> getAllRoles() {
-        return keycloak.realm(realm).roles().list();
+        return keycloak.realm(userRealm).roles().list();
     }
 
     @Override
     public void updateUserWithoutPassword(String userId, UpdateUserDTO updateUserDTO){
-        UsersResource usersResource = keycloak.realm(realm).users();
+        UsersResource usersResource = keycloak.realm(userRealm).users();
         UserRepresentation user = usersResource.get(userId).toRepresentation();
         user.setEmail(updateUserDTO.getNewEmail());
         user.setFirstName(updateUserDTO.getFirstName());
