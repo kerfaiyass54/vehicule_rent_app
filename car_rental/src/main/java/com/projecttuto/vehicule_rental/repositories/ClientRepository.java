@@ -28,6 +28,6 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE Client c SET c.pass = :newPass WHERE c.pass = :pass")
-    public void updatePassword(@Param("pass") String pass, @Param("newPass") String newPass);
+    @Query("UPDATE Client c SET c.pass = :newPass WHERE c.email = :email")
+    public void updatePassword(@Param("email") String email, @Param("newPass") String newPass);
 }

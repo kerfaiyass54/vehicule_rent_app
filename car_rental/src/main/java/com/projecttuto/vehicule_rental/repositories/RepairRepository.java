@@ -26,8 +26,8 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE Repair r SET r.pass = :newPass WHERE r.pass = :pass")
-    public void updatePassword(@Param("pass") String pass, @Param("newPass") String newPass);
+    @Query("UPDATE Repair r SET r.pass = :newPass WHERE r.email = :email")
+    public void updatePassword(@Param("email") String email, @Param("newPass") String newPass);
 
 
 

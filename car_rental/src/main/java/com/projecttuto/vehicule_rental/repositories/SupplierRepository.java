@@ -24,8 +24,8 @@ public interface SupplierRepository extends JpaRepository<Supplier, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE Supplier s SET s.pass = :newPass WHERE s.pass = :pass")
-    public void updatePassword(@Param("pass") String pass, @Param("newPass") String newPass);
+    @Query("UPDATE Supplier s SET s.pass = :newPass WHERE s.email = :email")
+    public void updatePassword(@Param("email") String email, @Param("newPass") String newPass);
 
 
 }

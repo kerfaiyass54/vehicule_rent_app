@@ -100,16 +100,16 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
         keycloak.realm(realm).users().get(userId).resetPassword(cred);
         switch(passwordDTO.getRole()){
             case "admin":
-                adminRepository.updatePassword(passwordDTO.getPassword(),passwordDTO.getNewPassword());
+                adminRepository.updatePassword(passwordDTO.getEmail(),passwordDTO.getNewPassword());
                 break;
             case "client":
-                clientRepository.updatePassword(passwordDTO.getPassword(),passwordDTO.getNewPassword());
+                clientRepository.updatePassword(passwordDTO.getEmail(),passwordDTO.getNewPassword());
                 break;
             case "supplier":
-                supplierRepository.updatePassword(passwordDTO.getPassword(),passwordDTO.getNewPassword());
+                supplierRepository.updatePassword(passwordDTO.getEmail(),passwordDTO.getNewPassword());
                 break;
             case "repair":
-                repairRepository.updatePassword(passwordDTO.getPassword(),passwordDTO.getNewPassword());
+                repairRepository.updatePassword(passwordDTO.getEmail(),passwordDTO.getNewPassword());
                 break;
         }
     }

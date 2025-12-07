@@ -11,7 +11,8 @@ import lombok.ToString;
 @ToString
 public class PasswordDTO {
 
-    private String password;
+
+    private String email;
     private String newPassword;
     private String role;
 }
