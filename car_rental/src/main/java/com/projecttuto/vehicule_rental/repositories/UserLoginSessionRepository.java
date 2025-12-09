@@ -5,13 +5,14 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Repository
 public interface UserLoginSessionRepository extends ElasticsearchRepository<UserLoginSession, String> {
 
-    UserLoginSession findUserLoginSessionByEmail(String email);
+    List<UserLoginSession> findUserLoginSessionByEmail(String email);
 
-    UserLoginSession findUserLoginSessionByLoginDate(LocalDate loginDate);
+    List<UserLoginSession> findUserLoginSessionByLoginDate(LocalDate loginDate);
 
 
 
