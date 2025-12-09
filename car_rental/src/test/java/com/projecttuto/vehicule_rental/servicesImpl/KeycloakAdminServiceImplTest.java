@@ -131,7 +131,7 @@ class KeycloakAdminServiceImplTest {
     void testUpdatePassword_admin() {
         PasswordDTO dto = new PasswordDTO();
         dto.setNewPassword("newPass");
-        dto.setPassword("oldPass");
+        dto.setEmail("john@test.com");
         dto.setRole("admin");
 
         UserResource userResource = mock(UserResource.class);
@@ -139,7 +139,7 @@ class KeycloakAdminServiceImplTest {
 
         service.updatePassword("123", dto);
 
-        verify(adminRepo).updatePassword("oldPass", "newPass");
+        verify(adminRepo).updatePassword("john@test.com", "newPass");
     }
 
     // ------------------------ UPDATE USER WITHOUT PASSWORD -------------------------
