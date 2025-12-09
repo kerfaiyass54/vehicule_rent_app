@@ -22,9 +22,9 @@ public class UserLoginSessionController {
 
 
     @PostMapping("/save")
-    public ResponseEntity<Void> save(@RequestBody UserLoginDataDTO data) {
-        service.saveSession(data.getUsername(), data.getEmail());
-        return ResponseEntity.ok().build();
+    public ResponseEntity<UserLoginSession> save(@RequestBody UserLoginDataDTO data) {
+        UserLoginSession userLoginSession = service.saveSession(data.getUsername(), data.getEmail());
+        return ResponseEntity.ok(userLoginSession);
     }
 
     @GetMapping("/{date}")
