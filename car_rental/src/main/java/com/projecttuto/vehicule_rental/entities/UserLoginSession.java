@@ -13,10 +13,8 @@ public class UserLoginSession {
 
     @Id
     private String id;
-
     private String username;
     private String email;
-
     private LocalDate loginDate;
     private LocalTime loginTime;
 }
