@@ -43,9 +43,9 @@ public class KeycloakController {
         return ResponseEntity.ok(users);
     }
 
-    @DeleteMapping("/user/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
-        keycloakService.deleteUser(id);
+    @DeleteMapping("/user/{id}/{role}/{email}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String id, @PathVariable String role,@PathVariable String email) {
+        keycloakService.deleteUser(id,role,email);
         return ResponseEntity.noContent().build();
     }
 

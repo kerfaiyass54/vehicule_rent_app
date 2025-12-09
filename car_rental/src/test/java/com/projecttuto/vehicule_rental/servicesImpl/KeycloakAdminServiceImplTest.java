@@ -121,7 +121,7 @@ class KeycloakAdminServiceImplTest {
 
     @Test
     void testDeleteUser() {
-        service.deleteUser("123");
+        service.deleteUser("123","client","john@test.com");
         verify(usersResource).delete("123");
     }
 

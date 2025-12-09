@@ -13,7 +13,7 @@ public interface KeycloakAdminService {
 
     public List<UserRepresentation> getAllUsers();
 
-    public void deleteUser(String userId);
+    public void deleteUser(String userId, String role, String email);
 
     public void updatePassword(String userId, PasswordDTO passwordDTO);
 

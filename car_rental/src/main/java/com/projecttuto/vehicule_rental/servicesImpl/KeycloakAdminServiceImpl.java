@@ -87,8 +87,22 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
 
 
     @Override
-    public void deleteUser(String userId) {
+    public void deleteUser(String userId, String role, String email) {
         keycloak.realm(userRealm).users().delete(userId);
+        switch(role){
+            case "admin":
+                adminRepository.delete(adminRepository.findAdminByEmail(email));
+                break;
+            case "client":
+                clientRepository.delete(clientRepository.findClientByEmail(email));
+                break;
+            case "supplier":
+                supplierRepository.delete(supplierRepository.findSupplierByEmail(email));
+                break;
+            case "repair":
+                repairRepository.delete(repairRepository.findRepairByEmail(email));
+                break;
+        }
     }
 
     @Override
@@ -162,6 +176,7 @@ public class KeycloakAdminServiceImpl  implements KeycloakAdminService {
         userDTO.setEmail(email);
         userDTO.setPassword(password);
         userDTO.setRole(role);
+        userDTO.setUserName(userName);
         createUser(userDTO);
         System.out.println("User synced: " + email);
     }
