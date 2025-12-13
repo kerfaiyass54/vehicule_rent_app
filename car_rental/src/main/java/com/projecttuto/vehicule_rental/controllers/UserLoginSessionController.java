@@ -1,6 +1,7 @@
 package com.projecttuto.vehicule_rental.controllers;
 
 
+import com.projecttuto.vehicule_rental.DTO.SessionDTO;
 import com.projecttuto.vehicule_rental.DTO.UserLoginDataDTO;
 import com.projecttuto.vehicule_rental.entities.UserLoginSession;
 import com.projecttuto.vehicule_rental.services.UserLoginSessionService;
@@ -28,20 +29,20 @@ public class UserLoginSessionController {
     }
 
     @GetMapping("/{date}")
-    public ResponseEntity<List<UserLoginSession>> findAllUserLoginSessionsByLoginDate(@PathVariable LocalDate date){
-        List<UserLoginSession> sessions = service.findAllUserLoginSessionsByLoginDate(date);
+    public ResponseEntity<List<SessionDTO>> findAllUserLoginSessionsByLoginDate(@PathVariable LocalDate date){
+        List<SessionDTO> sessions = service.findAllUserLoginSessionsByLoginDate(date);
         return ResponseEntity.ok().body(sessions);
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<UserLoginSession>> findAllUserLoginSessions(){
-        List<UserLoginSession> sessions = service.findAllUserLoginSessions();
+    public ResponseEntity<List<SessionDTO>> findAllUserLoginSessions(){
+        List<SessionDTO> sessions = service.findAllUserLoginSessions();
         return ResponseEntity.ok().body(sessions);
     }
 
     @GetMapping("/{email}")
-    public ResponseEntity<List<UserLoginSession>> findAllUserLoginSessionsByLoginDate(@PathVariable String email){
-        List<UserLoginSession> sessions = service.findAllUserLoginSessionsByEmail(email);
+    public ResponseEntity<List<SessionDTO>> findAllUserLoginSessionsByLoginDate(@PathVariable String email){
+        List<SessionDTO> sessions = service.findAllUserLoginSessionsByEmail(email);
         return ResponseEntity.ok().body(sessions);
     }
 
