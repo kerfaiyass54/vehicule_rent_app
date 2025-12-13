@@ -16,13 +16,19 @@
 Welcome to **Vehicle Rental Management System**, a comprehensive backend solution built with **Spring Boot** that enables seamless management of vehicle rentals, repairs, subscriptions, and user roles. This system is designed to streamline operations for **administrators, suppliers, repairers, and clients**, providing a robust platform for handling all aspects of vehicle rentals.
 
 ### Key Features:
-✅ **Multi-role Access Control** – Tailored permissions for Admins, Suppliers, Repairers, and Clients
-✅ **Vehicle Management** – Comprehensive inventory with categories, statuses, and suppliers
-✅ **Rental System** – Booking, tracking, and managing rentals with flexible periods
-✅ **Repair & Maintenance** – Ticketing system, repair tracking, and status updates
-✅ **Subscription Plans** – Customizable subscription tiers for clients
-✅ **Secure Authentication** – OAuth2 and Keycloak integration for secure user management
-✅ **API Documentation** – Swagger/OpenAPI for easy API exploration and integration
+✅ **Multi-role Access Control** – Tailored permissions for Admins, Suppliers, Repairers, and Clients.
+
+✅ **Vehicle Management** – Comprehensive inventory with categories, statuses, and suppliers.
+
+✅ **Rental System** – Booking, tracking, and managing rentals with flexible periods.
+
+✅ **Repair & Maintenance** – Ticketing system, repair tracking, and status updates.
+
+✅ **Subscription Plans** – Customizable subscription tiers for clients.
+
+✅ **Secure Authentication** – OAuth2 and Keycloak integration for secure user management.
+
+✅ **API Documentation** – Swagger/OpenAPI for easy API exploration and integration.
 
 ---
 
