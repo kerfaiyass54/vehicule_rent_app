@@ -17,4 +17,6 @@ public class UserLoginSession {
     private String email;
     private LocalDate loginDate;
     private LocalTime loginTime;
+    private LocalDate logoutDate;
+    private LocalTime logoutTime;
 }
