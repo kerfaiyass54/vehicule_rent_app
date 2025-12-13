@@ -25,8 +25,6 @@ public class UserLoginSessionServiceImpl implements UserLoginSessionService {
         sessionDTO.setEmail(userLoginSession.getEmail());
         sessionDTO.setLoginTime(userLoginSession.getLoginTime());
         sessionDTO.setLoginDate(userLoginSession.getLoginDate());
-        sessionDTO.setLogoutTime(userLoginSession.getLogoutTime());
-        sessionDTO.setLogoutDate(userLoginSession.getLogoutDate());
         sessionDTO.setUsername(userLoginSession.getUsername());
         return sessionDTO;
     }
@@ -38,7 +36,6 @@ public class UserLoginSessionServiceImpl implements UserLoginSessionService {
         session.setEmail(email);
         session.setLoginDate(LocalDate.now());
         session.setLoginTime(LocalTime.now());
-
         return userLoginSessionRepository.save(session);
     }
 
