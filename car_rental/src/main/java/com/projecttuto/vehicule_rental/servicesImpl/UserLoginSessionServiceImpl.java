@@ -1,5 +1,6 @@
 package com.projecttuto.vehicule_rental.servicesImpl;
 
+import com.projecttuto.vehicule_rental.DTO.SessionDTO;
 import com.projecttuto.vehicule_rental.entities.UserLoginSession;
 import com.projecttuto.vehicule_rental.repositories.UserLoginSessionRepository;
 import com.projecttuto.vehicule_rental.services.UserLoginSessionService;
@@ -19,6 +20,17 @@ public class UserLoginSessionServiceImpl implements UserLoginSessionService {
         this.userLoginSessionRepository = repository;
     }
 
+    public SessionDTO mapToDTO(UserLoginSession userLoginSession) {
+        SessionDTO sessionDTO = new SessionDTO();
+        sessionDTO.setEmail(userLoginSession.getEmail());
+        sessionDTO.setLoginTime(userLoginSession.getLoginTime());
+        sessionDTO.setLoginDate(userLoginSession.getLoginDate());
+        sessionDTO.setLogoutTime(userLoginSession.getLogoutTime());
+        sessionDTO.setLogoutDate(userLoginSession.getLogoutDate());
+        sessionDTO.setUsername(userLoginSession.getUsername());
+        return sessionDTO;
+    }
+
     @Override
     public UserLoginSession saveSession(String username, String email){
         UserLoginSession session = new UserLoginSession();
@@ -31,18 +43,18 @@ public class UserLoginSessionServiceImpl implements UserLoginSessionService {
     }
 
     @Override
-    public List<UserLoginSession> findAllUserLoginSessions(){
-        return (List<UserLoginSession>) userLoginSessionRepository.findAll();
+    public List<SessionDTO> findAllUserLoginSessions(){
+        return ((List<UserLoginSession>) userLoginSessionRepository.findAll()).stream().map(this::mapToDTO).toList();
     }
 
     @Override
-    public List<UserLoginSession> findAllUserLoginSessionsByEmail(String email){
-        return userLoginSessionRepository.findUserLoginSessionByEmail(email);
+    public List<SessionDTO> findAllUserLoginSessionsByEmail(String email){
+        return userLoginSessionRepository.findUserLoginSessionByEmail(email).stream().map(this::mapToDTO).toList();
     }
 
     @Override
-    public List<UserLoginSession> findAllUserLoginSessionsByLoginDate(LocalDate loginDate){
-        return userLoginSessionRepository.findUserLoginSessionByLoginDate(loginDate);
+    public List<SessionDTO> findAllUserLoginSessionsByLoginDate(LocalDate loginDate){
+        return userLoginSessionRepository.findUserLoginSessionByLoginDate(loginDate).stream().map(this::mapToDTO).toList();
     }
 
 
