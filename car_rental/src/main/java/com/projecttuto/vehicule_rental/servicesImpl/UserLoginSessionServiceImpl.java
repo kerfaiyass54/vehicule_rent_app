@@ -32,7 +32,8 @@ public class UserLoginSessionServiceImpl implements UserLoginSessionService {
 
     @Override
     public void saveSession(Jwt jwt){
-        Instant authTime = jwt.getClaim("auth_time");
+        Long authTimeSeconds = jwt.getClaim("auth_time");
+        Instant authTime = Instant.ofEpochSecond(authTimeSeconds);
         String userId = jwt.getSubject();
         if (userLoginSessionRepository.existsByUserIdAndSessionStart(userId, authTime)) {
             return;
