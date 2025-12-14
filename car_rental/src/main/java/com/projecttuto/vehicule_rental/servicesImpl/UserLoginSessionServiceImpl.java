@@ -1,11 +1,14 @@
 package com.projecttuto.vehicule_rental.servicesImpl;
 
 import com.projecttuto.vehicule_rental.DTO.SessionDTO;
+import com.projecttuto.vehicule_rental.DTO.UserLoginDataDTO;
 import com.projecttuto.vehicule_rental.entities.UserLoginSession;
 import com.projecttuto.vehicule_rental.repositories.UserLoginSessionRepository;
 import com.projecttuto.vehicule_rental.services.UserLoginSessionService;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -23,20 +26,23 @@ public class UserLoginSessionServiceImpl implements UserLoginSessionService {
     public SessionDTO mapToDTO(UserLoginSession userLoginSession) {
         SessionDTO sessionDTO = new SessionDTO();
         sessionDTO.setEmail(userLoginSession.getEmail());
-        sessionDTO.setLoginTime(userLoginSession.getLoginTime());
-        sessionDTO.setLoginDate(userLoginSession.getLoginDate());
         sessionDTO.setUsername(userLoginSession.getUsername());
         return sessionDTO;
     }
 
     @Override
-    public UserLoginSession saveSession(String username, String email){
+    public void saveSession(Jwt jwt){
+        Instant authTime = jwt.getClaim("auth_time");
+        String userId = jwt.getSubject();
+        if (userLoginSessionRepository.existsByUserIdAndSessionStart(userId, authTime)) {
+            return;
+        }
         UserLoginSession session = new UserLoginSession();
-        session.setUsername(username);
-        session.setEmail(email);
-        session.setLoginDate(LocalDate.now());
-        session.setLoginTime(LocalTime.now());
-        return userLoginSessionRepository.save(session);
+        session.setUserId(userId);
+        session.setUsername(jwt.getClaim("preferred_username"));
+        session.setEmail(jwt.getClaim("email"));
+        session.setSessionStart(authTime);
+        userLoginSessionRepository.save(session);
     }
 
     @Override
@@ -50,8 +56,8 @@ public class UserLoginSessionServiceImpl implements UserLoginSessionService {
     }
 
     @Override
-    public List<SessionDTO> findAllUserLoginSessionsByLoginDate(LocalDate loginDate){
-        return userLoginSessionRepository.findUserLoginSessionByLoginDate(loginDate).stream().map(this::mapToDTO).toList();
+    public List<SessionDTO> findAllUserLoginSessionsByLoginDate(Instant date, String id){
+        return userLoginSessionRepository.findUserLoginSessionBySessionStartAndUserId(date,id).stream().map(this::mapToDTO).toList();
     }
 
 

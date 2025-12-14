@@ -7,8 +7,11 @@ import com.projecttuto.vehicule_rental.entities.UserLoginSession;
 import com.projecttuto.vehicule_rental.services.UserLoginSessionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,14 +26,14 @@ public class UserLoginSessionController {
 
 
     @PostMapping("/save")
-    public ResponseEntity<UserLoginSession> save(@RequestBody UserLoginDataDTO data) {
-        UserLoginSession userLoginSession = service.saveSession(data.getUsername(), data.getEmail());
-        return ResponseEntity.ok(userLoginSession);
+    public ResponseEntity<Void> save(@AuthenticationPrincipal Jwt jwt) {
+        service.saveSession(jwt);
+        return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{date}")
-    public ResponseEntity<List<SessionDTO>> findAllUserLoginSessionsByLoginDate(@PathVariable LocalDate date){
-        List<SessionDTO> sessions = service.findAllUserLoginSessionsByLoginDate(date);
+    @GetMapping("/{date}/{id}")
+    public ResponseEntity<List<SessionDTO>> findAllUserLoginSessionsByLoginDate(@PathVariable Instant date, @PathVariable String id){
+        List<SessionDTO> sessions = service.findAllUserLoginSessionsByLoginDate(date,id);
         return ResponseEntity.ok().body(sessions);
     }
 

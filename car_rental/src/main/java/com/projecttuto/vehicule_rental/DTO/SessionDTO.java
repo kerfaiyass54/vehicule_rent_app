@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -15,8 +16,8 @@ import java.time.LocalTime;
 @ToString
 public class SessionDTO {
 
+    private String userId;
     private String username;
     private String email;
-    private LocalDate loginDate;
-    private LocalTime loginTime;
+    private Instant sessionStart;
 }
