@@ -15,7 +15,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @ToString
 public class SessionDTO {
-
+    private String id;
     private String userId;
     private String username;
     private String email;

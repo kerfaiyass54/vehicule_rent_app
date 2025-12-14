@@ -27,6 +27,9 @@ public class UserLoginSessionServiceImpl implements UserLoginSessionService {
         SessionDTO sessionDTO = new SessionDTO();
         sessionDTO.setEmail(userLoginSession.getEmail());
         sessionDTO.setUsername(userLoginSession.getUsername());
+        sessionDTO.setId(userLoginSession.getId());
+        sessionDTO.setUserId(userLoginSession.getUserId());
+        sessionDTO.setSessionStart(userLoginSession.getSessionStart());
         return sessionDTO;
     }
 
