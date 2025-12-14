@@ -4,6 +4,7 @@ import com.projecttuto.vehicule_rental.entities.UserLoginSession;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,7 +13,12 @@ public interface UserLoginSessionRepository extends ElasticsearchRepository<User
 
     List<UserLoginSession> findUserLoginSessionByEmail(String email);
 
-    List<UserLoginSession> findUserLoginSessionByLoginDate(LocalDate loginDate);
+    List<UserLoginSession> findUserLoginSessionBySessionStartAndUserId(Instant sessionStart,String userId);
+
+    boolean existsByUserIdAndSessionStart(String userId, Instant sessionStart);
+
+
+
 
 
 
