@@ -18,11 +18,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sessions")
-@RequiredArgsConstructor
 @CrossOrigin("*")
 public class UserLoginSessionController {
 
     private final UserLoginSessionService service;
+    public UserLoginSessionController(UserLoginSessionService service) {
+        this.service = service;
+    }
 
 
     @PostMapping("/save")
