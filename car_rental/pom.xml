@@ -66,7 +66,7 @@
         <dependency>
             <groupId>co.elastic.clients</groupId>
             <artifactId>elasticsearch-java</artifactId>
-            <version>9.2.2</version>
+            <version>8.19.8</version>
         </dependency>
 
         <!-- Optional: Jackson for JSON -->
