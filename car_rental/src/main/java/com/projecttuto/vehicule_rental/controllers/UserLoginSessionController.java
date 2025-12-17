@@ -2,17 +2,14 @@ package com.projecttuto.vehicule_rental.controllers;
 
 
 import com.projecttuto.vehicule_rental.DTO.SessionDTO;
-import com.projecttuto.vehicule_rental.DTO.UserLoginDataDTO;
-import com.projecttuto.vehicule_rental.entities.UserLoginSession;
 import com.projecttuto.vehicule_rental.services.UserLoginSessionService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -49,6 +46,19 @@ public class UserLoginSessionController {
     public ResponseEntity<List<SessionDTO>> findAllUserLoginSessionsByLoginDate(@PathVariable String email){
         List<SessionDTO> sessions = service.findAllUserLoginSessionsByEmail(email);
         return ResponseEntity.ok().body(sessions);
+    }
+
+    @GetMapping("/list/sessions")
+    public ResponseEntity<Page<SessionDTO>> findAllUserLoginSessionsByEmail(@RequestParam(defaultValue = "0") int page,
+                                                                            @RequestParam(defaultValue = "5") int size,
+                                                                            @RequestParam(required = true) String email){
+        Page<SessionDTO> sessionList = service.findAllUseLoginSessionsByEmailPage(email,page,size);
+        if (sessionList != null)  {
+            return  ResponseEntity.ok().body(sessionList);
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
 

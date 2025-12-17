@@ -5,6 +5,9 @@ import com.projecttuto.vehicule_rental.DTO.UserLoginDataDTO;
 import com.projecttuto.vehicule_rental.entities.UserLoginSession;
 import com.projecttuto.vehicule_rental.repositories.UserLoginSessionRepository;
 import com.projecttuto.vehicule_rental.services.UserLoginSessionService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
@@ -62,6 +65,12 @@ public class UserLoginSessionServiceImpl implements UserLoginSessionService {
     @Override
     public List<SessionDTO> findAllUserLoginSessionsByLoginDate(Instant date, String id){
         return userLoginSessionRepository.findUserLoginSessionBySessionStartAndUserId(date,id).stream().map(this::mapToDTO).toList();
+    }
+
+    @Override
+    public Page<SessionDTO> findAllUseLoginSessionsByEmailPage(String email, int page, int size){
+        Pageable pageable = PageRequest.of(page, size);
+        return userLoginSessionRepository.findUserLoginSessionByEmail(email,pageable).map(this::mapToDTO);
     }
 
 
